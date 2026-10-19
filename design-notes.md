@@ -19,3 +19,9 @@ Portfolio imagery was sourced from the supplied Desira Instagram and Wix pages. 
 ## Contact
 
 Business contact details remain pending. The current enquiry dialog prepares and copies a project brief and links to Instagram. It does not send messages or save form submissions.
+
+## Distributed motion experiences
+
+User requested one homepage experience and the others on separate relevant pages, discoverable from navbar subsections. Added the Explore disclosure, overview gallery, home tilt, invitation reveal on its service page, final-artwork scroll story on the coastal project, and a standalone CSS 3D design desk. Reduced motion and mobile fallbacks retain access to the content. Original project artwork and Desira colours are used throughout.
+
+Validation: production build prerenders 12 pages plus a 404; the modified pages were checked at widths 320, 390, 768 and 1440. Tested dropdown navigation, invitation open/close, desk view controls, scroll progress, pointer tilt, and reduced motion. Code review identified a portfolio live-region remount, fixed with a separate persistent result-status region.

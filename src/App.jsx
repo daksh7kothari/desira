@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import { projects, services, siteUrl } from './content.js'
+import { experienceLinks, projects, services, siteUrl } from './content.js'
+import { DesignDesk, ExperienceGallery, InvitationExperience, ScrollStory, TiltSurface } from './experiences.jsx'
 import './App.css'
 
 const instagram = 'https://www.instagram.com/desira.ft/'
@@ -10,10 +11,21 @@ function Arrow({ diagonal = false }) {
 
 function Header({ onEnquire, isHome }) {
   const [open, setOpen] = useState(false)
+  const [experiencesOpen, setExperiencesOpen] = useState(false)
+  const dropdown = useRef(null)
+  const dropdownButton = useRef(null)
   useEffect(() => {
-    const close = (event) => { if (event.key === 'Escape') setOpen(false) }
+    const close = (event) => {
+      if (event.key !== 'Escape') return
+      if (dropdown.current?.contains(document.activeElement) && dropdownButton.current?.getAttribute('aria-expanded') === 'true') {
+        setExperiencesOpen(false)
+        dropdownButton.current.focus()
+      } else { setOpen(false); setExperiencesOpen(false) }
+    }
+    const outside = (event) => { if (!dropdown.current?.contains(event.target)) setExperiencesOpen(false) }
     window.addEventListener('keydown', close)
-    return () => window.removeEventListener('keydown', close)
+    document.addEventListener('pointerdown', outside)
+    return () => { window.removeEventListener('keydown', close); document.removeEventListener('pointerdown', outside) }
   }, [])
   const home = isHome ? '' : '/'
   return <header className="header-wrap"><nav className="navigation" aria-label="Main navigation">
@@ -22,6 +34,13 @@ function Header({ onEnquire, isHome }) {
     <button type="button" className="menu-toggle" aria-expanded={open} aria-controls="nav-links" onClick={() => setOpen(!open)}>{open ? 'Close' : 'Menu'} <span aria-hidden="true">{open ? '−' : '+'}</span></button>
     <div id="nav-links" className={`nav-links ${open ? 'is-open' : ''}`}>
       {[['Work', 'work'], ['What we do', 'services'], ['The studio', 'studio']].map(([label, id]) => <a key={id} href={`${home}#${id}`} onClick={() => setOpen(false)}>{label}</a>)}
+      <div className="experiences-nav" ref={dropdown}>
+        <button ref={dropdownButton} type="button" className="experiences-toggle" aria-expanded={experiencesOpen} aria-controls="experience-navigation" onClick={() => setExperiencesOpen(!experiencesOpen)}>Explore <span aria-hidden="true">⌄</span></button>
+        <div id="experience-navigation" className="experiences-dropdown" hidden={!experiencesOpen}>
+          <a className="experiences-all" href="/experiences/" onClick={() => { setExperiencesOpen(false); setOpen(false) }}>All design experiences <Arrow diagonal /></a>
+          {experienceLinks.map((item) => <a key={item.href} href={item.href} onClick={() => { setExperiencesOpen(false); setOpen(false) }}><span>{item.title}</span><small>{item.description}</small></a>)}
+        </div>
+      </div>
       <button className="button button-gold nav-cta" onClick={() => { setOpen(false); onEnquire() }}>Let’s talk <Arrow diagonal /></button>
     </div>
   </nav></header>
@@ -38,9 +57,9 @@ function Hero() {
         <div className="hero-copy-bottom"><p className="hero-description">Brand identities, posters, and invitations.<br />Designed with purpose. Made to stand out.</p><a className="button button-navy" href="#work">Explore our work <Arrow diagonal /></a></div>
       </div>
       <div className="showcase">
-        <div className="showcase-canvas">
+        <TiltSurface className="showcase-canvas" id="interactive-showcase">
           <a key={project.slug} href={`/work/${project.slug}/`} className="showcase-main" aria-label={`Explore ${project.title}`}><img src={project.image} alt={project.alt} width={project.width} height={project.height} fetchPriority="high" /><span className="showcase-view">Take a closer look <Arrow diagonal /></span></a>
-        </div>
+        </TiltSurface>
         <div className="showcase-bottom"><div className="showcase-caption" aria-live="polite" aria-atomic="true"><span>{String(active + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}</span><p>{project.discipline}</p></div><div className="showcase-controls"><button type="button" aria-label="Previous project" onClick={() => setActive((active + projects.length - 1) % projects.length)}><Arrow /></button><button type="button" aria-label="Next project" onClick={() => setActive((active + 1) % projects.length)}><Arrow /></button></div></div>
       </div>
     </div>
@@ -55,7 +74,8 @@ function Portfolio() {
   return <section id="work" className="work-section section-pad" aria-labelledby="work-title">
     <div className="section-heading"><div><p className="eyebrow">Selected work</p><h2 id="work-title">Less ordinary.<br />More you.</h2></div><p>A few ideas that made it<br />out of the sketchbook.</p></div>
     <div className="work-filters" role="group" aria-label="Filter portfolio">{filters.map((item) => <button type="button" key={item} aria-pressed={filter === item} onClick={() => setFilter(item)}>{item}{filter === item && <span aria-hidden="true">↗</span>}</button>)}</div>
-    <div className="project-grid" aria-live="polite" aria-atomic="false">
+    <p className="sr-only" role="status">{visible.length} projects shown. {filter}.</p>
+    <div className="project-grid" key={filter} data-portfolio="true">
       {visible.map((project) => <a href={`/work/${project.slug}/`} className={`project project-${project.slug}`} key={project.slug}>
         <div className="project-image"><img src={project.image} alt={project.alt} width={project.width} height={project.height} loading="lazy" /><span className="project-open" aria-hidden="true"><Arrow diagonal /></span></div>
         <div className="project-caption"><div><h3>{project.title}</h3><p>{project.discipline}</p></div><Arrow diagonal /></div>
@@ -128,16 +148,18 @@ function EnquiryDialog({ service, onClose }) {
 
 function ProjectPage({ project, onEnquire }) {
   const next = projects[(projects.indexOf(project) + 1) % projects.length]
-  return <><main className="detail-page"><a className="back-link" href="/#work">← All selected work</a><div className="detail-heading"><p className="eyebrow">{project.discipline}</p><h1>{project.title}</h1><p>{project.description}</p></div><div className={`detail-art detail-art-${project.slug}`}><img src={project.image} alt={project.alt} width={project.width} height={project.height} fetchPriority="high" /></div><div className="project-story"><div><p className="eyebrow">The idea</p><h2>{project.storyTitle}</h2></div><div><p>{project.story}</p>{project.source && <a className="text-link" href={project.source} target="_blank" rel="noreferrer">See the original project <Arrow diagonal /></a>}<button className="button button-navy" onClick={() => onEnquire(project.service)}>Have something in mind? <Arrow diagonal /></button></div></div><div className="next-project"><span>Keep exploring</span><a href={`/work/${next.slug}/`}>{next.title}<Arrow diagonal /></a></div></main><Footer onEnquire={onEnquire} /></>
+  return <><main className="detail-page"><a className="back-link" href="/#work">← All selected work</a><div className="detail-heading"><p className="eyebrow">{project.discipline}</p><h1>{project.title}</h1><p>{project.description}</p></div><div className={`detail-art detail-art-${project.slug}`}><img src={project.image} alt={project.alt} width={project.width} height={project.height} fetchPriority="high" /></div>{project.slug === 'coastal-celebration' && <ScrollStory />}<div className="project-story"><div><p className="eyebrow">The idea</p><h2>{project.storyTitle}</h2></div><div><p>{project.story}</p>{project.source && <a className="text-link" href={project.source} target="_blank" rel="noreferrer">See the original project <Arrow diagonal /></a>}<button className="button button-navy" onClick={() => onEnquire(project.service)}>Have something in mind? <Arrow diagonal /></button></div></div><div className="next-project"><span>Keep exploring</span><a href={`/work/${next.slug}/`}>{next.title}<Arrow diagonal /></a></div></main><Footer onEnquire={onEnquire} /></>
 }
 
 function ServicePage({ service, onEnquire }) {
   const related = projects.filter((project) => project.service === service.title || project.category === service.category).slice(0, 2)
-  return <><main className="detail-page service-detail"><a className="back-link" href="/#services">← What we do</a><div className="detail-heading"><p className="eyebrow">Custom graphic design by Desira</p><h1>{service.title}</h1><p>{service.description}</p><button className="button button-navy" onClick={() => onEnquire(service.title)}>Tell us about your project <Arrow diagonal /></button></div><div className="service-editorial"><h2>{service.heading}</h2><div><p>{service.body}</p><ul>{service.deliverables.map((item) => <li key={item}>{item}</li>)}</ul></div></div><div className="project-grid">{related.map((project) => <a className="project" key={project.slug} href={`/work/${project.slug}/`}><div className="project-image"><img src={project.image} alt={project.alt} width={project.width} height={project.height} loading="lazy" /></div><div className="project-caption"><h3>{project.title}</h3><Arrow diagonal /></div></a>)}</div><div className="service-process"><p className="eyebrow">A thoughtful process</p><h2>From “what if”<br />to “that’s the one.”</h2><ol><li><h3>Tell us your story.</h3><p>We discuss your goals, audience, references, scope, and timeline.</p></li><li><h3>Find the direction.</h3><p>We develop a visual approach around your brief and agree on the way forward.</p></li><li><h3>Make it yours.</h3><p>We refine the details together and prepare the agreed final deliverables.</p></li></ol></div></main><Footer onEnquire={onEnquire} /></>
+  return <><main className="detail-page service-detail"><a className="back-link" href="/#services">← What we do</a><div className="detail-heading"><p className="eyebrow">Custom graphic design by Desira</p><h1>{service.title}</h1><p>{service.description}</p><button className="button button-navy" onClick={() => onEnquire(service.title)}>Tell us about your project <Arrow diagonal /></button></div>{service.slug === 'wedding-invitations' && <InvitationExperience />}<div className="service-editorial"><h2>{service.heading}</h2><div><p>{service.body}</p><ul>{service.deliverables.map((item) => <li key={item}>{item}</li>)}</ul></div></div><div className="project-grid">{related.map((project) => <a className="project" key={project.slug} href={`/work/${project.slug}/`}><div className="project-image"><img src={project.image} alt={project.alt} width={project.width} height={project.height} loading="lazy" /></div><div className="project-caption"><h3>{project.title}</h3><Arrow diagonal /></div></a>)}</div><div className="service-process"><p className="eyebrow">A thoughtful process</p><h2>From “what if”<br />to “that’s the one.”</h2><ol><li><h3>Tell us your story.</h3><p>We discuss your goals, audience, references, scope, and timeline.</p></li><li><h3>Find the direction.</h3><p>We develop a visual approach around your brief and agree on the way forward.</p></li><li><h3>Make it yours.</h3><p>We refine the details together and prepare the agreed final deliverables.</p></li></ol></div></main><Footer onEnquire={onEnquire} /></>
 }
 
 export function getPage(pathname) {
   const path = pathname.replace(/\/+$/, '') || '/'
+  if (path === '/experiences') return { experience: 'gallery', title: 'Design Experiences — Desira', description: 'Explore original Desira artwork through an interactive showcase, invitation reveal, project story and design desk.', image: '/work/coastal-wedding.webp' }
+  if (path === '/experiences/design-desk') return { experience: 'desk', title: 'The Design Desk — Desira', description: 'Explore Desira?s original invitation, print and illustration work from a different perspective on the interactive design desk.', image: '/work/print-design.webp' }
   const project = projects.find((item) => path === `/work/${item.slug}`)
   const service = services.find((item) => path === `/services/${item.slug}`)
   if (project) return { title: `${project.title} — Desira Design Studio`, description: project.description, image: project.image, project }
@@ -150,5 +172,5 @@ export default function App({ pathname = '/' }) {
   const [enquiry, setEnquiry] = useState(null)
   const page = getPage(pathname)
   const onEnquire = (service = '') => setEnquiry({ service })
-  return <><a href="#main-content" className="skip-link">Skip to content</a><Header onEnquire={onEnquire} isHome={pathname === '/'} /><div id="main-content" tabIndex="-1">{page.project ? <ProjectPage project={page.project} onEnquire={onEnquire} /> : page.service ? <ServicePage service={page.service} onEnquire={onEnquire} /> : page.notFound ? <main className="not-found"><p className="eyebrow">A little off the canvas</p><h1>This page isn’t here.</h1><a className="button button-navy" href="/">Back to Desira <Arrow /></a></main> : <><main><Hero /><Portfolio /><Services /><Studio /><Questions /></main><Footer onEnquire={onEnquire} /></>}</div>{enquiry && <EnquiryDialog service={enquiry.service} onClose={() => setEnquiry(null)} />}<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'Organization', name: 'Desira', url: siteUrl, logo: `${siteUrl}/desira-logo.png`, description: 'Graphic design studio owned by Sejal. Custom logos, posters, wedding invitations and event graphics.', sameAs: [instagram, 'https://desiraft.wixsite.com/desira'] }) }} /></>
+  return <><a href="#main-content" className="skip-link">Skip to content</a><Header onEnquire={onEnquire} isHome={pathname === '/'} /><div id="main-content" tabIndex="-1">{page.experience ? <>{page.experience === 'desk' ? <DesignDesk /> : <ExperienceGallery />}<Footer onEnquire={onEnquire} /></> : page.project ? <ProjectPage project={page.project} onEnquire={onEnquire} /> : page.service ? <ServicePage service={page.service} onEnquire={onEnquire} /> : page.notFound ? <main className="not-found"><p className="eyebrow">A little off the canvas</p><h1>This page isn’t here.</h1><a className="button button-navy" href="/">Back to Desira <Arrow /></a></main> : <><main><Hero /><Portfolio /><Services /><Studio /><Questions /></main><Footer onEnquire={onEnquire} /></>}</div>{enquiry && <EnquiryDialog service={enquiry.service} onClose={() => setEnquiry(null)} />}<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'Organization', name: 'Desira', url: siteUrl, logo: `${siteUrl}/desira-logo.png`, description: 'Graphic design studio owned by Sejal. Custom logos, posters, wedding invitations and event graphics.', sameAs: [instagram, 'https://desiraft.wixsite.com/desira'] }) }} /></>
 }

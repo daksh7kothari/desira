@@ -10,7 +10,7 @@ const escape = (value) => value.replaceAll('&', '&amp;').replaceAll('"', '&quot;
 try {
   const { default: App, getPage } = await server.ssrLoadModule('/src/App.jsx')
   const template = await readFile('dist/index.html', 'utf8')
-  const paths = ['/', ...projects.map((item) => `/work/${item.slug}/`), ...services.map((item) => `/services/${item.slug}/`)]
+  const paths = ['/', '/experiences/', '/experiences/design-desk/', ...projects.map((item) => `/work/${item.slug}/`), ...services.map((item) => `/services/${item.slug}/`)]
   for (const path of [...paths, '/404/']) {
     const page = getPage(path)
     const markup = renderToString(createElement(App, { pathname: path }))
