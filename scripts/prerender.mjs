@@ -21,7 +21,7 @@ try {
     <meta property="og:description" content="${escape(page.description)}" />
     <meta property="og:url" content="${siteUrl}${path}" />
     <meta property="og:image" content="${siteUrl}${page.image || '/desira-logo.png'}" />
-    <meta property="og:image:alt" content="Original graphic design by Desira" />
+    <meta property="og:image:alt" content="${escape(page.project?.alt || 'Graphic design from the Desira studio')}" />
     <meta name="twitter:card" content="summary_large_image" />${page.notFound || page.project?.sample ? '<meta name="robots" content="noindex" />' : ''}`
     const html = template.replace(/<title>.*?<\/title>/, `<title>${escape(page.title)}</title>`)
       .replace(/<meta name="description"[^>]*>/, `<meta name="description" content="${escape(page.description)}" />`)

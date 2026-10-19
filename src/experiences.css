@@ -11,3 +11,70 @@
 @media(max-width:380px){.desk-plane{--desk-scale:.32}.desk-stage{height:315px}.invitation-scene{min-height:370px;padding:30px 24px 20px}}
 @media(hover:hover) and (pointer:fine){.desk-piece:hover{translate:0 -8px}}
 @media(prefers-reduced-motion:reduce){.tilt-surface{transform:none!important}.story-art-frame img{transform:none!important}.story-visual{position:relative;top:auto}.story-chapter{min-height:0;padding-top:35px;padding-bottom:35px}.invitation-flap{transition:none}.desk-plane{transition:none}}
+
+/* A shared perspective keeps every Explore destination part of the same studio. */
+.depth-scene{perspective:1200px;min-width:0;position:relative}
+.depth-scene-content{min-width:0;transform-style:preserve-3d;transform-origin:center;backface-visibility:hidden}
+.invitation-depth{width:100%;min-width:0}
+.invitation-scene{border:1px solid rgb(255 255 255 / .12);box-shadow:inset 0 1px 0 rgb(255 255 255 / .04)}
+.invitation-object:before{content:'';position:absolute;inset:7px -5px -7px 5px;background:#d8c9aa;transform:translateZ(-8px);border-radius:2px}
+.invitation-copy .experience-caption,.invitation-scene-note{font-size:11px;color:#c5cfdf}
+.story-visual{top:100px}
+.story-depth-stage{perspective:1000px;padding:20px 14px 14px;isolation:isolate}
+.story-paper{position:relative;transform-style:preserve-3d;transform-origin:center}
+.story-paper-layer{position:absolute;inset:0;border-radius:5px;pointer-events:none}
+.story-paper-layer-back{background:#ffbd3d;transform:translate3d(12px,14px,-30px) rotateZ(3deg)}
+.story-paper-layer-middle{background:#d8c9aa;transform:translate3d(-9px,7px,-14px) rotateZ(-2deg)}
+.story-art-frame{position:relative;background:#f8eedc;max-height:65svh;padding:24px;transform:translateZ(1px);box-shadow:0 20px 45px rgb(0 0 0 / .22)}
+.story-art-frame img{will-change:auto}
+.story-visual>.experience-caption{font-size:12px;color:#c5cfdf}
+.story-chapter{border-left-color:rgb(255 255 255 / .18);transition:border-color .18s ease-out}
+.story-chapter.is-active{border-left-color:#ffbd3d}
+.chapter-number{font-variant-numeric:tabular-nums}
+.experience-tile{display:block;border-radius:6px}
+.experience-tile:focus-visible{outline:3px solid #ffbd3d;outline-offset:8px}
+.experience-tile-art{border:1px solid rgb(255 255 255 / .15);box-shadow:0 16px 35px rgb(0 0 0 / .15)}
+.experience-tile:hover .experience-tile-art>img{transform:none}
+.experience-tile-heading>span{color:#ffbd3d;font-size:12px}
+.experience-tile>p{color:#c5cfdf}
+.desk-plane{transform:translate(-50%,-50%) rotateX(calc(var(--desk-tilt,42deg) + var(--desk-scroll-tilt,0deg))) rotateZ(calc(var(--desk-turn,-18deg) + var(--desk-scroll-turn,0deg))) scale(var(--desk-scale))}
+.desk-piece:focus-visible{outline:3px solid #ffbd3d;outline-offset:8px}
+.desk-controls label{font-size:12px;color:#fff}
+.desk-controls input[type=range]{min-height:44px}
+.desk-controls button{border-color:rgb(255 255 255 / .4);font-size:12px}
+.desk-controls button:focus-visible{outline:3px solid #ffbd3d;outline-offset:4px}
+.desk-help{font-size:12px;color:#c5cfdf}
+.desk-project-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:40px}
+.desk-project-links>a{display:flex;align-items:center;gap:14px;padding:22px 0;border-top:1px solid rgb(255 255 255 / .25)}
+.desk-project-links>a>span:nth-child(2){flex:1;min-width:0}
+.desk-project-number{font-size:11px;color:#ffbd3d;font-variant-numeric:tabular-nums}
+.desk-project-links small{display:block;color:#c5cfdf;font-size:11px;line-height:1.5;margin-bottom:6px}
+.desk-project-links strong{display:block;color:#fff;font-weight:550;font-size:17px;line-height:1.3;letter-spacing:-.02em}
+.desk-project-links svg{flex-shrink:0;color:#ffbd3d}
+@media(hover:hover) and (pointer:fine){
+  .experience-tile:hover .experience-tile-art>img{transform:scale(1.035)}
+  .desk-project-links>a:hover strong{color:#ffbd3d}
+}
+@media(max-width:760px){
+  .story-visual{top:auto}
+  .story-art-frame{max-height:none}
+  .story-depth-stage{padding:14px 14px 20px}
+  .desk-project-links{grid-template-columns:1fr;gap:0;margin-top:30px}
+  .desk-project-links>a{padding:20px 0}
+  .desk-project-links strong{font-size:19px}
+}
+@media(max-width:640px){
+  .depth-scene{perspective:900px}
+  .story-art-frame{padding:18px}
+  .desk-controls label,.desk-controls button{font-size:12px}
+  .experience-tile>p{font-size:13px}
+}
+@media(prefers-reduced-motion:reduce){
+  .depth-scene-content,.story-paper{transform:none!important}
+  .story-visual{position:relative;top:auto}
+  .story-chapter{border-left-color:#ffbd3d;transition:none}
+  .chapter-number{color:#ffbd3d}
+  .desk-plane{--desk-scroll-tilt:0deg!important;--desk-scroll-turn:0deg!important}
+  .experience-tile-art>img,.desk-piece{transition:none}
+  .experience-tile:hover .experience-tile-art>img{transform:none}
+}

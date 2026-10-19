@@ -1,0 +1,60 @@
+.navigation { position: relative; gap: 24px; }
+.navigation .nav-links { gap: 24px; margin-left: auto; }
+.navigation .experiences-nav { position: static; width: auto; flex-shrink: 0; }
+.navigation .experiences-toggle { width: auto; gap: 8px; padding: 10px 12px; border: 0; border-radius: 4px; color: #061c49; }
+.experiences-toggle svg { transition: transform 180ms ease-out; }
+.experiences-toggle[aria-expanded=true] { background: #ffbd3d; }
+.experiences-toggle[aria-expanded=true] svg { transform: rotate(180deg); }
+.navigation .experiences-dropdown {
+  --focus: #ffbd3d;
+  position: absolute; top: calc(100% + 12px); right: 0;
+  width: min(690px, calc(100vw - 84px)); max-height: calc(100dvh - 140px);
+  overflow-y: auto; overscroll-behavior: contain;
+  padding: 18px; color: #fff; background: #0c2553;
+  border: 1px solid #4b6083; border-radius: 8px;
+  box-shadow: 0 24px 55px rgb(0 9 28 / .35);
+  transform-origin: top right; animation: explore-open 180ms ease-out;
+}
+.navigation .experiences-dropdown[hidden] { display: none; }
+.navigation .experiences-all {
+  display: flex; justify-content: space-between; gap: 25px; align-items: center;
+  padding: 12px 12px 20px; margin-bottom: 12px; border-bottom: 1px solid #4b6083;
+  color: #fff; font-size: 20px; font-weight: 600;
+}
+.navigation .experiences-all > span { font-size: inherit; }
+.experiences-all > span > span { display: block; font-size: 12px; font-weight: 400; margin-top: 7px; color: #c9d4e5; }
+.navigation .experiences-all svg { color: #ffbd3d; }
+.experience-nav-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.experience-nav-grid > a { display: flex; gap: 13px; align-items: center; padding: 12px; border-radius: 5px; position: relative; }
+.experience-nav-grid img { width: 53px; height: 68px; flex-shrink: 0; object-fit: contain; background: #fff3d8; padding: 5px; border-radius: 3px; }
+.experience-nav-grid strong { display: block; font-size: 14px; font-weight: 550; line-height: 1.4; }
+.experience-nav-grid small { display: block; font-size: 11px; color: #c9d4e5; line-height: 1.65; margin-top: 5px; }
+.experience-nav-number { display: none; }
+.navigation .experiences-dropdown a:focus-visible { outline-offset: -2px; }
+.navigation .experiences-all:hover, .navigation .experiences-all:focus-visible,
+.experience-nav-grid > a:hover, .experience-nav-grid > a:focus-visible { color: #061c49; background: #ffbd3d; }
+.navigation .experiences-all:hover svg, .navigation .experiences-all:focus-visible svg { color: inherit; }
+.experiences-all:is(:hover,:focus-visible) > span > span, .experience-nav-grid > a:is(:hover,:focus-visible) small { color: #243a60; }
+.navigation > .menu-toggle { order: initial; margin-left: 0; flex-shrink: 0; }
+.navigation > .nav-cta { white-space: nowrap; }
+@keyframes explore-open { from { opacity: 0; transform: translateY(-6px) scale(.99); } to { opacity: 1; transform: none; } }
+@media(max-width:1180px) { .navigation { gap: 12px; } .navigation .nav-links { gap: 16px; } .nav-descriptor { display: none; } }
+@media(max-width:960px) {
+  .navigation > #nav-links, .navigation > .nav-cta { display: none !important; }
+  .navigation > .experiences-nav { margin-left: auto; }
+  .navigation > .menu-toggle { margin-left: 0; }
+}
+@media(max-width:640px) {
+  .navigation { gap: 8px; padding-right: 12px; }
+  .navigation .experiences-toggle { font-size: 12px; padding-inline: 8px; }
+  .navigation .experiences-dropdown { width: 100%; right: 0; padding: 10px; margin: 0; max-height: calc(100dvh - 118px); }
+  .navigation .experiences-all { font-size: 17px; padding: 12px 10px 17px; }
+  .experience-nav-grid { grid-template-columns: 1fr; gap: 3px; }
+  .experience-nav-grid > a { padding: 10px; gap: 14px; }
+  .experience-nav-grid img { width: 48px; height: 58px; }
+  .experience-nav-grid small { font-size: 11px; max-width: 250px; }
+  .navigation > .menu-toggle { font-size: 11px; gap: 8px; padding: 8px 0 8px 5px; }
+  .navigation .brand { width: 78px; }
+  .navigation .brand img { width: 76px; }
+}
+@media(prefers-reduced-motion:reduce) { .navigation .experiences-dropdown { animation: none; } }
