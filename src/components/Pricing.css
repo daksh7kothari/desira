@@ -1,0 +1,6 @@
+.pricing { padding: 3rem 0; background: #fff }
+.pricing-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 1rem }
+.plan { background: #f7f7fb; padding: 1rem; border-radius: 8px; text-align: center }
+.price { font-size: 1.5rem; margin: .5rem 0 }
+.btn { margin-top: .75rem; padding: .5rem 1rem; background: #0b6; border: none; color: white; border-radius: 4px; cursor: pointer }
+.btn:hover { opacity: .95 }

@@ -1,0 +1,23 @@
+.about {
+  padding: 3rem 0;
+  background: #fbfbfe;
+  color: #222;
+}
+.about-grid {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 1rem;
+  align-items: center;
+}
+.section-title {
+  text-align: center;
+  margin-bottom: 1.25rem;
+  font-size: 1.6rem;
+}
+@media (max-width: 700px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
