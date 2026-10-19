@@ -10,8 +10,8 @@ const escape = (value) => value.replaceAll('&', '&amp;').replaceAll('"', '&quot;
 try {
   const { default: App, getPage } = await server.ssrLoadModule('/src/App.jsx')
   const template = await readFile('dist/index.html', 'utf8')
-  const paths = ['/', '/experiences/', '/experiences/design-desk/', ...projects.map((item) => `/work/${item.slug}/`), ...services.map((item) => `/services/${item.slug}/`)]
-  for (const path of [...paths, '/404/']) {
+  const paths = ['/', '/studio/', '/contact/', '/experiences/', '/experiences/design-desk/', ...projects.filter((item) => !item.sample).map((item) => `/work/${item.slug}/`), ...services.map((item) => `/services/${item.slug}/`)]
+  for (const path of [...paths, ...projects.filter((item) => item.sample).map((item) => `/work/${item.slug}/`), '/404/']) {
     const page = getPage(path)
     const markup = renderToString(createElement(App, { pathname: path }))
     const metadata = `<link rel="canonical" href="${siteUrl}${path}" />
@@ -22,7 +22,7 @@ try {
     <meta property="og:url" content="${siteUrl}${path}" />
     <meta property="og:image" content="${siteUrl}${page.image || '/desira-logo.png'}" />
     <meta property="og:image:alt" content="Original graphic design by Desira" />
-    <meta name="twitter:card" content="summary_large_image" />${page.notFound ? '<meta name="robots" content="noindex" />' : ''}`
+    <meta name="twitter:card" content="summary_large_image" />${page.notFound || page.project?.sample ? '<meta name="robots" content="noindex" />' : ''}`
     const html = template.replace(/<title>.*?<\/title>/, `<title>${escape(page.title)}</title>`)
       .replace(/<meta name="description"[^>]*>/, `<meta name="description" content="${escape(page.description)}" />`)
       .replace('</head>', `    ${metadata}\n  </head>`)
