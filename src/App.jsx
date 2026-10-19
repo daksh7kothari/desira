@@ -18,7 +18,7 @@ function Header({ onEnquire, isHome }) {
   const home = isHome ? '' : '/'
   return <header className="header-wrap"><nav className="navigation" aria-label="Main navigation">
     <a href="/" className="brand" aria-label="Desira home"><img src="/desira-nav.avif" alt="Desira" width="173" height="124" /></a>
-    <div className="nav-descriptor">Independent minds.<br />Thoughtful design.</div>
+    <div className="nav-descriptor">Graphic design.<br />With a little personality.</div>
     <button type="button" className="menu-toggle" aria-expanded={open} aria-controls="nav-links" onClick={() => setOpen(!open)}>{open ? 'Close' : 'Menu'} <span aria-hidden="true">{open ? '−' : '+'}</span></button>
     <div id="nav-links" className={`nav-links ${open ? 'is-open' : ''}`}>
       {[['Work', 'work'], ['What we do', 'services'], ['The studio', 'studio']].map(([label, id]) => <a key={id} href={`${home}#${id}`} onClick={() => setOpen(false)}>{label}</a>)}
@@ -28,20 +28,23 @@ function Header({ onEnquire, isHome }) {
 }
 
 function Hero() {
+  const [active, setActive] = useState(0)
+  const project = projects[active]
   return <section className="hero" aria-labelledby="hero-title">
-    <div className="hero-intro"><span className="small-star" aria-hidden="true">✳</span> A destination for your desired designs.</div>
-    <h1 id="hero-title">A little different.<br />By design.</h1>
-    <p className="hero-description">For brands with a story.<br className="mobile-break" /> And moments worth making yours.</p>
-    <a className="button button-navy" href="#work">Explore our work <Arrow diagonal /></a>
-    <div className="artwork-shelf" aria-label="A selection of Desira’s original designs">
-      <a className="artwork artwork-one" href="/work/celebration-invitations/" aria-label="Explore custom wedding invitations"><img src="/work/wedding-invitation.webp" alt="Desira’s floral wedding invitation with traditional motifs" width="1200" height="1600" fetchPriority="high" /></a>
-      <a className="artwork artwork-two" href="/work/print-stories/" aria-label="Explore print design"><img src="/work/print-design.webp" alt="An editorial brochure designed by Desira" width="1440" height="1080" /></a>
-      <a className="artwork artwork-three" href="/work/coastal-celebration/" aria-label="Explore Ananya and Chirag’s coastal wedding stationery"><img src="/work/coastal-wedding.webp" alt="Ananya and Chirag’s beach wedding identity with a custom monogram" width="1281" height="1600" fetchPriority="high" /></a>
-      <a className="artwork artwork-four" href="/work/a-story-in-illustration/" aria-label="Explore illustrated save-the-dates"><img src="/work/illustrated-save-the-date.webp" alt="Yash and Sakshi’s illustrated save-the-date" width="1280" height="1600" /></a>
-      <a className="artwork artwork-five" href="/work/toca-boca-carnival/" aria-label="Explore Toca Boca carnival event design"><img src="/work/carnival.webp" alt="Desira’s event graphics at Toca Boca carnival" width="540" height="960" /></a>
-      <span className="shelf-note">A few things<br />we’ve made with love.</span>
+    <div className="hero-layout">
+      <div className="hero-copy">
+        <p className="hero-intro">Independent graphic design studio</p>
+        <h1 id="hero-title"><span className="hero-line"><span>Good ideas.</span></span><span className="hero-line"><span>Bold design.</span></span></h1>
+        <div className="hero-copy-bottom"><p className="hero-description">Brand identities, posters, and invitations.<br />Designed with purpose. Made to stand out.</p><a className="button button-navy" href="#work">Explore our work <Arrow diagonal /></a></div>
+      </div>
+      <div className="showcase">
+        <div className="showcase-canvas">
+          <a key={project.slug} href={`/work/${project.slug}/`} className="showcase-main" aria-label={`Explore ${project.title}`}><img src={project.image} alt={project.alt} width={project.width} height={project.height} fetchPriority="high" /><span className="showcase-view">Take a closer look <Arrow diagonal /></span></a>
+        </div>
+        <div className="showcase-bottom"><div className="showcase-caption" aria-live="polite" aria-atomic="true"><span>{String(active + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}</span><p>{project.discipline}</p></div><div className="showcase-controls"><button type="button" aria-label="Previous project" onClick={() => setActive((active + projects.length - 1) % projects.length)}><Arrow /></button><button type="button" aria-label="Next project" onClick={() => setActive((active + 1) % projects.length)}><Arrow /></button></div></div>
+      </div>
     </div>
-    <div className="hero-bottom"><span>Good ideas deserve good design.</span><a href="#work">Scroll to discover <span aria-hidden="true">↓</span></a></div>
+    <div className="hero-bottom"><span>Independent graphic design by Sejal.</span><a href="#work">Keep it scrolling <span aria-hidden="true">↓</span></a></div>
   </section>
 }
 
@@ -50,7 +53,7 @@ function Portfolio() {
   const filters = ['All work', 'Brand & print', 'Invitations', 'Events']
   const visible = filter === 'All work' ? projects : projects.filter((project) => project.category === filter)
   return <section id="work" className="work-section section-pad" aria-labelledby="work-title">
-    <div className="section-heading"><div><p className="eyebrow">Selected work</p><h2 id="work-title">Small details.<br />Big personalities.</h2></div><p>Every brief is a new beginning.<br />Here’s where a few of them led.</p></div>
+    <div className="section-heading"><div><p className="eyebrow">Selected work</p><h2 id="work-title">Less ordinary.<br />More you.</h2></div><p>A few ideas that made it<br />out of the sketchbook.</p></div>
     <div className="work-filters" role="group" aria-label="Filter portfolio">{filters.map((item) => <button type="button" key={item} aria-pressed={filter === item} onClick={() => setFilter(item)}>{item}{filter === item && <span aria-hidden="true">↗</span>}</button>)}</div>
     <div className="project-grid" aria-live="polite" aria-atomic="false">
       {visible.map((project) => <a href={`/work/${project.slug}/`} className={`project project-${project.slug}`} key={project.slug}>
@@ -64,7 +67,7 @@ function Portfolio() {
 
 function Services() {
   return <section id="services" className="services-section section-pad" aria-labelledby="services-title">
-    <div className="section-heading"><div><p className="eyebrow">What we do</p><h2 id="services-title">You imagine it.<br />We give it form.</h2></div><p>A new brand, a big celebration, or an idea<br className="desktop-break" /> that needs a little creative company.</p></div>
+    <div className="section-heading"><div><p className="eyebrow">What we do</p><h2 id="services-title">Got a thing?<br />Let’s design it.</h2></div><p>A new brand, a big celebration, or an idea<br className="desktop-break" /> that needs a little creative company.</p></div>
     <div className="service-list">{services.map((service) => <a className="service-row" href={`/services/${service.slug}/`} key={service.slug}><span className="service-symbol" aria-hidden="true">{service.symbol}</span><h3>{service.title}</h3><p>{service.short}</p><span className="service-arrow"><Arrow diagonal /></span></a>)}</div>
   </section>
 }

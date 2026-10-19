@@ -41,3 +41,7 @@ The brand should feel artistic, confident, expressive, and purposeful. Typograph
 Rainesta is the primary brand typeface. Use its Regular, Medium, SemiBold, and Bold weights to create an expressive editorial hierarchy. Keep supporting copy concise and use generous spacing around display typography.
 
 Font source: [Rainesta font archive](./public/font/rainesta.zip)
+
+## Website direction approved in this conversation
+
+The user requested bold monochrome for the website, superseding the earlier navy/gold page palette and Rainesta website typography. The current site uses DM Sans, a near-black canvas and off-white typography. Original logos remain unmodified in their supplied colours. The original brand palette and Rainesta assets above are retained as brand references.
