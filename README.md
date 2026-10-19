@@ -1,6 +1,6 @@
 # Desira
 
-A portfolio for Sejal’s graphic design studio, built with React 19 and Vite. Uses the user-selected bold monochrome website direction, locally hosted DM Sans, original Desira logos, and real portfolio artwork sourced from the supplied Instagram/Wix pages.
+A portfolio for Sejal’s graphic design studio, built with React 19 and Vite. Uses the Desira navy, gold and white brand palette, locally hosted DM Sans, original Desira logos, and real portfolio artwork sourced from the supplied Instagram/Wix pages.
 
 ## Development
 

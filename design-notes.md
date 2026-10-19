@@ -1,10 +1,10 @@
 # Desira website direction
 
-The user selected bold monochrome after reviewing the first navy/gold serif version and a playful editorial exploration.
+The latest user direction restores the official Desira navy/gold/white palette while retaining the bold sans-serif layout.
 
 ## Current system
 
-- Near-black canvas #101010, off-white type #F2F2EF, neutral image surfaces, and a light navigation bar and footer.
+- Navy #061C49 hero and studio sections, white portfolio and service sections, and gold #FFBD3D actions and footer. Original mark used for the favicon.
 - Locally hosted DM Sans in regular through bold weights for headings and body text. Original Rainesta files remain available as brand assets.
 - Large, tightly set headings and an asymmetric portfolio grid; original artwork supplies the colour.
 - One restrained headline entrance and a brief project-image transition. The hero showcase uses named previous/next buttons; it does not autoplay. Reduced motion is respected.

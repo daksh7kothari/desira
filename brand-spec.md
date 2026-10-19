@@ -42,6 +42,6 @@ Rainesta is the primary brand typeface. Use its Regular, Medium, SemiBold, and B
 
 Font source: [Rainesta font archive](./public/font/rainesta.zip)
 
-## Website direction approved in this conversation
+## Current website direction
 
-The user requested bold monochrome for the website, superseding the earlier navy/gold page palette and Rainesta website typography. The current site uses DM Sans, a near-black canvas and off-white typography. Original logos remain unmodified in their supplied colours. The original brand palette and Rainesta assets above are retained as brand references.
+The user requested the brand palette for the website: navy #061C49, gold #FFBD3D and white. Navy leads the hero and studio sections, white supports the portfolio and services, and gold is used for actions and the footer. Bold DM Sans typography is retained from the approved layout. The favicon uses the original standalone Desira mark sourced from its supplied Instagram page; the mark is preserved without redrawing.
