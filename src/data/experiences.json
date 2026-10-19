@@ -1,0 +1,30 @@
+[
+  {
+    "title": "The home showcase",
+    "href": "/#interactive-showcase",
+    "image": "/work/coastal-wedding.webp",
+    "alt": "Coastal wedding identity by Desira",
+    "description": "A little depth. A new piece with every click."
+  },
+  {
+    "title": "Open an invitation",
+    "href": "/services/wedding-invitations/#invitation-experience",
+    "image": "/work/wedding-invitation.webp",
+    "alt": "Personalised invitation artwork by Desira",
+    "description": "See how an invitation can make its first impression."
+  },
+  {
+    "title": "Inside a project",
+    "href": "/work/coastal-celebration/#design-story",
+    "image": "/work/coastal-wedding.webp",
+    "alt": "Ananya and Chirag’s custom wedding monogram and stationery",
+    "description": "Follow the details that bring a personal identity together."
+  },
+  {
+    "title": "The design desk",
+    "href": "/experiences/design-desk/",
+    "image": "/work/print-design.webp",
+    "alt": "Original print work from the Desira studio",
+    "description": "Explore original artwork from a different perspective."
+  }
+]

@@ -1,0 +1,103 @@
+{
+  "featuredStory": {
+    "eyebrow": "A story from the studio",
+    "title": "A little coastal.\nA lot personal.",
+    "description": "A monogram, a few seashells, and a feeling of the shore. Ananya and Chirag's celebration becomes a world of its own, one detail at a time.",
+    "image": "/work/coastal-wedding.webp",
+    "imageAlt": "Ananya and Chirag's original coastal wedding identity by Desira",
+    "imageWidth": 1281,
+    "imageHeight": 1600,
+    "initials": "A&C",
+    "paperNote": "A celebration, by the sea.",
+    "projectLabel": "Ananya & Chirag",
+    "discipline": "Wedding identity & stationery",
+    "details": ["A personal monogram", "A coastal colour story", "Details that belong together"],
+    "linkLabel": "Step inside the story",
+    "href": "/work/coastal-celebration/#design-story",
+    "sample": true,
+    "sampleLabel": "Original artwork · sample presentation"
+  },
+  "sketchbook": {
+    "eyebrow": "From Sejal's sketchbook",
+    "title": "Before the final,\na little play.",
+    "description": "Letterforms, colour pairings, and the ideas in between. A small window into the possibilities before a direction comes together.",
+    "sample": true,
+    "sampleLabel": "Sample studio studies",
+    "poster": {
+      "image": "/work/mock-sketch-poster.svg",
+      "alt": "Sample poster study with oversized navy lettering on a warm gold background",
+      "label": "01 / Type with a little attitude"
+    },
+    "letterform": {
+      "image": "/work/mock-sketch-monogram.svg",
+      "alt": "Sample lowercase d letterform study with pencil-like construction lines",
+      "label": "02 / Finding the shape"
+    },
+    "note": {
+      "eyebrow": "A note to start with",
+      "text": "What if it feels\nmore like you?",
+      "signature": "Ideas before answers."
+    },
+    "palette": {
+      "label": "03 / A colour conversation",
+      "colours": [
+        { "name": "Midnight", "value": "#061c49", "text": "#ffffff" },
+        { "name": "Sunshine", "value": "#ffbd3d", "text": "#061c49" },
+        { "name": "Paper", "value": "#f8eedc", "text": "#061c49" }
+      ]
+    },
+    "illustration": {
+      "image": "/work/illustrated-save-the-date.webp",
+      "alt": "A close look at Desira's playful illustrated save-the-date artwork",
+      "label": "04 / A little character",
+      "credit": "Original Desira artwork"
+    }
+  },
+  "experiencePreview": {
+    "eyebrow": "A little more hands-on",
+    "title": "Don't just look.\nGet into it.",
+    "description": "Open a cover, follow a detail, or look around the desk. Three ways to spend a little more time with the work.",
+    "linkLabel": "Explore everything",
+    "href": "/experiences/",
+    "items": [
+      {
+        "id": "invitation",
+        "title": "The first impression",
+        "description": "Open an invitation and meet the story inside.",
+        "href": "/services/wedding-invitations/#invitation-experience",
+        "image": "/work/coastal-wedding.webp",
+        "alt": "A coastal wedding invitation presented inside a navy cover",
+        "visualLabel": "For a story like yours",
+        "number": "01"
+      },
+      {
+        "id": "story",
+        "title": "A closer look",
+        "description": "Follow a wedding identity through three thoughtful details.",
+        "href": "/work/coastal-celebration/#design-story",
+        "image": "/work/coastal-wedding.webp",
+        "alt": "The layers of Ananya and Chirag's wedding stationery",
+        "visualLabel": "In the details",
+        "number": "02"
+      },
+      {
+        "id": "desk",
+        "title": "A different perspective",
+        "description": "Turn the design desk and pick up a project.",
+        "href": "/experiences/design-desk/",
+        "image": "/work/print-design.webp",
+        "alt": "A collection of invitation, print, and illustration work on the design desk",
+        "secondaryImages": ["/work/coastal-wedding.webp", "/work/illustrated-save-the-date.webp"],
+        "visualLabel": "Ideas, taking shape",
+        "number": "03"
+      }
+    ]
+  },
+  "designNotes": {
+    "eyebrow": "A few design notes",
+    "title": "Good design starts\nwith a good thought.",
+    "description": "Small reads on identity, invitations, and making room for a better brief.",
+    "sampleLabel": "Sample journal · draft articles",
+    "readLabel": "Read the note"
+  }
+}

@@ -1,0 +1,113 @@
+[
+  {
+    "slug": "a-logo-is-the-start",
+    "title": "A logo is the start. The rest makes it a brand.",
+    "category": "Brand identity",
+    "readingTime": "3 minute read",
+    "excerpt": "Why the colours, type, and small everyday details deserve as much thought as the mark.",
+    "image": "/work/mock-note-identity.svg",
+    "imageAlt": "A sample identity study showing one monogram across a navy card, cream label, and gold print piece",
+    "sample": true,
+    "sampleLabel": "Sample article · editorial draft",
+    "intro": "A logo is often the first thing a new business asks for. That makes sense: it gives the name a shape and makes the idea feel real. But most people meet a brand through a collection of small moments, not through a logo on an empty page.",
+    "sections": [
+      {
+        "heading": "Begin with the feeling",
+        "paragraphs": [
+          "Before choosing a typeface or drawing a symbol, describe how the business should feel. Quiet and considered? Warm and familiar? Confident and expressive? A few specific words make a more useful starting point than a folder of unrelated references.",
+          "The aim is not to fit every good quality into one mark. It is to choose a direction that suits the business, its audience, and the places where the identity will live."
+        ]
+      },
+      {
+        "heading": "Give the idea a supporting cast",
+        "paragraphs": [
+          "Colour, typography, spacing, and image style help the logo feel at home. A restrained wordmark can become much more distinctive when its supporting pieces are thoughtfully chosen. A playful symbol can still feel organised when the surrounding layouts are clear.",
+          "Think of these choices as a small set of useful rules. They should help someone make the next menu, card, post, or package without starting the visual conversation again."
+        ]
+      },
+      {
+        "heading": "Try it where it will actually appear",
+        "paragraphs": [
+          "An identity deserves a test beyond the presentation board. Look at it on a small phone screen, a printed label, or the particular format the business uses most. Is the name readable? Does the colour still feel right? Does the design leave room for practical information?",
+          "The strongest direction is the one that continues to make sense in those everyday situations. The logo opens the conversation. The rest of the identity helps it keep going."
+        ]
+      }
+    ],
+    "takeaway": "A useful identity makes the next design decision easier.",
+    "relatedService": { "label": "Explore brand identity", "href": "/services/logo-brand-identity/" }
+  },
+  {
+    "slug": "an-invitation-that-feels-like-you",
+    "title": "An invitation should feel like the people getting married.",
+    "category": "Wedding stationery",
+    "readingTime": "3 minute read",
+    "excerpt": "A personal story can begin with a place, a little illustration, or one detail only you would choose.",
+    "image": "/work/mock-note-invitation.svg",
+    "imageAlt": "A sample cream invitation and navy envelope with a simple gold botanical illustration",
+    "sample": true,
+    "sampleLabel": "Sample article · editorial draft",
+    "intro": "An invitation carries dates, names, and a place. It can also carry something harder to put into words: the feeling of the celebration and a glimpse of the people at its centre. The most personal starting points are often the small ones.",
+    "sections": [
+      {
+        "heading": "Start with a detail that belongs to you",
+        "paragraphs": [
+          "It might be a place that matters, a flower that keeps appearing in your plans, a shared memory, or a favourite colour combination. These details can give a designer a clearer direction than a request for something simply elegant or modern.",
+          "Not every memory needs to appear in the final artwork. One well-chosen idea can give the invitation enough personality without making the composition feel crowded."
+        ]
+      },
+      {
+        "heading": "Let the celebration set the tone",
+        "paragraphs": [
+          "A seaside gathering, a colourful family celebration, and an intimate evening naturally suggest different visual approaches. Illustration, lettering, and paper colour can hint at that atmosphere before a guest arrives.",
+          "Tradition and personal expression can sit comfortably together. The question is which details need to be honoured and where there is room to introduce a new interpretation. Those decisions are best discussed early."
+        ]
+      },
+      {
+        "heading": "Keep the practical part thoughtful too",
+        "paragraphs": [
+          "Beautiful artwork should help the invitation do its job. Give names, dates, locations, and any essential instructions enough space. Review the wording carefully and check the design in the format guests will receive, whether that is a printed card or a message on a phone.",
+          "A matching monogram or small motif can then connect the other pieces of the celebration. It does not need to appear everywhere. A few considered repetitions are often enough to make the whole story feel related."
+        ]
+      }
+    ],
+    "takeaway": "Personal does not have to mean elaborate. It has to mean something to you.",
+    "relatedService": { "label": "Explore wedding invitations", "href": "/services/wedding-invitations/" }
+  },
+  {
+    "slug": "a-better-design-brief",
+    "title": "A useful design brief can fit on one page.",
+    "category": "Working together",
+    "readingTime": "3 minute read",
+    "excerpt": "You do not need all the answers. A clear purpose and a few honest details are a useful beginning.",
+    "image": "/work/mock-note-brief.svg",
+    "imageAlt": "A sample design brief with a short checklist, handwritten-style annotations, and a gold pencil",
+    "sample": true,
+    "sampleLabel": "Sample article · editorial draft",
+    "intro": "Starting a design project can feel awkward when you know something needs to change but do not know what the finished work should look like. A brief does not need to solve the design. It needs to give the conversation a clear place to begin.",
+    "sections": [
+      {
+        "heading": "Explain what the work needs to do",
+        "paragraphs": [
+          "Begin with the purpose. Are you introducing a new business, helping people find an event, explaining a service, or inviting guests to a celebration? Describe the person who will see the design and the most important thing they should understand.",
+          "A sentence about the purpose often reveals more than a long list of visual preferences. It also gives everyone something useful to return to when comparing ideas later."
+        ]
+      },
+      {
+        "heading": "Share the practical boundaries",
+        "paragraphs": [
+          "List the formats you need, where the design will appear, and any fixed content. Include the timing you are working towards and mention any production requirements you already know. It is fine to leave an answer open when it still needs discussion.",
+          "For references, add a short explanation of what you like. The lettering, the mood, the amount of space, and the colour are very different kinds of direction. Naming the detail helps a designer understand the intention."
+        ]
+      },
+      {
+        "heading": "Leave room for the conversation",
+        "paragraphs": [
+          "A good brief is a starting document, not a test you have to pass. A designer may ask questions, suggest a different format, or help narrow a broad idea into a more useful direction.",
+          "Before the work begins, agree on the scope, the review process, and the final files needed. That shared understanding makes room for the interesting part: exploring a design that answers the brief in a way you may not have expected."
+        ]
+      }
+    ],
+    "takeaway": "Bring the purpose. We can work through the visual possibilities together.",
+    "relatedService": { "label": "Start a project conversation", "href": "/contact/" }
+  }
+]

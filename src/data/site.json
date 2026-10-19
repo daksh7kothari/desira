@@ -1,0 +1,50 @@
+{
+  "name": "Desira",
+  "owner": "Sejal",
+  "tagline": "Destination for your Desired Designs",
+  "description": "Graphic design studio owned by Sejal. Custom logos, posters, wedding invitations and event graphics.",
+  "siteUrl": "http://localhost:5173",
+  "contact": {
+    "instagram": {
+      "url": "https://www.instagram.com/desira.ft/",
+      "handle": "@desira.ft"
+    },
+    "email": null,
+    "whatsapp": null
+  },
+  "brand": {
+    "colors": {
+      "navy": "#061C49",
+      "gold": "#FFBD3D",
+      "white": "#FFFFFF"
+    },
+    "fontFamily": "DM Sans"
+  },
+  "assets": {
+    "navigationLogo": {
+      "src": "/desira-nav.avif",
+      "alt": "Desira",
+      "width": 173,
+      "height": 124
+    },
+    "studioLogo": {
+      "src": "/desira-studio-logo.png",
+      "alt": "Desira — Destination for your Desired Designs",
+      "width": 500,
+      "height": 500
+    },
+    "logo": {
+      "src": "/desira-logo.png",
+      "alt": "Desira",
+      "width": 500,
+      "height": 500
+    },
+    "favicon": {
+      "src": "/favicon.svg",
+      "alt": "Desira mark"
+    }
+  },
+  "links": {
+    "legacyPortfolio": "https://desiraft.wixsite.com/desira"
+  }
+}

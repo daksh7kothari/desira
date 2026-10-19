@@ -1,0 +1,74 @@
+[
+  {
+    "slug": "logo-brand-identity",
+    "title": "Logo & brand identity",
+    "symbol": "✳",
+    "short": "A first impression that feels like you.",
+    "category": "Brand & print",
+    "description": "Custom logo and brand identity design by Desira. A thoughtful visual language built around your business, your audience, and the story you want to tell.",
+    "heading": "Give your brand its own kind of presence.",
+    "body": "Your identity is the way your business introduces itself. We explore your story and turn it into a visual direction that feels distinctive and works across your chosen touchpoints. The exact deliverables are agreed around your brief.",
+    "deliverables": [
+      "Custom logo design",
+      "Colour and typography direction",
+      "Brand identity applications",
+      "Agreed final logo files"
+    ],
+    "image": "/work/mora-coffee.svg",
+    "alt": "Sample Mora Coffee identity board with a green wordmark, monogram and takeaway cup"
+  },
+  {
+    "slug": "posters-print-design",
+    "title": "Posters & print design",
+    "symbol": "↗",
+    "short": "Good ideas, beautifully put on paper.",
+    "category": "Brand & print",
+    "description": "Custom posters, brochures and print design by Desira. Clear messages and expressive visuals for your brand, campaign, or occasion.",
+    "heading": "Make your message worth a closer look.",
+    "body": "From a single poster to a multi-page brochure, we balance visual impact with a clear message. We discuss where the design will be seen, what it needs to say, and the format it needs to work in before bringing the idea to life.",
+    "deliverables": [
+      "Custom posters and campaign graphics",
+      "Brochures and editorial layouts",
+      "Print format and layout design",
+      "Final artwork prepared to the agreed specifications"
+    ],
+    "image": "/work/print-design.webp",
+    "alt": "Desira’s brochure design combining editorial typography, photography and structured page layouts"
+  },
+  {
+    "slug": "wedding-invitations",
+    "title": "Wedding invitations",
+    "symbol": "❋",
+    "short": "For a day, and a story, unlike any other.",
+    "category": "Invitations",
+    "description": "Personalised wedding invitations, illustrated save-the-dates and wedding stationery by Desira. Custom designs that bring your story into every detail.",
+    "heading": "Your forever starts with a very personal hello.",
+    "body": "Your invitation sets the feeling for everything to come. We take cues from your story, your traditions, and your celebration to create a design that feels like yours. From a coastal monogram to a custom couple illustration, the details carry the personality.",
+    "deliverables": [
+      "Custom wedding invitations",
+      "Illustrated save-the-dates",
+      "Wedding monograms and visual themes",
+      "Coordinated stationery and event details"
+    ],
+    "image": "/work/wedding-invitation.webp",
+    "alt": "A custom invitation by Desira combining floral illustration, traditional motifs and a soft pink palette"
+  },
+  {
+    "slug": "event-graphics",
+    "title": "Event graphics",
+    "symbol": "✺",
+    "short": "Turn a space into an experience.",
+    "category": "Events",
+    "description": "Custom event graphics and visual design by Desira. Cohesive graphics for signage, entrances, and the details that bring a celebration to life.",
+    "heading": "Take your idea beyond the screen.",
+    "body": "An event is a collection of moments, spaces, and details. We create graphics that connect those pieces through a shared visual theme. Working from the brief and production requirements, we help translate your idea into the real world.",
+    "deliverables": [
+      "Event visual themes",
+      "Entrance and welcome graphics",
+      "Signage and supporting designs",
+      "Artwork coordinated with agreed production requirements"
+    ],
+    "image": "/work/carnival.webp",
+    "alt": "The entrance to Toca Boca kids carnival with colourful event signage and graphics by Desira"
+  }
+]
