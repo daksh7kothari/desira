@@ -514,10 +514,6 @@
   }
 }
 @media (hover: none), (pointer: coarse) {
-  .service-flowing-menu .flowing-menu__band,
-  .service-flowing-menu .flowing-menu__float {
-    display: none;
-  }
   .service-flowing-menu .flowing-menu__link:active {
     background: #ffbd3d;
   }

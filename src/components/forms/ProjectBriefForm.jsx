@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { site, services, instagram } from "../../data/index.js";
 import copy from "../../data/contact.json";
 import Arrow from "../ui/Arrow.jsx";
@@ -7,28 +7,62 @@ export default function ProjectBriefForm({ initialService = "" }) {
   const [prepared, setPrepared] = useState("");
   const [status, setStatus] = useState("");
   const [copied, setCopied] = useState(false);
+  const [copying, setCopying] = useState(false);
+  const revision = useRef(0);
+
+  useEffect(
+    () => () => {
+      revision.current += 1;
+    },
+    [],
+  );
+
   async function prepare(event) {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    for (const name of ["name", "message"]) {
+      const field = form.elements.namedItem(name);
+      if (!field.value.trim()) {
+        field.setCustomValidity(
+          name === "name"
+            ? "Please enter your name."
+            : "Please tell us a little about your project.",
+        );
+        field.reportValidity();
+        return;
+      }
+    }
+    const data = new FormData(form);
     const brief = `Hello ${site.name}! I’m ${String(data.get("name")).trim()}.\nProject: ${data.get("service")}\nIdeal timeline: ${data.get("timeline")}\n\n${String(data.get("message")).trim()}`;
+    const currentRevision = ++revision.current;
     setPrepared(brief);
+    setCopied(false);
+    setCopying(true);
+    setStatus("");
     try {
       await navigator.clipboard.writeText(brief);
+      if (currentRevision !== revision.current) return;
       setCopied(true);
       setStatus(copy.copiedStatus);
     } catch {
+      if (currentRevision !== revision.current) return;
       setCopied(false);
       setStatus(copy.copyError);
+    } finally {
+      if (currentRevision === revision.current) setCopying(false);
     }
   }
   return (
     <form
       className="contact-form"
       onSubmit={prepare}
-      onChange={() => {
+      onChange={(event) => {
+        event.target.setCustomValidity?.("");
+        revision.current += 1;
         setPrepared("");
         setStatus("");
         setCopied(false);
+        setCopying(false);
       }}
     >
       <label>
@@ -71,8 +105,13 @@ export default function ProjectBriefForm({ initialService = "" }) {
           placeholder={copy.placeholders.message}
         />
       </label>
-      <button className="button button-navy" type="submit">
-        {copied ? copy.copiedLabel : copy.submitLabel}
+      <button
+        className="button button-navy"
+        type="submit"
+        disabled={copying}
+        aria-busy={copying}
+      >
+        {copying ? "Copying brief…" : copied ? copy.copiedLabel : copy.submitLabel}
         <Arrow />
       </button>
       <p className="contact-status" role="status">

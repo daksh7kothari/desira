@@ -300,6 +300,7 @@ export default function Carousel({
       drag: null,
       wheeling: false,
       wheelTimer: 0,
+      suppressTimer: 0,
       suppress: false,
       last: 0,
     };
@@ -442,7 +443,11 @@ export default function Carousel({
 
     const onPointerDown = (event) => {
       const s = settingsRef.current;
-      if (!s.draggable || (event.pointerType === "mouse" && event.button !== 0))
+      if (
+        !s.draggable ||
+        !event.isPrimary ||
+        (event.pointerType === "mouse" && event.button !== 0)
+      )
         return;
       state.drag = {
         id: event.pointerId,
@@ -465,6 +470,7 @@ export default function Carousel({
         if (Math.abs(dx) < 6 && Math.abs(dy) < 6) return;
         if (Math.abs(dy) > Math.abs(dx)) {
           state.drag = null;
+          wake();
           return;
         }
         drag.moved = true;
@@ -494,7 +500,8 @@ export default function Carousel({
         return;
       }
       state.suppress = true;
-      window.setTimeout(() => {
+      window.clearTimeout(state.suppressTimer);
+      state.suppressTimer = window.setTimeout(() => {
         state.suppress = false;
       }, 0);
       const s = settingsRef.current;
@@ -517,6 +524,15 @@ export default function Carousel({
       const inside = s.loop || (state.p >= 0 && state.p <= s.count - 1);
       state.v = inside ? velocity : 0;
       moveTo(target);
+    };
+
+    const onPointerCancel = (event) => {
+      const drag = state.drag;
+      if (!drag || event.pointerId !== drag.id) return;
+      state.drag = null;
+      state.v = 0;
+      delete viewport.dataset.dragging;
+      moveTo(Math.round(limit(settingsRef.current, state.p)));
     };
 
     const onClickCapture = (event) => {
@@ -610,7 +626,8 @@ export default function Carousel({
     viewport.addEventListener("pointerdown", onPointerDown);
     viewport.addEventListener("pointermove", onPointerMove);
     viewport.addEventListener("pointerup", onPointerUp);
-    viewport.addEventListener("pointercancel", onPointerUp);
+    viewport.addEventListener("pointercancel", onPointerCancel);
+    viewport.addEventListener("lostpointercapture", onPointerCancel);
     viewport.addEventListener("click", onClickCapture, true);
     viewport.addEventListener("wheel", onWheel, { passive: false });
     root.addEventListener("keydown", onKeyDown);
@@ -641,13 +658,15 @@ export default function Carousel({
       reducedMedia.removeEventListener("change", changeMotion);
       cancelAnimationFrame(raf);
       window.clearTimeout(state.wheelTimer);
+      window.clearTimeout(state.suppressTimer);
       engineRef.current = null;
       resizeObserver.disconnect();
       visibility.disconnect();
       viewport.removeEventListener("pointerdown", onPointerDown);
       viewport.removeEventListener("pointermove", onPointerMove);
       viewport.removeEventListener("pointerup", onPointerUp);
-      viewport.removeEventListener("pointercancel", onPointerUp);
+      viewport.removeEventListener("pointercancel", onPointerCancel);
+      viewport.removeEventListener("lostpointercapture", onPointerCancel);
       viewport.removeEventListener("click", onClickCapture, true);
       viewport.removeEventListener("wheel", onWheel);
       root.removeEventListener("keydown", onKeyDown);

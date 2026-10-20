@@ -58,7 +58,7 @@
 .carousel-viewport {
   position: relative;
   align-self: stretch;
-  touch-action: pan-y;
+  touch-action: pan-y pinch-zoom;
   user-select: none;
   -webkit-user-select: none;
 }

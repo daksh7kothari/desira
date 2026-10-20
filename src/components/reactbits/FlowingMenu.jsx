@@ -546,23 +546,26 @@ function FlowingMenu({
   useEffect(() => {
     const loop = engine.current;
     return () => {
+      loop.timers.forEach(clearTimeout);
+      loop.timers = [];
       cancelAnimationFrame(loop.raf);
       loop.raf = 0;
     };
   }, []);
 
   const onPointerMove = (event) => {
-    if (event.pointerType === "touch") return;
     stopIntro();
     const c = cursor.current;
-    const now = performance.now();
-    const gap = (now - c.t) / 1000;
-    if (gap > 0 && gap < 0.1) {
-      const instant = (event.clientX - c.x) / gap;
-      c.vx += (instant - c.vx) * (1 - Math.exp(-gap / 0.08));
+    if (event.pointerType !== "touch") {
+      const now = performance.now();
+      const gap = (now - c.t) / 1000;
+      if (gap > 0 && gap < 0.1) {
+        const instant = (event.clientX - c.x) / gap;
+        c.vx += (instant - c.vx) * (1 - Math.exp(-gap / 0.08));
+      }
+      c.x = event.clientX;
+      c.t = now;
     }
-    c.x = event.clientX;
-    c.t = now;
     const list = listRef.current;
     if (list) c.y = event.clientY - list.getBoundingClientRect().top;
     const index = rowAt(event.clientY);
@@ -580,6 +583,19 @@ function FlowingMenu({
     if (event.clientY <= rect.top) release("top");
     else if (event.clientY >= rect.bottom) release("bottom");
     else release(halfOf(event.clientY, b.index));
+  };
+
+  const onPointerEnd = (event) => {
+    if (event.pointerType !== "touch" || band.current.index < 0) return;
+    const index = band.current.index;
+    const toward = halfOf(event.clientY, index);
+    const timer = setTimeout(() => releaseRef.current(toward), 160);
+    engine.current.timers.push(timer);
+  };
+
+  const onPointerCancel = (event) => {
+    if (event.pointerType === "touch" && band.current.index >= 0)
+      release("bottom");
   };
 
   const linkHandlers = (item, index) => ({
@@ -622,6 +638,8 @@ function FlowingMenu({
         className={LIST}
         onPointerMove={onPointerMove}
         onPointerLeave={onPointerLeave}
+        onPointerUp={onPointerEnd}
+        onPointerCancel={onPointerCancel}
       >
         {items.map((item, index) => {
           const active = index === activeIndex;
