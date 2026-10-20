@@ -1,34 +1,28 @@
 # Editing Desira content
 
-The migrated project, service, experience and site data lives in `src/data/*.json`. Import it through `src/data/index.js`. Page-specific copy is maintained separately; these files do not contain every sentence on the website.
+The website reads content from `src/data/*.json`. Edit these files when real project details arrive; page components mostly control layout and interaction.
 
-## Files and routes
+| File | Content |
+| --- | --- |
+| `site.json` | Studio name, contact links, logos, brand values, and site URL |
+| `home.json` | Opening preloader, hero, selected work, services, studio, process, FAQ, and footer copy |
+| `home-additions.json` | Featured story, sketchbook, and design-note collection copy |
+| `projects.json` | Portfolio artwork, categories, stories, case studies, and sample disclosures |
+| `services.json` | Service pages, deliverables, and Flowing Menu preview images |
+| `navigation.json` | Full-screen menu labels and artwork |
+| `experiences.json` | Explore cards and destinations |
+| `experience-content.json` | Scroll story chapters and design desk project selections |
+| `studio.json` | Studio page copy |
+| `contact.json` | Contact page and enquiry form copy |
+| `notes.json` | Draft design-note articles |
+| `metadata.json` | Base route titles, descriptions, and indexing choices |
 
-| File | What to edit | Route relationship |
-| --- | --- | --- |
-| `projects.json` | Portfolio titles, artwork, stories, sample labels and optional case studies | Each unique `slug` creates `/work/{slug}/` |
-| `services.json` | Service titles, descriptions, deliverables and preview artwork | Each unique `slug` creates `/services/{slug}/` |
-| `experiences.json` | Explore navigation and gallery cards | `href` points to an existing page or section anchor |
-| `site.json` | Studio identity, contact links, logo assets and local URL | `siteUrl` supplies the base URL for metadata |
+Keep JSON valid: use double quotes and avoid comments or trailing commas. Save files as UTF-8. Project, service, and note `slug` values must be unique, lowercase, and hyphenated. Changing a slug changes its URL; update any matching links and references.
 
-Keep JSON valid: double-quote keys and strings, avoid comments and trailing commas, and save as UTF-8. Preserve unique lowercase, hyphenated slugs. Update links whenever a slug changes. A project `service` matches a service's `title`; category values also connect related work and filters. Keep those values synchronized.
+Place artwork in `public/work/` and refer to it as `/work/filename.webp` or `/work/filename.svg`. Do not put `/public` in a URL. Give each image an `alt` description of the artwork. The service `image` field supplies its Flowing Menu preview. The hero and selected-work lists in `home.json` use project slugs to choose visible projects.
 
-## Artwork
+Keep `sample: true` on fictional projects and notes. The site labels sample projects and excludes them from the generated sitemap. Some samples appear in the homepage carousel and work gallery so the layout can be reviewed; replace them with approved projects before launch. Draft notes and the sketchbook remain `noindex` until their content is approved.
 
-Place images in `public/work/` and refer to them with `/work/filename.webp` or `/work/filename.svg`. Never include `public` in the URL. Project `width` and `height` describe the original image dimensions. Write an `alt` that describes the actual artwork. Service `image` and `alt` supply preview artwork for service menus; changing a preview does not alter the underlying project. The brand-identity preview currently uses the explicitly fictional Mora concept artwork.
+The enquiry form currently links to Desira's Instagram account. Leave `site.json` contact `email` and `whatsapp` as `null` until Sejal provides confirmed details. Set `siteUrl` to the final domain before publishing; it currently uses `http://localhost:5173` for local review.
 
-Experience cards have their own `image`, `alt` and `description`. Their `href` may include an anchor such as `#invitation-experience`; the destination component must provide that ID. Case-study `before`, `after` and `application` are separate artwork URLs; `applicationAlt` describes the application image.
-
-## Real work and sample concepts
-
-Keep `sample: true` on fictional projects. The existing application uses this flag for disclosure, exclusion from the real-work hero, `noindex` metadata, and exclusion from the generated sitemap. Omitting or setting the flag to `false` treats a project as real work. Existing real artwork is intentionally preserved without sample flags. Do not remove a sample label merely to make an example appear to be a client commission.
-
-The optional `caseStudy` object holds the concept client, brief, challenge, direction, palette, decisions, deliverables and comparison images. Keep its descriptions consistent with the sample disclosure.
-
-## Site configuration
-
-`siteUrl` defaults to `http://localhost:5173` for local development. It is a configurable base URL, not a hosted deployment destination. `contact.instagram.url` and `contact.instagram.handle` hold the existing contact channel. `email` and `whatsapp` remain `null` until confirmed; do not invent contact details.
-
-`assets.navigationLogo`, `assets.studioLogo` and `assets.logo` contain `src`, `alt`, `width` and `height`; `assets.favicon` contains `src` and `alt`. `brand.colors` records navy, gold and white, and `brand.fontFamily` records the current font. Components and CSS must consume these fields for an edit to affect their appearance; JSON values alone do not rewrite styles or the static HTML head.
-
-After editing, run `npm run build` to validate JSON imports and regenerate page HTML, metadata and the sitemap. Review the affected page locally, including image loading, mobile layout and sample disclosures.
+After any content edit, run `npm run build`. Review the affected route for image loading, mobile layout, sample labels, and page title.

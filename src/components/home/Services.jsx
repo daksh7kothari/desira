@@ -7,11 +7,11 @@ export default function Services() {
       className="services-section section-pad"
       aria-labelledby="services-title"
     >
-      <div className="section-heading">
+      <div className="section-heading" data-reveal>
         <h2 id="services-title">{copy.services.title}</h2>
         <p>{copy.services.description}</p>
       </div>
-      <div className="services-menu">
+      <div className="services-menu" data-reveal>
         <ServiceLinks />
       </div>
     </section>

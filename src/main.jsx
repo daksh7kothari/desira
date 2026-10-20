@@ -8,6 +8,8 @@ import "./styles/site.css";
 import "./styles/navigation.css";
 import App from "./App.jsx";
 import "./styles/minimal.css";
+import "./styles/interactions.css";
+import "./styles/home-motion.css";
 
 const root = document.getElementById("root");
 const app = (

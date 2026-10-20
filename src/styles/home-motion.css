@@ -1,0 +1,160 @@
+/* Homepage entrance: one quiet sequence after the optional intro. */
+.home-page .hero-line > span {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html:not([data-intro="play"]) .home-page .hero-intro,
+  html:not([data-intro="play"]) .home-page .hero-copy-bottom,
+  html:not([data-intro="play"]) .home-page .hero-carousel-wrap {
+    animation: home-hero-fade 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  html:not([data-intro="play"]) .home-page .hero-intro {
+    animation-delay: 60ms;
+  }
+
+  html:not([data-intro="play"]) .home-page .hero-copy-bottom {
+    animation-delay: 240ms;
+  }
+
+  html:not([data-intro="play"]) .home-page .hero-carousel-wrap {
+    animation-delay: 170ms;
+  }
+
+  html:not([data-intro="play"]) .home-page .hero-line > span {
+    animation: headline-in 650ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 130ms;
+  }
+
+  html:not([data-intro="play"]) .home-page .hero-line:nth-child(2) > span {
+    animation-delay: 230ms;
+  }
+
+  .home-page .work-section .section-heading[data-reveal],
+  .home-page .work-chroma .chroma-card[data-reveal] {
+    transition:
+      opacity 600ms ease,
+      transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .home-page .work-section .section-heading.motion-pending,
+  .home-page .work-chroma .chroma-card.motion-pending {
+    transform: translateY(20px);
+  }
+
+  .home-page .work-chroma .chroma-card:nth-child(2) {
+    transition-delay: 70ms;
+  }
+
+  .home-page .services-section .section-heading[data-reveal],
+  .home-page .services-menu[data-reveal] {
+    transition:
+      opacity 550ms ease,
+      transform 550ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .home-page .services-section .section-heading.motion-pending,
+  .home-page .services-menu.motion-pending {
+    transform: translateY(16px);
+  }
+
+  .home-page .services-menu[data-reveal] {
+    transition-delay: 90ms;
+  }
+
+  .home-page .studio-artwork[data-reveal],
+  .home-page .studio-copy[data-reveal] {
+    transition:
+      opacity 650ms ease,
+      transform 650ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .home-page .studio-artwork.motion-pending {
+    transform: translateX(-18px);
+  }
+
+  .home-page .studio-copy.motion-pending {
+    transform: translateY(18px);
+  }
+
+  .home-page .studio-copy[data-reveal] {
+    transition-delay: 80ms;
+  }
+}
+
+@keyframes home-hero-fade {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* The project image supplies the hover feedback; the card reveal stays separate. */
+@media (hover: hover) and (pointer: fine) {
+  .home-page .work-chroma .chroma-media img {
+    transition: transform 380ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .home-page .work-chroma .chroma-card:hover .chroma-media img {
+    transform: scale(1.035);
+  }
+}
+
+.home-page .work-chroma .chroma-media::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  border: 2px solid #ffbd3d;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 260ms ease;
+}
+
+.home-page .work-chroma .chroma-info {
+  padding-right: 26px;
+}
+
+.home-page .work-chroma .chroma-info::after {
+  content: "↗";
+  position: absolute;
+  top: 13px;
+  right: 2px;
+  color: #9d6400;
+  font-size: 22px;
+  line-height: 1;
+  opacity: 0;
+  transform: translate(-4px, 4px);
+  transition:
+    opacity 260ms ease,
+    transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.home-page .work-chroma .chroma-card:is(:hover, :focus-visible) .chroma-media::after,
+.home-page .work-chroma .chroma-card:is(:hover, :focus-visible) .chroma-info::after {
+  opacity: 1;
+}
+
+.home-page .work-chroma .chroma-card:is(:hover, :focus-visible) .chroma-info::after {
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-page [data-reveal],
+  .home-page [data-reveal].motion-pending {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .home-page .work-chroma .chroma-media img,
+  .home-page .work-chroma .chroma-media::after,
+  .home-page .work-chroma .chroma-info::after {
+    transition: none;
+  }
+}

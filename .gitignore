@@ -8,11 +8,14 @@ pnpm-debug.log*
 lerna-debug.log*
 
 .openai
+*.openai
+*.playwright-mcp
 .playwright-mcp
 artifacts
 dist
 *.md
-
+skills.md
+THIRD_PARTY_NOTICES*
 node_modules
 dist
 dist-ssr

@@ -9,7 +9,7 @@ export default function Studio() {
       className="studio-section section-pad"
       aria-labelledby="studio-title"
     >
-      <div className="studio-artwork" aria-hidden="true">
+      <div className="studio-artwork" aria-hidden="true" data-reveal>
         <img
           src={studio.image}
           alt=""
@@ -25,7 +25,7 @@ export default function Studio() {
           loading="lazy"
         />
       </div>
-      <div className="studio-copy">
+      <div className="studio-copy" data-reveal>
         <p className="eyebrow">{studio.eyebrow}</p>
         <h2 id="studio-title">{studio.title}</h2>
         <p>{studio.description}</p>

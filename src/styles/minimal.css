@@ -40,10 +40,6 @@
   font-size: 13px;
   font-weight: 500;
 }
-.navigation .nav-links > button:hover {
-  text-decoration: underline;
-  text-underline-offset: 5px;
-}
 .navigation > .nav-cta {
   display: none;
 }

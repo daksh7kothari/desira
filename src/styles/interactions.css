@@ -1,0 +1,179 @@
+/* One quiet interaction language across links, controls, and menus. */
+@media (hover: hover) and (pointer: fine) {
+  .nav-links > a,
+  .nav-links > button {
+    position: relative;
+    opacity: 1;
+    text-decoration: none;
+    transition: color 220ms ease;
+  }
+
+  .nav-links > a::after,
+  .nav-links > button::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 6px;
+    left: 0;
+    height: 2px;
+    background: #ffbd3d;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .nav-links > a:is(:hover, :focus-visible),
+  .nav-links > button:is(:hover, :focus-visible) {
+    color: #061c49;
+    opacity: 1;
+    text-decoration: none;
+  }
+
+  .nav-links > a:is(:hover, :focus-visible)::after,
+  .nav-links > button:is(:hover, :focus-visible)::after {
+    transform: scaleX(1);
+  }
+
+  .navigation .experiences-toggle {
+    transition: background-color 220ms ease, color 220ms ease;
+  }
+
+  .navigation .experiences-toggle:is(:hover, :focus-visible),
+  .navigation .experiences-toggle[aria-expanded="true"] {
+    background: #ffbd3d;
+    color: #061c49;
+  }
+
+  .menu-toggle {
+    transition: color 220ms ease;
+  }
+
+  .menu-toggle:is(:hover, :focus-visible) {
+    color: #b77900;
+  }
+
+  .button {
+    opacity: 1;
+    transition:
+      transform 240ms cubic-bezier(0.22, 1, 0.36, 1),
+      background-color 240ms ease,
+      border-color 240ms ease,
+      color 240ms ease,
+      box-shadow 240ms ease;
+  }
+
+  .button:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 0 rgb(6 28 73 / 0.1);
+  }
+
+  .button:hover svg {
+    transform: translate(3px, -3px);
+  }
+
+  .button svg {
+    transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .footer-top > .button:hover {
+    background: #061c49;
+    border-color: #061c49;
+    color: #ffbd3d;
+  }
+
+  .text-link {
+    position: relative;
+    gap: 18px;
+    border-bottom: 0;
+    transition: color 220ms ease;
+  }
+
+  .text-link::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0.6);
+    transform-origin: left center;
+    transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .text-link:is(:hover, :focus-visible) {
+    gap: 18px;
+  }
+
+  .text-link:is(:hover, :focus-visible)::after {
+    transform: scaleX(1);
+  }
+
+  .text-link svg {
+    transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .text-link:is(:hover, :focus-visible) svg {
+    transform: translate(3px, -3px);
+  }
+
+  .desira-carousel .carousel-arrow {
+    transition:
+      background-color 220ms ease,
+      color 220ms ease,
+      border-color 220ms ease,
+      transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .desira-carousel .carousel-arrow:hover {
+    border-color: #ffbd3d;
+    transform: translateY(-2px);
+  }
+
+  .hero-art-image img {
+    transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .hero-art-card:hover .hero-art-image img {
+    transform: scale(1.025);
+  }
+}
+
+.button:active,
+.desira-carousel .carousel-arrow:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: none;
+}
+
+.services-dialog[open] {
+  animation: services-enter 240ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes services-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .services-dialog[open] {
+    animation: none;
+  }
+
+  .button,
+  .text-link,
+  .text-link::after,
+  .text-link svg,
+  .hero-art-image img,
+  .desira-carousel .carousel-arrow,
+  .nav-links > a::after,
+  .nav-links > button::after {
+    transition-duration: 0.01ms;
+  }
+}

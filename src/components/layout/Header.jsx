@@ -3,7 +3,6 @@ import { experienceLinks, site } from "../../data/index.js";
 import Arrow from "../ui/Arrow.jsx";
 import NavigationOverlay from "./NavigationOverlay.jsx";
 import ServicesOverlay from "./ServicesOverlay.jsx";
-
 export default function Header({ onEnquire, isHome }) {
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
@@ -66,6 +65,12 @@ export default function Header({ onEnquire, isHome }) {
           <div
             className="experiences-nav"
             ref={dropdown}
+            onPointerEnter={(event) => {
+              if (event.pointerType === "mouse") setExperiencesOpen(true);
+            }}
+            onPointerLeave={(event) => {
+              if (event.pointerType === "mouse") setExperiencesOpen(false);
+            }}
             onBlur={(event) => {
               if (!event.currentTarget.contains(event.relatedTarget))
                 setExperiencesOpen(false);

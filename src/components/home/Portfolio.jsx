@@ -22,7 +22,7 @@ export default function Portfolio({ featured = false }) {
       aria-labelledby="work-title"
     >
       {featured && (
-        <div className="section-heading">
+        <div className="section-heading" data-reveal>
           <h2 id="work-title">{copy.portfolio.title}</h2>
           <a className="text-link" href="/work/">
             {copy.portfolio.allWorkLabel}
@@ -74,6 +74,7 @@ export default function Portfolio({ featured = false }) {
           title: project.title,
           subtitle: project.discipline,
           sample: project.sample,
+          scrollReveal: featured,
           url: `/work/${project.slug}/`,
           accent: project.caseStudy?.palette[0] || "#ffbd3d",
         }))}

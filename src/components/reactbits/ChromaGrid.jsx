@@ -301,6 +301,7 @@ export const ChromaGrid = ({
               key={key}
               className="chroma-card"
               data-chroma-area=""
+              data-reveal={item.scrollReveal ? "" : undefined}
               style={cardStyle}
               href={item.url}
               target={item.target}
@@ -313,6 +314,7 @@ export const ChromaGrid = ({
               key={key}
               className="chroma-card"
               data-chroma-area=""
+              data-reveal={item.scrollReveal ? "" : undefined}
               style={cardStyle}
             >
               {body}
