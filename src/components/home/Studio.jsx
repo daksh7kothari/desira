@@ -1,13 +1,18 @@
 import copy from "../../data/home.json";
 import Arrow from "../ui/Arrow.jsx";
+import { useRef } from "react";
+import useScrollScene from "../../hooks/useScrollScene.js";
 
 export default function Studio() {
+  const scene = useRef(null);
+  useScrollScene(scene);
   const studio = copy.studio;
   return (
     <section
       id="studio"
       className="studio-section section-pad"
       aria-labelledby="studio-title"
+      ref={scene}
     >
       <div className="studio-artwork" aria-hidden="true" data-reveal>
         <img

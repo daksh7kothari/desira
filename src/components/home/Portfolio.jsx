@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import useScrollScene from "../../hooks/useScrollScene.js";
 import { projects } from "../../data/index.js";
 import copy from "../../data/home.json";
 import ChromaGrid from "../reactbits/ChromaGrid.jsx";
 import Arrow from "../ui/Arrow.jsx";
 
 export default function Portfolio({ featured = false }) {
+  const scene = useRef(null);
+  useScrollScene(scene);
   const [filter, setFilter] = useState(copy.portfolio.filters[0]);
   const selection = featured
     ? copy.portfolio.featuredSlugs
@@ -20,6 +23,7 @@ export default function Portfolio({ featured = false }) {
       id="work"
       className="work-section section-pad"
       aria-labelledby="work-title"
+      ref={scene}
     >
       {featured && (
         <div className="section-heading" data-reveal>

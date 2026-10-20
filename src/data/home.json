@@ -48,6 +48,35 @@
     "secondImage": "/work/mora-coffee.svg",
     "secondImageAlt": "A sample brand identity from the studio"
   },
+  "processStory": {
+    "title": ["A little idea.", "A world of its own."],
+    "description": "You bring the story. We find its shape, its colour, its character. Here’s how it comes together.",
+    "projectLabel": "Mora Coffee",
+    "sampleLabel": "Sample concept",
+    "boardCaption": "One idea, taking shape.",
+    "chapters": [
+      {
+        "label": "The idea",
+        "title": "First, a feeling.",
+        "body": "Before the colours and the type, there’s a conversation. What are you making? Who is it for? How should it feel?",
+        "detail": "For this sample coffee brand: warm, familiar, unhurried."
+      },
+      {
+        "label": "The character",
+        "title": "Then, a visual voice.",
+        "body": "We explore the details that make an idea recognisable. A softer wordmark. A considered palette. A small mark with its own personality.",
+        "detail": "A quiet green, a friendly serif, and a little mora."
+      },
+      {
+        "label": "The whole story",
+        "title": "Made to belong together.",
+        "body": "The direction becomes a family of pieces. Each one has a job to do. Every one feels like it belongs to the same story.",
+        "detail": "From the first impression to the menu in your hands."
+      }
+    ],
+    "endNote": "A fictional brand. A look inside the process.",
+    "linkLabel": "Explore the concept"
+  },
   "process": {
     "title": "A thoughtful way there.",
     "description": "You bring the story. We help find its visual voice.",

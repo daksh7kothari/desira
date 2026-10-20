@@ -56,7 +56,7 @@ export default function App({ pathname = "/" }) {
         <div id="main-content" tabIndex={-1}>
           {content}
         </div>
-        <Footer onEnquire={onEnquire} />
+        <Footer onEnquire={onEnquire} isHome={page.kind === "home"} />
         {enquiry && (
           <EnquiryDialog
             service={enquiry.service}

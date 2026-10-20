@@ -45,3 +45,28 @@ Font source: [Rainesta font archive](./public/font/rainesta.zip)
 ## Current website direction
 
 The user requested the brand palette for the website: navy #061C49, gold #FFBD3D and white. Navy leads the hero and studio sections, white supports the portfolio and services, and gold is used for actions and the footer. Bold DM Sans typography is retained from the approved layout. The favicon uses the original standalone Desira mark sourced from its supplied Instagram page; the mark is preserved without redrawing.
+
+## Scroll storytelling
+
+Extension of the existing studio site. Audience: people commissioning identities,
+invitations, and print design. The narrative follows a first thought into a
+complete design, then introduces the studio and invites the visitor's own story.
+
+- Identity: existing `/desira-logo.png`, `/desira-studio-logo.png`, and `/favicon.svg`.
+- Site colours: navy `#061c49`, gold `#ffbd3d`, white `#ffffff`; retain existing paper surfaces.
+- Typography: locally hosted DM Sans, using existing large, tightly tracked headings.
+- Artwork: `/work/mora-draft.svg`, `/work/mora-coffee.svg`, and
+  `/work/mora-applications.svg`; these are existing fictional concept assets.
+  Their green palette belongs to the showcased artwork, not a new site theme.
+- Composition: one large sticky artwork beside three readable process chapters.
+  Mobile, short viewports, reduced motion, and no-JavaScript views show artwork
+  inline with each chapter.
+- Motion: direct, reversible scroll progress for the explanatory artwork.
+  Existing entrances retain `cubic-bezier(0.16, 1, 0.3, 1)`. Functional controls
+  remain available without waiting for motion.
+- Dials: variance 5, motion 8, density 4, asset dependence 8, brand fidelity 10.
+  Motion is concentrated in the process story; the existing visual system,
+  supplied assets, routes, forms, and portfolio labels remain the foundation.
+
+The current pass covers the homepage. Existing project-specific experiences
+remain available on their respective routes.

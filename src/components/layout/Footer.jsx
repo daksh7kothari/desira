@@ -1,11 +1,22 @@
 import { site, instagram } from "../../data/index.js";
 import copy from "../../data/home.json";
 import Arrow from "../ui/Arrow.jsx";
+import { useRef } from "react";
+import useScrollScene from "../../hooks/useScrollScene.js";
 
-export default function Footer({ onEnquire }) {
+export default function Footer({ onEnquire, isHome = false }) {
+  const scene = useRef(null);
+  useScrollScene(scene);
   return (
-    <footer id="contact" className="footer">
+    <footer id="contact" className={`footer${isHome ? " footer-story" : ""}`} ref={scene}>
       <div className="footer-top">
+        {isHome && (
+          <div className="footer-story-paper" aria-hidden="true">
+            <img src="/favicon.svg" alt="" width="42" height="42" />
+            <span>Your story<br />starts here.</span>
+            <span className="footer-story-rule" />
+          </div>
+        )}
         <div>
           <h2>{copy.footer.title}</h2>
           <p>{copy.footer.description}</p>
