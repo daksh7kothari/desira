@@ -1,0 +1,52 @@
+{
+  "/": {
+    "kind": "home",
+    "title": "Desira — Custom Logos, Posters & Invitations",
+    "description": "Independent graphic design by Sejal. Explore personal brand identities, posters, wedding invitations and event graphics.",
+    "image": "/work/coastal-wedding.webp"
+  },
+  "/work": {
+    "kind": "work",
+    "title": "Selected Work — Desira",
+    "description": "Discover original identities, invitations, illustrations and print design from Desira.",
+    "image": "/work/coastal-wedding.webp"
+  },
+  "/studio": {
+    "kind": "studio",
+    "title": "Meet Sejal & the Studio — Desira",
+    "description": "Meet Sejal, the founder of Desira, an independent graphic design studio.",
+    "image": "/desira-logo.png"
+  },
+  "/contact": {
+    "kind": "contact",
+    "title": "Start a Design Project — Desira",
+    "description": "Prepare your design brief and start a conversation with Desira.",
+    "image": "/desira-logo.png"
+  },
+  "/experiences": {
+    "kind": "experiences",
+    "title": "Design Experiences — Desira",
+    "description": "Explore Desira's work with an interactive invitation, project story and design desk.",
+    "image": "/work/coastal-wedding.webp"
+  },
+  "/experiences/design-desk": {
+    "kind": "desk",
+    "title": "The Design Desk — Desira",
+    "description": "Explore the studio's invitation, print and illustration work from another perspective.",
+    "image": "/work/print-design.webp"
+  },
+  "/sketchbook": {
+    "kind": "sketchbook",
+    "title": "The Sketchbook — Desira",
+    "description": "A collection of sample studio studies, colour palettes and type experiments.",
+    "image": "/work/mock-sketch-poster.svg",
+    "noindex": true
+  },
+  "/notes": {
+    "kind": "notes",
+    "title": "Design Notes — Desira",
+    "description": "Sample articles about brand identity, invitations and creative briefs.",
+    "image": "/work/mora-coffee.svg",
+    "noindex": true
+  }
+}

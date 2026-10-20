@@ -1,44 +1,46 @@
 // Adapted from React Bits by David Haz. See THIRD_PARTY_NOTICES.md.
-'use client';
+"use client";
 
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import './FlowingMenu.css';
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import "./FlowingMenu.css";
 
-const ROOT = 'flowing-menu';
-const LIST = 'flowing-menu__list';
-const ITEM = 'flowing-menu__item';
-const DIVIDER = 'flowing-menu__divider';
-const LINK = 'flowing-menu__link';
-const INDEX = 'flowing-menu__index';
-const LABEL = 'flowing-menu__label';
-const LABEL_TEXT = 'flowing-menu__label-text';
-const DOT = 'flowing-menu__dot';
-const END = 'flowing-menu__end';
-const META = 'flowing-menu__meta';
-const ARROW = 'flowing-menu__arrow';
-const BAND = 'flowing-menu__band';
-const TRACK = 'flowing-menu__track';
-const PART = 'flowing-menu__part';
-const PART_TEXT = 'flowing-menu__part-text';
-const IMAGE = 'flowing-menu__image';
-const FLOAT = 'flowing-menu__float';
-const FLOAT_LAYER = 'flowing-menu__float-layer';
+const ROOT = "flowing-menu";
+const LIST = "flowing-menu__list";
+const ITEM = "flowing-menu__item";
+const DIVIDER = "flowing-menu__divider";
+const LINK = "flowing-menu__link";
+const INDEX = "flowing-menu__index";
+const LABEL = "flowing-menu__label";
+const LABEL_TEXT = "flowing-menu__label-text";
+const DOT = "flowing-menu__dot";
+const END = "flowing-menu__end";
+const META = "flowing-menu__meta";
+const ARROW = "flowing-menu__arrow";
+const BAND = "flowing-menu__band";
+const TRACK = "flowing-menu__track";
+const PART = "flowing-menu__part";
+const PART_TEXT = "flowing-menu__part-text";
+const IMAGE = "flowing-menu__image";
+const FLOAT = "flowing-menu__float";
+const FLOAT_LAYER = "flowing-menu__float-layer";
 
-const DIRECTIONS = ['left', 'right', 'alternate'];
-const SHAPES = ['pill', 'rounded', 'circle'];
-const EASE = 'cubic-bezier(0.2, 0.9, 0.2, 1)';
+const DIRECTIONS = ["left", "right", "alternate"];
+const SHAPES = ["pill", "rounded", "circle"];
+const EASE = "cubic-bezier(0.2, 0.9, 0.2, 1)";
 
-const useIsoLayoutEffect = typeof window === 'undefined' ? useEffect : useLayoutEffect;
+const useIsoLayoutEffect =
+  typeof window === "undefined" ? useEffect : useLayoutEffect;
 
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
 const prefersReduced = () =>
-  typeof window !== 'undefined' && (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false);
+  typeof window !== "undefined" &&
+  (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false);
 
 function FlowingMenu({
   items = [],
   speed = 60,
-  direction = 'left',
+  direction = "left",
   followCursor = 0.4,
   duration = 0.5,
   stretch = 0.6,
@@ -46,23 +48,23 @@ function FlowingMenu({
   bandInset = 0,
   bandRadius = 0,
   carryContent = false,
-  textColor = '#ffffff',
-  bgColor = '#120F17',
-  marqueeBgColor = '#ffffff',
-  marqueeTextColor = '#120F17',
-  borderColor = 'rgba(255, 255, 255, 0.14)',
+  textColor = "#ffffff",
+  bgColor = "#120F17",
+  marqueeBgColor = "#ffffff",
+  marqueeTextColor = "#120F17",
+  borderColor = "rgba(255, 255, 255, 0.14)",
   dividers = true,
   dimInactive = false,
-  align = 'center',
+  align = "center",
   showIndex = false,
   showArrow = false,
-  imageShape = 'pill',
+  imageShape = "pill",
   intro = true,
   activeIndex,
   onItemClick,
-  ariaLabel = 'Menu',
-  className = '',
-  style
+  ariaLabel = "Menu",
+  className = "",
+  style,
 }) {
   const rootRef = useRef(null);
   const listRef = useRef(null);
@@ -79,7 +81,7 @@ function FlowingMenu({
     lead: 1,
     shown: false,
     index: -1,
-    rest: 0
+    rest: 0,
   });
   const cursor = useRef({ x: 0, y: null, t: 0, vx: 0 });
   const engine = useRef({ raf: 0, last: 0, timers: [], touched: false });
@@ -87,12 +89,19 @@ function FlowingMenu({
   const floatRef = useRef(null);
   const layerRefs = useRef([]);
   const layerTracks = useRef([]);
-  const roll = useRef({ current: 0, p: 1, dir: 1, slots: [-1, -1], fromOpacity: 0, fromOffset: 0 });
+  const roll = useRef({
+    current: 0,
+    p: 1,
+    dir: 1,
+    slots: [-1, -1],
+    fromOpacity: 0,
+    fromOffset: 0,
+  });
   const [slots, setSlots] = useState([-1, -1]);
 
   const settings = {
     speed: Math.max(0, speed),
-    direction: DIRECTIONS.includes(direction) ? direction : 'left',
+    direction: DIRECTIONS.includes(direction) ? direction : "left",
     followCursor: clamp(followCursor, 0, 1),
     duration: Math.max(0.1, duration),
     stretch: clamp(stretch, 0, 1),
@@ -101,27 +110,29 @@ function FlowingMenu({
     bandRadius: Math.max(0, bandRadius),
     carryContent,
     dimInactive,
-    onItemClick
+    onItemClick,
   };
   const settingsRef = useRef(settings);
   settingsRef.current = settings;
 
-  const marqueeAt = index => {
-    if (!marquees.current[index]) marquees.current[index] = { x: 0, part: 0, spin: 0, covered: false };
+  const marqueeAt = (index) => {
+    if (!marquees.current[index])
+      marquees.current[index] = { x: 0, part: 0, spin: 0, covered: false };
     return marquees.current[index];
   };
 
-  const insetFor = height => Math.min(settingsRef.current.bandInset, Math.max(0, height / 2 - 2));
+  const insetFor = (height) =>
+    Math.min(settingsRef.current.bandInset, Math.max(0, height / 2 - 2));
 
   const markRows = () => {
     const b = band.current;
     const dim = settingsRef.current.dimInactive && b.index >= 0;
     rows.current.forEach((row, index) => {
       if (!row?.item) return;
-      if (index === b.index) row.item.setAttribute('data-current', '');
-      else row.item.removeAttribute('data-current');
-      if (dim && index !== b.index) row.item.setAttribute('data-dimmed', '');
-      else row.item.removeAttribute('data-dimmed');
+      if (index === b.index) row.item.setAttribute("data-current", "");
+      else row.item.removeAttribute("data-current");
+      if (dim && index !== b.index) row.item.setAttribute("data-dimmed", "");
+      else row.item.removeAttribute("data-dimmed");
     });
   };
 
@@ -135,26 +146,32 @@ function FlowingMenu({
     const list = listRef.current;
     if (!el || !list) return;
     if (!b.shown || b.bottom - b.top < 0.25) {
-      el.style.visibility = 'hidden';
+      el.style.visibility = "hidden";
       return;
     }
     const height = rowHeight();
     const side = Math.min(s.bandInset, Math.max(0, height / 2 - 2));
-    const radius = Math.min(s.bandRadius, (b.bottom - b.top) / 2, Math.max(0, list.clientWidth / 2 - side));
-    el.style.visibility = 'visible';
+    const radius = Math.min(
+      s.bandRadius,
+      (b.bottom - b.top) / 2,
+      Math.max(0, list.clientWidth / 2 - side),
+    );
+    el.style.visibility = "visible";
     el.style.clipPath = `inset(${b.top.toFixed(2)}px ${side}px ${(list.clientHeight - b.bottom).toFixed(2)}px ${side}px round ${radius.toFixed(2)}px)`;
     const center = (b.top + b.bottom) / 2;
     const eased = 1 - Math.pow(1 - r.p, 3);
     const travel = height * 0.8 * r.dir;
-    [0, 1].forEach(slot => {
+    [0, 1].forEach((slot) => {
       const layer = layerRefs.current[slot];
       const index = r.slots[slot];
       if (!layer) return;
       const current = slot === r.current;
       const visible = index >= 0 && (current || r.p < 1);
-      layer.style.visibility = visible ? 'visible' : 'hidden';
+      layer.style.visibility = visible ? "visible" : "hidden";
       if (!visible) return;
-      const offset = current ? (1 - eased) * travel : r.fromOffset - eased * travel;
+      const offset = current
+        ? (1 - eased) * travel
+        : r.fromOffset - eased * travel;
       const opacity = current ? eased : r.fromOpacity * (1 - eased);
       layer.style.height = `${height}px`;
       layer.style.opacity = opacity.toFixed(3);
@@ -162,7 +179,8 @@ function FlowingMenu({
       const state = marqueeAt(index);
       state.covered = true;
       const track = layerTracks.current[slot];
-      if (track) track.style.transform = `translate3d(${state.x.toFixed(2)}px, 0, 0)`;
+      if (track)
+        track.style.transform = `translate3d(${state.x.toFixed(2)}px, 0, 0)`;
     });
   };
 
@@ -178,21 +196,26 @@ function FlowingMenu({
       const from = Math.max(b.top, m.top);
       const to = Math.min(b.bottom, m.top + m.height);
       if (s.carryContent || !b.shown || to - from < 0.25) {
-        row.band.style.visibility = 'hidden';
+        row.band.style.visibility = "hidden";
       } else {
         const side = Math.min(s.bandInset, Math.max(0, m.height / 2 - 2));
-        const radius = Math.min(s.bandRadius, height / 2, Math.max(0, (row.item?.clientWidth ?? 0) / 2 - side));
-        row.band.style.visibility = 'visible';
+        const radius = Math.min(
+          s.bandRadius,
+          height / 2,
+          Math.max(0, (row.item?.clientWidth ?? 0) / 2 - side),
+        );
+        row.band.style.visibility = "visible";
         row.band.style.clipPath = `inset(${(b.top - m.top).toFixed(2)}px ${side}px ${(m.top + m.height - b.bottom).toFixed(2)}px ${side}px round ${radius.toFixed(2)}px)`;
         state.covered = (to - from) / m.height > 0.04;
       }
-      if (row.track) row.track.style.transform = `translate3d(${state.x.toFixed(2)}px, 0, 0)`;
+      if (row.track)
+        row.track.style.transform = `translate3d(${state.x.toFixed(2)}px, 0, 0)`;
     });
     if (s.carryContent) paintFloat();
-    else if (floatRef.current) floatRef.current.style.visibility = 'hidden';
+    else if (floatRef.current) floatRef.current.style.visibility = "hidden";
   };
 
-  const frame = now => {
+  const frame = (now) => {
     const loop = engine.current;
     loop.raf = 0;
     const s = settingsRef.current;
@@ -210,7 +233,11 @@ function FlowingMenu({
         const lean =
           c.y === null || reduced
             ? 0
-            : clamp((c.y - (current.top + current.height / 2)) * s.magnet, -current.height * 0.3, current.height * 0.3);
+            : clamp(
+                (c.y - (current.top + current.height / 2)) * s.magnet,
+                -current.height * 0.3,
+                current.height * 0.3,
+              );
         b.toTop = current.top + inset + lean;
         b.toBottom = current.top + current.height - inset + lean;
       } else if (b.index < 0) {
@@ -232,8 +259,12 @@ function FlowingMenu({
         const steps = Math.max(1, Math.ceil(elapsed / (1 / 240)));
         const dt = elapsed / steps;
         for (let i = 0; i < steps; i++) {
-          b.vTop += (-wTop * wTop * (b.top - b.toTop) - 2 * zeta * wTop * b.vTop) * dt;
-          b.vBottom += (-wBottom * wBottom * (b.bottom - b.toBottom) - 2 * zeta * wBottom * b.vBottom) * dt;
+          b.vTop +=
+            (-wTop * wTop * (b.top - b.toTop) - 2 * zeta * wTop * b.vTop) * dt;
+          b.vBottom +=
+            (-wBottom * wBottom * (b.bottom - b.toBottom) -
+              2 * zeta * wBottom * b.vBottom) *
+            dt;
           b.top += b.vTop * dt;
           b.bottom += b.vBottom * dt;
           if (b.bottom < b.top) {
@@ -274,9 +305,17 @@ function FlowingMenu({
       if (!state.covered && state.spin === 0) return;
       busy = true;
       if (state.part <= 0 || reduced) return;
-      const flow = s.direction === 'alternate' ? (index % 2 ? 1 : -1) : s.direction === 'right' ? 1 : -1;
+      const flow =
+        s.direction === "alternate"
+          ? index % 2
+            ? 1
+            : -1
+          : s.direction === "right"
+            ? 1
+            : -1;
       state.x += (flow * s.speed + push) * state.spin * elapsed;
-      state.x = (((state.x % state.part) + state.part) % state.part) - state.part;
+      state.x =
+        (((state.x % state.part) + state.part) % state.part) - state.part;
     });
 
     paint();
@@ -285,7 +324,7 @@ function FlowingMenu({
 
   const kick = () => {
     const loop = engine.current;
-    if (loop.raf || typeof window === 'undefined') return;
+    if (loop.raf || typeof window === "undefined") return;
     loop.last = performance.now();
     loop.raf = requestAnimationFrame(frame);
   };
@@ -315,14 +354,19 @@ function FlowingMenu({
       setSlots([...r.slots]);
     }
     if (!b.shown) {
-      const start = from === 'bottom' ? bottom : from === 'center' ? (top + bottom) / 2 : top;
+      const start =
+        from === "bottom"
+          ? bottom
+          : from === "center"
+            ? (top + bottom) / 2
+            : top;
       b.top = b.bottom = start;
       b.vTop = b.vBottom = 0;
       b.shown = true;
     }
     const shift = (top + bottom) / 2 - (b.top + b.bottom) / 2;
     if (Math.abs(shift) > 0.5) b.lead = shift > 0 ? 1 : -1;
-    else b.lead = from === 'bottom' ? -1 : 1;
+    else b.lead = from === "bottom" ? -1 : 1;
     b.toTop = top;
     b.toBottom = bottom;
     b.index = index;
@@ -330,11 +374,16 @@ function FlowingMenu({
     kick();
   };
 
-  const release = toward => {
+  const release = (toward) => {
     const b = band.current;
     if (!b.shown) return;
-    const point = toward === 'top' ? b.toTop : toward === 'bottom' ? b.toBottom : (b.toTop + b.toBottom) / 2;
-    b.lead = toward === 'top' ? -1 : 1;
+    const point =
+      toward === "top"
+        ? b.toTop
+        : toward === "bottom"
+          ? b.toBottom
+          : (b.toTop + b.toBottom) / 2;
+    b.lead = toward === "top" ? -1 : 1;
     b.rest = point;
     b.toTop = b.toBottom = point;
     b.index = -1;
@@ -343,18 +392,22 @@ function FlowingMenu({
     kick();
   };
 
-  const rowAt = clientY => {
+  const rowAt = (clientY) => {
     const list = listRef.current;
     if (!list) return -1;
     const y = clientY - list.getBoundingClientRect().top;
-    return metrics.current.findIndex(m => m && y >= m.top && y < m.top + m.height);
+    return metrics.current.findIndex(
+      (m) => m && y >= m.top && y < m.top + m.height,
+    );
   };
 
   const halfOf = (clientY, index) => {
     const list = listRef.current;
     const m = metrics.current[index];
-    if (!list || !m) return 'top';
-    return clientY - list.getBoundingClientRect().top - m.top < m.height / 2 ? 'top' : 'bottom';
+    if (!list || !m) return "top";
+    return clientY - list.getBoundingClientRect().top - m.top < m.height / 2
+      ? "top"
+      : "bottom";
   };
 
   const stopIntro = () => {
@@ -366,13 +419,18 @@ function FlowingMenu({
 
   const measure = () => {
     const list = listRef.current;
-    metrics.current = rows.current.map(row =>
-      row?.item ? { top: row.item.offsetTop, height: row.item.offsetHeight } : null
+    metrics.current = rows.current.map((row) =>
+      row?.item
+        ? { top: row.item.offsetTop, height: row.item.offsetHeight }
+        : null,
     );
     if (list && metrics.current[0]) {
       const height = metrics.current[0].height;
       const inset = insetFor(height);
-      rootRef.current?.style.setProperty('--flowing-menu-band', String(height ? (height - inset * 2) / height : 1));
+      rootRef.current?.style.setProperty(
+        "--flowing-menu-band",
+        String(height ? (height - inset * 2) / height : 1),
+      );
     }
     const next = rows.current.map((row, index) => {
       const state = marqueeAt(index);
@@ -385,8 +443,11 @@ function FlowingMenu({
       }
       return width > 0 ? Math.max(2, Math.ceil(total / width) + 1) : 3;
     });
-    setCopies(current =>
-      current.length === next.length && current.every((value, index) => value === next[index]) ? current : next
+    setCopies((current) =>
+      current.length === next.length &&
+      current.every((value, index) => value === next[index])
+        ? current
+        : next,
     );
     const b = band.current;
     if (b.shown && b.index >= 0) {
@@ -406,10 +467,10 @@ function FlowingMenu({
   useIsoLayoutEffect(() => {
     measureRef.current();
     const root = rootRef.current;
-    if (!root || typeof ResizeObserver === 'undefined') return undefined;
+    if (!root || typeof ResizeObserver === "undefined") return undefined;
     const observer = new ResizeObserver(() => measureRef.current());
     observer.observe(root);
-    rows.current.forEach(row => {
+    rows.current.forEach((row) => {
       const part = row?.track?.firstElementChild;
       if (part) observer.observe(part);
     });
@@ -431,28 +492,28 @@ function FlowingMenu({
     if (!intro || prefersReduced()) return undefined;
     const root = rootRef.current;
     if (!root) return undefined;
-    root.querySelectorAll('[data-intro-line]').forEach((node, index) => {
-      node.animate([{ transform: 'translateY(110%)' }, { transform: 'none' }], {
+    root.querySelectorAll("[data-intro-line]").forEach((node, index) => {
+      node.animate([{ transform: "translateY(110%)" }, { transform: "none" }], {
         duration: 900,
         delay: index * 70,
         easing: EASE,
-        fill: 'backwards'
+        fill: "backwards",
       });
     });
-    root.querySelectorAll('[data-intro-fade]').forEach((node, index) => {
+    root.querySelectorAll("[data-intro-fade]").forEach((node, index) => {
       node.animate([{ opacity: 0 }, { opacity: 1 }], {
         duration: 700,
         delay: 200 + index * 40,
-        easing: 'ease',
-        fill: 'backwards'
+        easing: "ease",
+        fill: "backwards",
       });
     });
-    root.querySelectorAll('[data-intro-rule]').forEach((node, index) => {
-      node.animate([{ transform: 'scaleX(0)' }, { transform: 'none' }], {
+    root.querySelectorAll("[data-intro-rule]").forEach((node, index) => {
+      node.animate([{ transform: "scaleX(0)" }, { transform: "none" }], {
         duration: 1100,
         delay: index * 70,
         easing: EASE,
-        fill: 'backwards'
+        fill: "backwards",
       });
     });
     const loop = engine.current;
@@ -462,19 +523,19 @@ function FlowingMenu({
       loop.timers.push(
         setTimeout(
           () => {
-            if (!loop.touched) goToRef.current(index, 'top');
+            if (!loop.touched) goToRef.current(index, "top");
           },
-          start + index * 170
-        )
+          start + index * 170,
+        ),
       );
     }
     loop.timers.push(
       setTimeout(
         () => {
-          if (!loop.touched) releaseRef.current('bottom');
+          if (!loop.touched) releaseRef.current("bottom");
         },
-        start + count * 170 + 120
-      )
+        start + count * 170 + 120,
+      ),
     );
     return () => {
       loop.timers.forEach(clearTimeout);
@@ -487,8 +548,8 @@ function FlowingMenu({
     return () => cancelAnimationFrame(loop.raf);
   }, []);
 
-  const onPointerMove = event => {
-    if (event.pointerType === 'touch') return;
+  const onPointerMove = (event) => {
+    if (event.pointerType === "touch") return;
     stopIntro();
     const c = cursor.current;
     const now = performance.now();
@@ -502,59 +563,70 @@ function FlowingMenu({
     const list = listRef.current;
     if (list) c.y = event.clientY - list.getBoundingClientRect().top;
     const index = rowAt(event.clientY);
-    if (index >= 0 && index !== band.current.index) goTo(index, halfOf(event.clientY, index));
+    if (index >= 0 && index !== band.current.index)
+      goTo(index, halfOf(event.clientY, index));
     else kick();
   };
 
-  const onPointerLeave = event => {
-    if (event.pointerType === 'touch') return;
+  const onPointerLeave = (event) => {
+    if (event.pointerType === "touch") return;
     const list = listRef.current;
     const b = band.current;
     if (!list || b.index < 0) return;
     const rect = list.getBoundingClientRect();
-    if (event.clientY <= rect.top) release('top');
-    else if (event.clientY >= rect.bottom) release('bottom');
+    if (event.clientY <= rect.top) release("top");
+    else if (event.clientY >= rect.bottom) release("bottom");
     else release(halfOf(event.clientY, b.index));
   };
 
   const linkHandlers = (item, index) => ({
-    onPointerDown: event => {
-      if (event.pointerType !== 'touch') return;
+    onPointerDown: (event) => {
+      if (event.pointerType !== "touch") return;
       stopIntro();
       goTo(index, halfOf(event.clientY, index));
     },
-    onFocus: event => {
-      if (!event.currentTarget.matches(':focus-visible')) return;
+    onFocus: (event) => {
+      if (!event.currentTarget.matches(":focus-visible")) return;
       stopIntro();
-      goTo(index, 'top');
+      goTo(index, "top");
     },
-    onBlur: event => {
+    onBlur: (event) => {
       const next = event.relatedTarget;
       if (next && listRef.current?.contains(next)) return;
-      release('bottom');
+      release("bottom");
     },
-    onClick: event => settingsRef.current.onItemClick?.(item, index, event)
+    onClick: (event) => settingsRef.current.onItemClick?.(item, index, event),
   });
 
-  const shape = SHAPES.includes(imageShape) ? imageShape : 'pill';
+  const shape = SHAPES.includes(imageShape) ? imageShape : "pill";
 
   return (
     <nav
       ref={rootRef}
-      className={[ROOT, className].filter(Boolean).join(' ')}
-      style={{ backgroundColor: bgColor, color: textColor, '--flowing-menu-border': borderColor, ...style }}
+      className={[ROOT, className].filter(Boolean).join(" ")}
+      style={{
+        backgroundColor: bgColor,
+        color: textColor,
+        "--flowing-menu-border": borderColor,
+        ...style,
+      }}
       aria-label={ariaLabel}
-      data-align={align === 'left' ? 'left' : 'center'}
+      data-align={align === "left" ? "left" : "center"}
       data-shape={shape}
     >
-      <ul ref={listRef} className={LIST} onPointerMove={onPointerMove} onPointerLeave={onPointerLeave}>
+      <ul
+        ref={listRef}
+        className={LIST}
+        onPointerMove={onPointerMove}
+        onPointerLeave={onPointerLeave}
+      >
         {items.map((item, index) => {
           const active = index === activeIndex;
           const handlers = linkHandlers(item, index);
           const content = (
             <>
               <span className={INDEX} data-intro-fade="" aria-hidden="true">
-                {showIndex ? String(index + 1).padStart(2, '0') : null}
+                {showIndex ? String(index + 1).padStart(2, "0") : null}
               </span>
               <span className={LABEL}>
                 <span className={LABEL_TEXT} data-intro-line="">
@@ -566,7 +638,21 @@ function FlowingMenu({
                 {item.meta ? <span className={META}>{item.meta}</span> : null}
                 {showArrow ? (
                   <span className={ARROW}>
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                    <svg
+                      width="22"
+                      height="22"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M6 18 18 6M6 6h12v12"
+                        stroke="currentColor"
+                        strokeWidth="1.75"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
                   </span>
                 ) : null}
               </span>
@@ -575,39 +661,68 @@ function FlowingMenu({
           return (
             <li
               key={`${item.text}-${index}`}
-              ref={node => {
+              ref={(node) => {
                 rows.current[index] = { ...rows.current[index], item: node };
               }}
               className={ITEM}
             >
-              {dividers && index > 0 && <span className={DIVIDER} data-intro-rule="" aria-hidden="true" />}
+              {dividers && index > 0 && (
+                <span
+                  className={DIVIDER}
+                  data-intro-rule=""
+                  aria-hidden="true"
+                />
+              )}
               {item.link ? (
-                <a className={LINK} href={item.link} aria-current={active ? 'page' : undefined} {...handlers}>
+                <a
+                  className={LINK}
+                  href={item.link}
+                  aria-current={active ? "page" : undefined}
+                  {...handlers}
+                >
                   {content}
                 </a>
               ) : (
-                <button type="button" className={LINK} aria-current={active ? 'page' : undefined} {...handlers}>
+                <button
+                  type="button"
+                  className={LINK}
+                  aria-current={active ? "page" : undefined}
+                  {...handlers}
+                >
                   {content}
                 </button>
               )}
               <div
                 className={BAND}
                 aria-hidden="true"
-                style={{ backgroundColor: marqueeBgColor, color: marqueeTextColor }}
-                ref={node => {
+                style={{
+                  backgroundColor: marqueeBgColor,
+                  color: marqueeTextColor,
+                }}
+                ref={(node) => {
                   rows.current[index] = { ...rows.current[index], band: node };
                 }}
               >
                 <div
                   className={TRACK}
-                  ref={node => {
-                    rows.current[index] = { ...rows.current[index], track: node };
+                  ref={(node) => {
+                    rows.current[index] = {
+                      ...rows.current[index],
+                      track: node,
+                    };
                   }}
                 >
                   {Array.from({ length: copies[index] ?? 3 }, (_, copy) => (
                     <div className={PART} key={copy}>
-                      <span className={PART_TEXT}>{item.marquee ?? item.text}</span>
-                      {item.image && <span className={IMAGE} style={{ backgroundImage: `url(${item.image})` }} />}
+                      <span className={PART_TEXT}>
+                        {item.marquee ?? item.text}
+                      </span>
+                      {item.image && (
+                        <span
+                          className={IMAGE}
+                          style={{ backgroundImage: `url(${item.image})` }}
+                        />
+                      )}
                     </div>
                   ))}
                 </div>
@@ -623,29 +738,39 @@ function FlowingMenu({
           ref={floatRef}
           style={{ backgroundColor: marqueeBgColor, color: marqueeTextColor }}
         >
-          {[0, 1].map(slot => {
+          {[0, 1].map((slot) => {
             const item = slots[slot] >= 0 ? items[slots[slot]] : null;
             return (
               <div
                 key={slot}
                 className={FLOAT_LAYER}
-                ref={node => {
+                ref={(node) => {
                   layerRefs.current[slot] = node;
                 }}
               >
                 <div
                   className={TRACK}
-                  ref={node => {
+                  ref={(node) => {
                     layerTracks.current[slot] = node;
                   }}
                 >
                   {item &&
-                    Array.from({ length: copies[slots[slot]] ?? 3 }, (_, copy) => (
-                      <div className={PART} key={copy}>
-                        <span className={PART_TEXT}>{item.marquee ?? item.text}</span>
-                        {item.image && <span className={IMAGE} style={{ backgroundImage: `url(${item.image})` }} />}
-                      </div>
-                    ))}
+                    Array.from(
+                      { length: copies[slots[slot]] ?? 3 },
+                      (_, copy) => (
+                        <div className={PART} key={copy}>
+                          <span className={PART_TEXT}>
+                            {item.marquee ?? item.text}
+                          </span>
+                          {item.image && (
+                            <span
+                              className={IMAGE}
+                              style={{ backgroundImage: `url(${item.image})` }}
+                            />
+                          )}
+                        </div>
+                      ),
+                    )}
                 </div>
               </div>
             );
@@ -657,4 +782,3 @@ function FlowingMenu({
 }
 
 export default FlowingMenu;
-

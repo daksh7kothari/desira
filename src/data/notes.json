@@ -34,7 +34,10 @@
       }
     ],
     "takeaway": "A useful identity makes the next design decision easier.",
-    "relatedService": { "label": "Explore brand identity", "href": "/services/logo-brand-identity/" }
+    "relatedService": {
+      "label": "Explore brand identity",
+      "href": "/services/logo-brand-identity/"
+    }
   },
   {
     "slug": "an-invitation-that-feels-like-you",
@@ -71,7 +74,10 @@
       }
     ],
     "takeaway": "Personal does not have to mean elaborate. It has to mean something to you.",
-    "relatedService": { "label": "Explore wedding invitations", "href": "/services/wedding-invitations/" }
+    "relatedService": {
+      "label": "Explore wedding invitations",
+      "href": "/services/wedding-invitations/"
+    }
   },
   {
     "slug": "a-better-design-brief",
@@ -108,6 +114,9 @@
       }
     ],
     "takeaway": "Bring the purpose. We can work through the visual possibilities together.",
-    "relatedService": { "label": "Start a project conversation", "href": "/contact/" }
+    "relatedService": {
+      "label": "Start a project conversation",
+      "href": "/contact/"
+    }
   }
 ]

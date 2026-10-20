@@ -11,7 +11,11 @@
     "paperNote": "A celebration, by the sea.",
     "projectLabel": "Ananya & Chirag",
     "discipline": "Wedding identity & stationery",
-    "details": ["A personal monogram", "A coastal colour story", "Details that belong together"],
+    "details": [
+      "A personal monogram",
+      "A coastal colour story",
+      "Details that belong together"
+    ],
     "linkLabel": "Step inside the story",
     "href": "/work/coastal-celebration/#design-story",
     "sample": true,
@@ -41,9 +45,21 @@
     "palette": {
       "label": "03 / A colour conversation",
       "colours": [
-        { "name": "Midnight", "value": "#061c49", "text": "#ffffff" },
-        { "name": "Sunshine", "value": "#ffbd3d", "text": "#061c49" },
-        { "name": "Paper", "value": "#f8eedc", "text": "#061c49" }
+        {
+          "name": "Midnight",
+          "value": "#061c49",
+          "text": "#ffffff"
+        },
+        {
+          "name": "Sunshine",
+          "value": "#ffbd3d",
+          "text": "#061c49"
+        },
+        {
+          "name": "Paper",
+          "value": "#f8eedc",
+          "text": "#061c49"
+        }
       ]
     },
     "illustration": {
@@ -52,46 +68,6 @@
       "label": "04 / A little character",
       "credit": "Original Desira artwork"
     }
-  },
-  "experiencePreview": {
-    "eyebrow": "A little more hands-on",
-    "title": "Don't just look.\nGet into it.",
-    "description": "Open a cover, follow a detail, or look around the desk. Three ways to spend a little more time with the work.",
-    "linkLabel": "Explore everything",
-    "href": "/experiences/",
-    "items": [
-      {
-        "id": "invitation",
-        "title": "The first impression",
-        "description": "Open an invitation and meet the story inside.",
-        "href": "/services/wedding-invitations/#invitation-experience",
-        "image": "/work/coastal-wedding.webp",
-        "alt": "A coastal wedding invitation presented inside a navy cover",
-        "visualLabel": "For a story like yours",
-        "number": "01"
-      },
-      {
-        "id": "story",
-        "title": "A closer look",
-        "description": "Follow a wedding identity through three thoughtful details.",
-        "href": "/work/coastal-celebration/#design-story",
-        "image": "/work/coastal-wedding.webp",
-        "alt": "The layers of Ananya and Chirag's wedding stationery",
-        "visualLabel": "In the details",
-        "number": "02"
-      },
-      {
-        "id": "desk",
-        "title": "A different perspective",
-        "description": "Turn the design desk and pick up a project.",
-        "href": "/experiences/design-desk/",
-        "image": "/work/print-design.webp",
-        "alt": "A collection of invitation, print, and illustration work on the design desk",
-        "secondaryImages": ["/work/coastal-wedding.webp", "/work/illustrated-save-the-date.webp"],
-        "visualLabel": "Ideas, taking shape",
-        "number": "03"
-      }
-    ]
   },
   "designNotes": {
     "eyebrow": "A few design notes",

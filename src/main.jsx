@@ -1,14 +1,20 @@
-import { StrictMode } from 'react'
-import { createRoot, hydrateRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+import { StrictMode } from "react";
+import { createRoot, hydrateRoot } from "react-dom/client";
+import "./styles/tokens.css";
+import "./styles/experiences.css";
+import "./styles/editorial.css";
+import "./styles/brand-bits.css";
+import "./styles/site.css";
+import "./styles/navigation.css";
+import App from "./App.jsx";
+import "./styles/minimal.css";
 
-const root = document.getElementById('root')
+const root = document.getElementById("root");
 const app = (
   <StrictMode>
     <App pathname={window.location.pathname} />
   </StrictMode>
-)
+);
 
-if (root.hasChildNodes()) hydrateRoot(root, app)
-else createRoot(root).render(app)
+if (root.hasChildNodes()) hydrateRoot(root, app);
+else createRoot(root).render(app);

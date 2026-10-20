@@ -1,0 +1,32 @@
+{
+  "title": "Tell us\nyour thing.",
+  "description": "A new brand? A big day? Something you haven’t quite put into words? Start here.",
+  "asideTitle": "Small studio.\nPersonal conversations.",
+  "asideBody": "Prepare a brief here, then send it to Sejal on Instagram.",
+  "dialogTitle": "What are you\ndreaming up?",
+  "dialogDescription": "A few details to start the conversation.",
+  "fields": {
+    "name": "Your name",
+    "service": "I’m looking for",
+    "timeline": "Ideal timeline",
+    "message": "A little about your idea",
+    "prepared": "Your prepared brief"
+  },
+  "placeholders": {
+    "name": "What should we call you?",
+    "message": "The project, the audience, the feeling you’re after…"
+  },
+  "timelineOptions": [
+    "Let’s discuss it",
+    "Within a month",
+    "In 1–3 months",
+    "I’m exploring for now"
+  ],
+  "otherService": "Something else",
+  "submitLabel": "Prepare & copy my brief",
+  "copiedLabel": "Brief copied",
+  "privacy": "Your details stay in this browser. Nothing is sent automatically.",
+  "copiedStatus": "Copied! Open Instagram and paste your brief into a message.",
+  "copyError": "Select and copy your prepared brief below, then paste it into an Instagram message.",
+  "instagramLabel": "Open Instagram to send it"
+}

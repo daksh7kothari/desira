@@ -1,0 +1,22 @@
+{
+  "storyProjectSlug": "coastal-celebration",
+  "deskProjectSlugs": [
+    "coastal-celebration",
+    "print-stories",
+    "a-story-in-illustration"
+  ],
+  "storyChapters": [
+    {
+      "title": "A mark that belongs to them.",
+      "description": "The AC monogram gives Ananya and Chirag’s celebration its own signature. Personal, recognisable, and at the centre of the design."
+    },
+    {
+      "title": "A little sense of place.",
+      "description": "Palms, seashells, and coastal colours carry the feeling of the shore into the artwork. The setting becomes part of the story."
+    },
+    {
+      "title": "One story, in every detail.",
+      "description": "The complete composition brings the monogram, illustration, and names together into a visual identity for the couple’s celebration."
+    }
+  ]
+}

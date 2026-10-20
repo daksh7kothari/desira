@@ -1,52 +1,61 @@
 // Adapted from React Bits by David Haz. See THIRD_PARTY_NOTICES.md.
-'use client';
+"use client";
 
-import { isValidElement, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import {
+  isValidElement,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 
-import './Carousel.css';
+import "./Carousel.css";
 
-const useIsomorphicLayoutEffect = typeof window === 'undefined' ? useEffect : useLayoutEffect;
+const useIsomorphicLayoutEffect =
+  typeof window === "undefined" ? useEffect : useLayoutEffect;
 
 const DEFAULT_ITEMS = [];
 
 const THEMES = {
   dark: {
-    '--carousel-frame': 'rgba(38, 35, 46, 0.66)',
-    '--carousel-frame-edge': 'rgba(255, 255, 255, 0.08)',
-    '--carousel-frame-highlight': 'rgba(255, 255, 255, 0.07)',
-    '--carousel-frame-shadow': '0 22px 44px -20px rgba(0, 0, 0, 0.8), 0 6px 16px -8px rgba(0, 0, 0, 0.5)',
-    '--carousel-tile': 'linear-gradient(180deg, #3a3644 0%, #27242f 100%)',
-    '--carousel-tile-edge': 'rgba(255, 255, 255, 0.07)',
-    '--carousel-tile-highlight': 'rgba(255, 255, 255, 0.12)',
-    '--carousel-tile-shadow': '0 4px 10px -4px rgba(0, 0, 0, 0.7)',
-    '--carousel-ink': '#f4f4f5',
-    '--carousel-muted': 'rgba(244, 244, 245, 0.6)',
-    '--carousel-faint': 'rgba(255, 255, 255, 0.22)',
-    '--carousel-soft': 'rgba(255, 255, 255, 0.42)',
-    '--carousel-badge': 'rgba(255, 255, 255, 0.08)',
-    '--carousel-hover': 'brightness(1.12)',
-    '--carousel-press': 'brightness(0.8)'
+    "--carousel-frame": "rgba(38, 35, 46, 0.66)",
+    "--carousel-frame-edge": "rgba(255, 255, 255, 0.08)",
+    "--carousel-frame-highlight": "rgba(255, 255, 255, 0.07)",
+    "--carousel-frame-shadow":
+      "0 22px 44px -20px rgba(0, 0, 0, 0.8), 0 6px 16px -8px rgba(0, 0, 0, 0.5)",
+    "--carousel-tile": "linear-gradient(180deg, #3a3644 0%, #27242f 100%)",
+    "--carousel-tile-edge": "rgba(255, 255, 255, 0.07)",
+    "--carousel-tile-highlight": "rgba(255, 255, 255, 0.12)",
+    "--carousel-tile-shadow": "0 4px 10px -4px rgba(0, 0, 0, 0.7)",
+    "--carousel-ink": "#f4f4f5",
+    "--carousel-muted": "rgba(244, 244, 245, 0.6)",
+    "--carousel-faint": "rgba(255, 255, 255, 0.22)",
+    "--carousel-soft": "rgba(255, 255, 255, 0.42)",
+    "--carousel-badge": "rgba(255, 255, 255, 0.08)",
+    "--carousel-hover": "brightness(1.12)",
+    "--carousel-press": "brightness(0.8)",
   },
   light: {
-    '--carousel-frame': 'rgba(240, 240, 243, 0.8)',
-    '--carousel-frame-edge': 'rgba(24, 24, 27, 0.07)',
-    '--carousel-frame-highlight': 'rgba(255, 255, 255, 0.95)',
-    '--carousel-frame-shadow': '0 22px 44px -22px rgba(24, 24, 27, 0.3), 0 6px 16px -10px rgba(24, 24, 27, 0.16)',
-    '--carousel-tile': 'linear-gradient(180deg, #ffffff 0%, #f6f6f8 100%)',
-    '--carousel-tile-edge': 'rgba(24, 24, 27, 0.08)',
-    '--carousel-tile-highlight': 'rgba(255, 255, 255, 1)',
-    '--carousel-tile-shadow': '0 4px 10px -5px rgba(24, 24, 27, 0.25)',
-    '--carousel-ink': '#27272a',
-    '--carousel-muted': 'rgba(39, 39, 42, 0.6)',
-    '--carousel-faint': 'rgba(24, 24, 27, 0.16)',
-    '--carousel-soft': 'rgba(24, 24, 27, 0.34)',
-    '--carousel-badge': 'rgba(24, 24, 27, 0.05)',
-    '--carousel-hover': 'brightness(0.97)',
-    '--carousel-press': 'brightness(0.92)'
-  }
+    "--carousel-frame": "rgba(240, 240, 243, 0.8)",
+    "--carousel-frame-edge": "rgba(24, 24, 27, 0.07)",
+    "--carousel-frame-highlight": "rgba(255, 255, 255, 0.95)",
+    "--carousel-frame-shadow":
+      "0 22px 44px -22px rgba(24, 24, 27, 0.3), 0 6px 16px -10px rgba(24, 24, 27, 0.16)",
+    "--carousel-tile": "linear-gradient(180deg, #ffffff 0%, #f6f6f8 100%)",
+    "--carousel-tile-edge": "rgba(24, 24, 27, 0.08)",
+    "--carousel-tile-highlight": "rgba(255, 255, 255, 1)",
+    "--carousel-tile-shadow": "0 4px 10px -5px rgba(24, 24, 27, 0.25)",
+    "--carousel-ink": "#27272a",
+    "--carousel-muted": "rgba(39, 39, 42, 0.6)",
+    "--carousel-faint": "rgba(24, 24, 27, 0.16)",
+    "--carousel-soft": "rgba(24, 24, 27, 0.34)",
+    "--carousel-badge": "rgba(24, 24, 27, 0.05)",
+    "--carousel-hover": "brightness(0.97)",
+    "--carousel-press": "brightness(0.92)",
+  },
 };
 
-const EFFECTS = ['tilt', 'slide', 'scale', 'fade', 'cube'];
+const EFFECTS = ["tilt", "slide", "scale", "fade", "cube"];
 const STIFFNESS = 150;
 const DAMPING = 24;
 
@@ -54,13 +63,18 @@ const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 const wrap = (value, count) => ((value % count) + count) % count;
 const nearest = (offset, count) => wrap(offset + count / 2, count) - count / 2;
 
-const smootherstep = t => t * t * t * (t * (t * 6 - 15) + 10);
+const smootherstep = (t) => t * t * t * (t * (t * 6 - 15) + 10);
 
-const edgeMask = size => {
-  const stops = [0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1].map(t => [smootherstep(t).toFixed(3), (t * size).toFixed(1)]);
+const edgeMask = (size) => {
+  const stops = [0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1].map((t) => [
+    smootherstep(t).toFixed(3),
+    (t * size).toFixed(1),
+  ]);
   const left = stops.map(([alpha, x]) => `rgba(0, 0, 0, ${alpha}) ${x}px`);
-  const right = [...stops].reverse().map(([alpha, x]) => `rgba(0, 0, 0, ${alpha}) calc(100% - ${x}px)`);
-  return `linear-gradient(to right, ${[...left, ...right].join(', ')})`;
+  const right = [...stops]
+    .reverse()
+    .map(([alpha, x]) => `rgba(0, 0, 0, ${alpha}) calc(100% - ${x}px)`);
+  return `linear-gradient(to right, ${[...left, ...right].join(", ")})`;
 };
 
 const band = (value, max) => {
@@ -74,14 +88,14 @@ const pose = (index, position, s) => {
   const distance = Math.abs(offset);
   const near = Math.min(distance, 1);
   const result = {
-    transform: 'none',
+    transform: "none",
     opacity: 1,
     visible: true,
     layer: 10 - Math.min(9, Math.round(distance * 2)),
     shade: 0,
-    focus: 1
+    focus: 1,
   };
-  if (s.mode === 'fade') {
+  if (s.mode === "fade") {
     const half = Math.min(1, near * 2);
     result.visible = distance < 1;
     result.opacity = 1 - near * near * (3 - 2 * near);
@@ -89,7 +103,7 @@ const pose = (index, position, s) => {
     result.focus = 1 - half * half * (3 - 2 * half);
     return result;
   }
-  if (s.mode === 'cube') {
+  if (s.mode === "cube") {
     const half = s.cardWidth / 2;
     const turn = Math.sin(Math.PI * (position - Math.floor(position)));
     result.visible = distance < 1;
@@ -98,12 +112,13 @@ const pose = (index, position, s) => {
     return result;
   }
   let x = offset * s.span;
-  result.visible = x > -(s.inset + s.cardWidth + 2) && x < s.width + s.bleed * 2 - s.inset + 2;
+  result.visible =
+    x > -(s.inset + s.cardWidth + 2) && x < s.width + s.bleed * 2 - s.inset + 2;
   result.focus = 1 - near * near * (3 - 2 * near);
-  if (s.mode === 'tilt') {
+  if (s.mode === "tilt") {
     result.visible = result.visible && distance < 1;
     result.transform = `translate3d(${x}px, 0, 0) rotateY(${-clamp(offset, -1, 1) * 90}deg)`;
-  } else if (s.mode === 'scale') {
+  } else if (s.mode === "scale") {
     x -= Math.sign(offset) * near * s.cardWidth * 0.06;
     result.transform = `translate3d(${x}px, 0, 0) scale(${1 - 0.12 * near})`;
     result.opacity = 1 - 0.5 * near;
@@ -115,34 +130,67 @@ const pose = (index, position, s) => {
 
 const keyOf = (item, index) => {
   if (isValidElement(item)) return item.key ?? index;
-  if (typeof item === 'object' && item?.id != null) return item.id;
+  if (typeof item === "object" && item?.id != null) return item.id;
   return index;
 };
 
 const Chevron = ({ flip }) => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" style={{ transform: flip ? "rotate(180deg)" : undefined }}><path d="M4 12h16m-6-6 6 6-6 6" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg>
+  <svg
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    aria-hidden="true"
+    style={{ transform: flip ? "rotate(180deg)" : undefined }}
+  >
+    <path
+      d="M4 12h16m-6-6 6 6-6 6"
+      stroke="currentColor"
+      strokeWidth="1.7"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
 );
 
 const Card = ({ item, round, compact }) => {
   if (isValidElement(item)) {
     return (
-      <div className={`carousel-card is-custom${round ? ' is-round' : ''}`}>
+      <div className={`carousel-card is-custom${round ? " is-round" : ""}`}>
         {item}
         <span className="carousel-card-rim" />
       </div>
     );
   }
-  const { image, alt = '', icon: mark, title, description } = typeof item === 'string' ? { image: item } : (item ?? {});
+  const {
+    image,
+    alt = "",
+    icon: mark,
+    title,
+    description,
+  } = typeof item === "string" ? { image: item } : (item ?? {});
   const text = Boolean(title || description);
   return (
-    <div className={`carousel-card${image ? ' has-image' : ''}${round ? ' is-round' : ''}`}>
-      {image && <img className="carousel-image" src={image} alt={alt} draggable={false} decoding="async" />}
+    <div
+      className={`carousel-card${image ? " has-image" : ""}${round ? " is-round" : ""}`}
+    >
+      {image && (
+        <img
+          className="carousel-image"
+          src={image}
+          alt={alt}
+          draggable={false}
+          decoding="async"
+        />
+      )}
       {image && text && <span className="carousel-scrim" />}
       {mark && <span className="carousel-icon">{mark}</span>}
       {text && (
         <div className="carousel-text">
           {title && <div className="carousel-title">{title}</div>}
-          {description && !compact && <p className="carousel-description">{description}</p>}
+          {description && !compact && (
+            <p className="carousel-description">{description}</p>
+          )}
         </div>
       )}
       <span className="carousel-card-rim" />
@@ -158,8 +206,8 @@ export default function Carousel({
   gap = 16,
   radius = 12,
   frame = true,
-  effect = 'tilt',
-  indicator = 'dots',
+  effect = "tilt",
+  indicator = "dots",
   arrows = false,
   autoplay = false,
   autoplayDelay = 3000,
@@ -168,14 +216,14 @@ export default function Carousel({
   draggable = true,
   round = false,
   initialIndex = 0,
-  theme = 'dark',
+  theme = "dark",
   onChange,
-  className = '',
-  style
+  className = "",
+  style,
 }) {
   const count = items.length;
-  const mode = EFFECTS.includes(effect) ? effect : 'tilt';
-  const stacked = mode === 'fade' || mode === 'cube';
+  const mode = EFFECTS.includes(effect) ? effect : "tilt";
+  const stacked = mode === "fade" || mode === "cube";
   const rootRef = useRef(null);
   const stageRef = useRef(null);
   const viewportRef = useRef(null);
@@ -188,9 +236,15 @@ export default function Carousel({
   onChangeRef.current = onChange;
   const ratio = clamp(aspectRatio, 0.3, 4);
   const maxWidth =
-    typeof baseWidth === 'number' && round && frame ? 20 + (baseWidth - 20) * Math.min(1, 1 / ratio) : baseWidth;
-  const [width, setWidth] = useState(typeof maxWidth === 'number' ? maxWidth - (frame ? 20 : 0) : 300);
-  const [active, setActive] = useState(() => clamp(Math.round(initialIndex), 0, Math.max(0, count - 1)));
+    typeof baseWidth === "number" && round && frame
+      ? 20 + (baseWidth - 20) * Math.min(1, 1 / ratio)
+      : baseWidth;
+  const [width, setWidth] = useState(
+    typeof maxWidth === "number" ? maxWidth - (frame ? 20 : 0) : 300,
+  );
+  const [active, setActive] = useState(() =>
+    clamp(Math.round(initialIndex), 0, Math.max(0, count - 1)),
+  );
   const startRef = useRef(active);
   const reportedRef = useRef(active);
   const previousRef = useRef(active);
@@ -216,8 +270,8 @@ export default function Carousel({
     autoplayDelay: Math.max(600, autoplayDelay),
     pauseOnHover,
     draggable: draggable && count > 1,
-    bars: indicator === 'bars',
-    shade: theme === 'light' ? 0.3 : 0.6
+    bars: indicator === "bars",
+    shade: theme === "light" ? 0.3 : 0.6,
   };
   const settingsRef = useRef(settings);
   settingsRef.current = settings;
@@ -228,10 +282,12 @@ export default function Carousel({
     const viewport = viewportRef.current;
     if (!root || !stage || !viewport) return undefined;
 
-    const reducedMedia = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const reducedMedia = window.matchMedia("(prefers-reduced-motion: reduce)");
     let reduce = reducedMedia.matches;
-    const changeMotion = () => { reduce = reducedMedia.matches; };
-    reducedMedia.addEventListener('change', changeMotion);
+    const changeMotion = () => {
+      reduce = reducedMedia.matches;
+    };
+    reducedMedia.addEventListener("change", changeMotion);
     const state = {
       p: startRef.current,
       v: 0,
@@ -245,12 +301,13 @@ export default function Carousel({
       wheeling: false,
       wheelTimer: 0,
       suppress: false,
-      last: 0
+      last: 0,
     };
     let raf = 0;
     let alive = true;
 
-    const unit = s => (s.mode === 'fade' || s.mode === 'cube' ? s.cardWidth : s.span);
+    const unit = (s) =>
+      s.mode === "fade" || s.mode === "cube" ? s.cardWidth : s.span;
     const limit = (s, value) => (s.loop ? value : clamp(value, 0, s.count - 1));
 
     const apply = () => {
@@ -264,32 +321,37 @@ export default function Carousel({
         }
         slide.style.transform = next.transform;
         slide.style.opacity = String(next.opacity);
-        slide.style.visibility = next.visible ? 'visible' : 'hidden';
+        slide.style.visibility = next.visible ? "visible" : "hidden";
         slide.style.zIndex = String(next.layer);
         slide.inert = i !== state.shown;
-        slide.setAttribute('aria-hidden', String(i !== state.shown));
-        slide.style.setProperty('--carousel-focus', String(next.focus));
+        slide.setAttribute("aria-hidden", String(i !== state.shown));
+        slide.style.setProperty("--carousel-focus", String(next.focus));
         const shade = shadeRefs.current[i];
         if (shade) shade.style.opacity = String(next.shade);
       }
       if (!s.bars) return;
-      const progress = s.autoplay ? clamp(state.elapsed / s.autoplayDelay, 0, 1) : 1;
+      const progress = s.autoplay
+        ? clamp(state.elapsed / s.autoplayDelay, 0, 1)
+        : 1;
       for (let i = 0; i < s.count; i++) {
         const fill = fillRefs.current[i];
-        if (fill) fill.style.transform = `scaleX(${i < state.shown ? 1 : i === state.shown ? progress : 0})`;
+        if (fill)
+          fill.style.transform = `scaleX(${i < state.shown ? 1 : i === state.shown ? progress : 0})`;
       }
     };
 
     const announce = () => {
       const s = settingsRef.current;
       if (!s.count) return;
-      const index = s.loop ? wrap(Math.round(state.target), s.count) : clamp(Math.round(state.target), 0, s.count - 1);
+      const index = s.loop
+        ? wrap(Math.round(state.target), s.count)
+        : clamp(Math.round(state.target), 0, s.count - 1);
       if (index === state.shown) return;
       state.shown = index;
       setActive(index);
     };
 
-    const paused = s =>
+    const paused = (s) =>
       (s.pauseOnHover && state.hovered) ||
       state.focused ||
       Boolean(state.drag) ||
@@ -297,11 +359,13 @@ export default function Carousel({
       !state.visible ||
       document.hidden;
 
-    const tick = now => {
+    const tick = (now) => {
       raf = 0;
       if (!alive) return;
       const s = settingsRef.current;
-      const dt = state.last ? Math.min(0.05, (now - state.last) / 1000) : 1 / 60;
+      const dt = state.last
+        ? Math.min(0.05, (now - state.last) / 1000)
+        : 1 / 60;
       state.last = now;
       let busy = false;
       if (!state.drag?.moved && !state.wheeling) {
@@ -312,10 +376,14 @@ export default function Carousel({
           const steps = Math.ceil(dt * 240);
           const h = dt / steps;
           for (let k = 0; k < steps; k++) {
-            state.v += (STIFFNESS * (state.target - state.p) - DAMPING * state.v) * h;
+            state.v +=
+              (STIFFNESS * (state.target - state.p) - DAMPING * state.v) * h;
             state.p += state.v * h;
           }
-          if (Math.abs(state.target - state.p) < 0.0004 && Math.abs(state.v) < 0.004) {
+          if (
+            Math.abs(state.target - state.p) < 0.0004 &&
+            Math.abs(state.v) < 0.004
+          ) {
             state.p = state.target;
             state.v = 0;
           } else {
@@ -341,7 +409,7 @@ export default function Carousel({
       if (!raf && alive) raf = requestAnimationFrame(tick);
     };
 
-    const moveTo = target => {
+    const moveTo = (target) => {
       state.target = target;
       state.elapsed = 0;
       announce();
@@ -360,17 +428,22 @@ export default function Carousel({
       moveTo(next);
     };
 
-    const goTo = index => {
+    const goTo = (index) => {
       const s = settingsRef.current;
       if (!s.count) return;
       const goal = clamp(Math.round(index), 0, s.count - 1);
       const current = Math.round(state.target);
-      moveTo(s.loop ? current + nearest(goal - wrap(current, s.count), s.count) : goal);
+      moveTo(
+        s.loop
+          ? current + nearest(goal - wrap(current, s.count), s.count)
+          : goal,
+      );
     };
 
-    const onPointerDown = event => {
+    const onPointerDown = (event) => {
       const s = settingsRef.current;
-      if (!s.draggable || (event.pointerType === 'mouse' && event.button !== 0)) return;
+      if (!s.draggable || (event.pointerType === "mouse" && event.button !== 0))
+        return;
       state.drag = {
         id: event.pointerId,
         x: event.clientX,
@@ -378,11 +451,11 @@ export default function Carousel({
         p: state.p,
         from: 0,
         moved: false,
-        samples: []
+        samples: [],
       };
     };
 
-    const onPointerMove = event => {
+    const onPointerMove = (event) => {
       const drag = state.drag;
       if (!drag || event.pointerId !== drag.id) return;
       const s = settingsRef.current;
@@ -399,7 +472,7 @@ export default function Carousel({
         drag.p = state.p;
         drag.from = Math.round(state.target);
         viewport.setPointerCapture?.(event.pointerId);
-        viewport.dataset.dragging = 'true';
+        viewport.dataset.dragging = "true";
       }
       const raw = drag.p - (event.clientX - drag.x) / unit(s);
       state.p = s.loop ? raw : band(raw, s.count - 1);
@@ -411,7 +484,7 @@ export default function Carousel({
       apply();
     };
 
-    const onPointerUp = event => {
+    const onPointerUp = (event) => {
       const drag = state.drag;
       if (!drag || event.pointerId !== drag.id) return;
       state.drag = null;
@@ -425,9 +498,15 @@ export default function Carousel({
         state.suppress = false;
       }, 0);
       const s = settingsRef.current;
-      const sample = drag.samples.find(([time]) => event.timeStamp - time < 90) ?? [event.timeStamp, event.clientX];
+      const sample = drag.samples.find(
+        ([time]) => event.timeStamp - time < 90,
+      ) ?? [event.timeStamp, event.clientX];
       const elapsed = Math.max(16, event.timeStamp - sample[0]);
-      const velocity = clamp(((sample[1] - event.clientX) / elapsed) * (1000 / unit(s)), -12, 12);
+      const velocity = clamp(
+        ((sample[1] - event.clientX) / elapsed) * (1000 / unit(s)),
+        -12,
+        12,
+      );
       const travelled = state.p - drag.from;
       let target = Math.round(state.p + velocity * 0.2);
       if (target === drag.from) {
@@ -440,16 +519,17 @@ export default function Carousel({
       moveTo(target);
     };
 
-    const onClickCapture = event => {
+    const onClickCapture = (event) => {
       if (!state.suppress) return;
       event.preventDefault();
       event.stopPropagation();
       state.suppress = false;
     };
 
-    const onWheel = event => {
+    const onWheel = (event) => {
       const s = settingsRef.current;
-      if (!s.draggable || Math.abs(event.deltaX) <= Math.abs(event.deltaY)) return;
+      if (!s.draggable || Math.abs(event.deltaX) <= Math.abs(event.deltaY))
+        return;
       event.preventDefault();
       const raw = state.p + event.deltaX / unit(s);
       state.p = s.loop ? raw : clamp(raw, -0.15, s.count - 0.85);
@@ -465,15 +545,20 @@ export default function Carousel({
       }, 120);
     };
 
-    const onKeyDown = event => {
-      if (event.target instanceof Element && event.target.closest('input, textarea, select, [contenteditable="true"]'))
+    const onKeyDown = (event) => {
+      if (
+        event.target instanceof Element &&
+        event.target.closest(
+          'input, textarea, select, [contenteditable="true"]',
+        )
+      )
         return;
       const s = settingsRef.current;
       const keys = {
         ArrowRight: () => step(1),
         ArrowLeft: () => step(-1),
         Home: () => goTo(0),
-        End: () => goTo(s.count - 1)
+        End: () => goTo(s.count - 1),
       };
       if (!keys[event.key]) return;
       event.preventDefault();
@@ -491,13 +576,15 @@ export default function Carousel({
 
     const onFocusIn = () => {
       try {
-        state.focused = root.matches(':focus-visible') || Boolean(root.querySelector(':focus-visible'));
+        state.focused =
+          root.matches(":focus-visible") ||
+          Boolean(root.querySelector(":focus-visible"));
       } catch {
         state.focused = false;
       }
     };
 
-    const onFocusOut = event => {
+    const onFocusOut = (event) => {
       if (root.contains(event.relatedTarget)) return;
       state.focused = false;
       wake();
@@ -509,29 +596,29 @@ export default function Carousel({
       wake();
     };
 
-    const resizeObserver = new ResizeObserver(entries => {
+    const resizeObserver = new ResizeObserver((entries) => {
       const box = entries[entries.length - 1]?.contentRect;
       if (box) setWidth(Math.max(1, Math.round(box.width)));
     });
     resizeObserver.observe(stage);
-    const visibility = new IntersectionObserver(entries => {
-      state.visible = entries.some(entry => entry.isIntersecting);
+    const visibility = new IntersectionObserver((entries) => {
+      state.visible = entries.some((entry) => entry.isIntersecting);
       if (state.visible) wake();
     });
     visibility.observe(root);
 
-    viewport.addEventListener('pointerdown', onPointerDown);
-    viewport.addEventListener('pointermove', onPointerMove);
-    viewport.addEventListener('pointerup', onPointerUp);
-    viewport.addEventListener('pointercancel', onPointerUp);
-    viewport.addEventListener('click', onClickCapture, true);
-    viewport.addEventListener('wheel', onWheel, { passive: false });
-    root.addEventListener('keydown', onKeyDown);
-    root.addEventListener('mouseenter', onEnter);
-    root.addEventListener('mouseleave', onLeave);
-    root.addEventListener('focusin', onFocusIn);
-    root.addEventListener('focusout', onFocusOut);
-    document.addEventListener('visibilitychange', onVisibility);
+    viewport.addEventListener("pointerdown", onPointerDown);
+    viewport.addEventListener("pointermove", onPointerMove);
+    viewport.addEventListener("pointerup", onPointerUp);
+    viewport.addEventListener("pointercancel", onPointerUp);
+    viewport.addEventListener("click", onClickCapture, true);
+    viewport.addEventListener("wheel", onWheel, { passive: false });
+    root.addEventListener("keydown", onKeyDown);
+    root.addEventListener("mouseenter", onEnter);
+    root.addEventListener("mouseleave", onLeave);
+    root.addEventListener("focusin", onFocusIn);
+    root.addEventListener("focusout", onFocusOut);
+    document.addEventListener("visibilitychange", onVisibility);
 
     engineRef.current = {
       goTo,
@@ -545,30 +632,30 @@ export default function Carousel({
         announce();
         apply();
         wake();
-      }
+      },
     };
     engineRef.current.sync();
 
     return () => {
       alive = false;
-      reducedMedia.removeEventListener('change', changeMotion);
+      reducedMedia.removeEventListener("change", changeMotion);
       cancelAnimationFrame(raf);
       window.clearTimeout(state.wheelTimer);
       engineRef.current = null;
       resizeObserver.disconnect();
       visibility.disconnect();
-      viewport.removeEventListener('pointerdown', onPointerDown);
-      viewport.removeEventListener('pointermove', onPointerMove);
-      viewport.removeEventListener('pointerup', onPointerUp);
-      viewport.removeEventListener('pointercancel', onPointerUp);
-      viewport.removeEventListener('click', onClickCapture, true);
-      viewport.removeEventListener('wheel', onWheel);
-      root.removeEventListener('keydown', onKeyDown);
-      root.removeEventListener('mouseenter', onEnter);
-      root.removeEventListener('mouseleave', onLeave);
-      root.removeEventListener('focusin', onFocusIn);
-      root.removeEventListener('focusout', onFocusOut);
-      document.removeEventListener('visibilitychange', onVisibility);
+      viewport.removeEventListener("pointerdown", onPointerDown);
+      viewport.removeEventListener("pointermove", onPointerMove);
+      viewport.removeEventListener("pointerup", onPointerUp);
+      viewport.removeEventListener("pointercancel", onPointerUp);
+      viewport.removeEventListener("click", onClickCapture, true);
+      viewport.removeEventListener("wheel", onWheel);
+      root.removeEventListener("keydown", onKeyDown);
+      root.removeEventListener("mouseenter", onEnter);
+      root.removeEventListener("mouseleave", onLeave);
+      root.removeEventListener("focusin", onFocusIn);
+      root.removeEventListener("focusout", onFocusOut);
+      document.removeEventListener("visibilitychange", onVisibility);
     };
   }, []);
 
@@ -587,21 +674,27 @@ export default function Carousel({
     previousRef.current = active;
     const counter = counterRef.current;
     if (!counter?.animate || previous === active) return;
-    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
-    const delta = loop && count > 1 ? nearest(active - previous, count) : active - previous;
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+    const delta =
+      loop && count > 1 ? nearest(active - previous, count) : active - previous;
     counter.animate(
       [
         { transform: `translateY(${delta > 0 ? 70 : -70}%)`, opacity: 0 },
-        { transform: 'translateY(0)', opacity: 1 }
+        { transform: "translateY(0)", opacity: 1 },
       ],
-      { duration: 320, easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)' }
+      { duration: 320, easing: "cubic-bezier(0.2, 0.8, 0.2, 1)" },
     );
   }, [active, count, loop]);
 
-  const controls = count > 1 && (indicator !== 'none' || arrows);
+  const controls = count > 1 && (indicator !== "none" || arrows);
   const atStart = !settings.loop && active === 0;
   const atEnd = !settings.loop && active === count - 1;
-  const perspective = mode === 'cube' ? `${Math.round(cardWidth * 2.6)}px` : mode === 'tilt' ? '1000px' : undefined;
+  const perspective =
+    mode === "cube"
+      ? `${Math.round(cardWidth * 2.6)}px`
+      : mode === "tilt"
+        ? "1000px"
+        : undefined;
   const mask = clipped ? edgeMask(inset) : undefined;
 
   const controlsNode = controls ? (
@@ -618,15 +711,15 @@ export default function Carousel({
         </button>
       )}
 
-      {indicator === 'dots' && (
+      {indicator === "dots" && (
         <div className="carousel-dots">
           {items.map((_, index) => (
             <button
               key={index}
               type="button"
-              className={`carousel-dot${index === active ? ' is-active' : ''}`}
+              className={`carousel-dot${index === active ? " is-active" : ""}`}
               aria-label={`Go to slide ${index + 1}`}
-              aria-current={index === active ? 'true' : undefined}
+              aria-current={index === active ? "true" : undefined}
               onClick={() => engineRef.current?.goTo(index)}
             >
               <span className="carousel-dot-mark" />
@@ -635,7 +728,7 @@ export default function Carousel({
         </div>
       )}
 
-      {indicator === 'bars' && (
+      {indicator === "bars" && (
         <div className="carousel-bars">
           {items.map((_, index) => (
             <button
@@ -643,17 +736,17 @@ export default function Carousel({
               type="button"
               className="carousel-bar"
               aria-label={`Go to slide ${index + 1}`}
-              aria-current={index === active ? 'true' : undefined}
+              aria-current={index === active ? "true" : undefined}
               onClick={() => engineRef.current?.goTo(index)}
             >
               <span className="carousel-bar-track">
                 <span
-                  ref={element => {
+                  ref={(element) => {
                     fillRefs.current[index] = element;
                   }}
                   className="carousel-bar-fill"
                   style={{
-                    transform: `scaleX(${index < active ? 1 : index === active && !settings.autoplay ? 1 : 0})`
+                    transform: `scaleX(${index < active ? 1 : index === active && !settings.autoplay ? 1 : 0})`,
                   }}
                 />
               </span>
@@ -662,13 +755,13 @@ export default function Carousel({
         </div>
       )}
 
-      {indicator === 'counter' && (
+      {indicator === "counter" && (
         <div className="carousel-counter">
           <span ref={counterRef} className="carousel-counter-current">
-            {String(active + 1).padStart(2, '0')}
+            {String(active + 1).padStart(2, "0")}
           </span>
           <span>/</span>
-          <span>{String(count).padStart(2, '0')}</span>
+          <span>{String(count).padStart(2, "0")}</span>
         </div>
       )}
 
@@ -690,14 +783,14 @@ export default function Carousel({
   return (
     <div
       ref={rootRef}
-      className={`carousel-container${frame ? ' has-frame' : ''}${round ? ' is-round' : ''}${className ? ` ${className}` : ''}`}
+      className={`carousel-container${frame ? " has-frame" : ""}${round ? " is-round" : ""}${className ? ` ${className}` : ""}`}
       style={{
         ...(THEMES[theme] ?? THEMES.dark),
-        '--carousel-radius': `${round ? 9999 : Math.max(0, radius)}px`,
-        '--carousel-scale': clamp(cardWidth / 300, 0.86, 1),
-        width: typeof maxWidth === 'number' ? '100%' : maxWidth,
-        maxWidth: typeof maxWidth === 'number' ? maxWidth : undefined,
-        ...style
+        "--carousel-radius": `${round ? 9999 : Math.max(0, radius)}px`,
+        "--carousel-scale": clamp(cardWidth / 300, 0.86, 1),
+        width: typeof maxWidth === "number" ? "100%" : maxWidth,
+        maxWidth: typeof maxWidth === "number" ? maxWidth : undefined,
+        ...style,
       }}
       role="region"
       aria-roledescription="carousel"
@@ -708,15 +801,15 @@ export default function Carousel({
         <div
           ref={viewportRef}
           className="carousel-viewport"
-          data-draggable={settings.draggable ? 'true' : undefined}
-          aria-live={settings.autoplay ? 'off' : 'polite'}
+          data-draggable={settings.draggable ? "true" : undefined}
+          aria-live={settings.autoplay ? "off" : "polite"}
           style={{
             height: cardHeight,
             marginInline: bleed ? -bleed : undefined,
             perspective,
-            overflowX: clipped ? 'clip' : 'visible',
+            overflowX: clipped ? "clip" : "visible",
             maskImage: mask,
-            WebkitMaskImage: mask
+            WebkitMaskImage: mask,
           }}
         >
           {items.map((item, index) => {
@@ -724,7 +817,7 @@ export default function Carousel({
             return (
               <div
                 key={keyOf(item, index)}
-                ref={element => {
+                ref={(element) => {
                   slideRefs.current[index] = element;
                 }}
                 className="carousel-slide"
@@ -734,11 +827,11 @@ export default function Carousel({
                   height: cardHeight,
                   transform: initial.transform,
                   opacity: initial.opacity,
-                  visibility: initial.visible ? 'visible' : 'hidden',
+                  visibility: initial.visible ? "visible" : "hidden",
                   zIndex: initial.layer,
-                  '--carousel-focus': initial.focus
+                  "--carousel-focus": initial.focus,
                 }}
-                data-current={index === active ? 'true' : undefined}
+                data-current={index === active ? "true" : undefined}
                 role="group"
                 inert={index !== active}
                 aria-hidden={index !== active}
@@ -748,10 +841,14 @@ export default function Carousel({
                   if (index !== active) engineRef.current?.goTo(index);
                 }}
               >
-                <Card item={item} round={round} compact={round && cardWidth < 240} />
-                {mode === 'cube' && (
+                <Card
+                  item={item}
+                  round={round}
+                  compact={round && cardWidth < 240}
+                />
+                {mode === "cube" && (
                   <span
-                    ref={element => {
+                    ref={(element) => {
                       shadeRefs.current[index] = element;
                     }}
                     className="carousel-shade"
@@ -771,4 +868,3 @@ export default function Carousel({
     </div>
   );
 }
-

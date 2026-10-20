@@ -34,11 +34,7 @@
       "after": "/work/mora-coffee.svg",
       "application": "/work/mora-applications.svg",
       "applicationAlt": "Sample Mora Coffee menu, card and sticker applications",
-      "palette": [
-        "#234b3c",
-        "#c6d2ae",
-        "#f7f1de"
-      ]
+      "palette": ["#234b3c", "#c6d2ae", "#f7f1de"]
     }
   },
   {
@@ -76,11 +72,7 @@
       "after": "/work/after-hours.svg",
       "application": "/work/after-hours-applications.svg",
       "applicationAlt": "Sample After Hours campaign adapted to a landscape poster and a mobile story",
-      "palette": [
-        "#152b45",
-        "#ed7858",
-        "#fff4df"
-      ]
+      "palette": ["#152b45", "#ed7858", "#fff4df"]
     }
   },
   {

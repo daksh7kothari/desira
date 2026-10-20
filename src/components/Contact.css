@@ -1,4 +1,0 @@
-.contact { padding: 3rem 0; background: #f6f9ff }
-.contact-form { max-width: 600px; margin: 0 auto; display: grid; gap: .5rem }
-.contact-form input, .contact-form textarea { padding: .6rem; border: 1px solid #ddd; border-radius: 6px }
-.contact-form .btn { padding: .6rem 1rem; background: #0b6; border: none; color: white; border-radius: 6px; cursor: pointer }

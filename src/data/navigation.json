@@ -1,0 +1,35 @@
+{
+  "title": "A little creative exploring.",
+  "items": [
+    {
+      "text": "The work",
+      "marquee": "Ideas with character",
+      "link": "/work/",
+      "image": "/work/mora-coffee.svg"
+    },
+    {
+      "text": "What we do",
+      "marquee": "Let’s make it yours",
+      "link": "/#services",
+      "image": "/work/after-hours.svg"
+    },
+    {
+      "text": "The studio",
+      "marquee": "Meet Sejal & Desira",
+      "link": "/studio/",
+      "image": "/desira-studio-logo.png"
+    },
+    {
+      "text": "Explore",
+      "marquee": "Design you can get into",
+      "link": "/experiences/",
+      "image": "/work/coastal-wedding.webp"
+    },
+    {
+      "text": "Let’s talk",
+      "marquee": "Your next good idea",
+      "link": "/contact/",
+      "image": "/work/print-design.webp"
+    }
+  ]
+}

@@ -63,11 +63,11 @@
   -webkit-user-select: none;
 }
 
-.carousel-viewport[data-draggable='true'] {
+.carousel-viewport[data-draggable="true"] {
   cursor: grab;
 }
 
-.carousel-viewport[data-dragging='true'] {
+.carousel-viewport[data-dragging="true"] {
   cursor: grabbing;
 }
 
@@ -369,4 +369,3 @@
     background: var(--carousel-soft);
   }
 }
-

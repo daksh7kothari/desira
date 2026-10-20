@@ -1,0 +1,434 @@
+.home-addition-section,
+.home-featured-story {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 70px 0;
+}
+.home-addition-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  align-items: end;
+  margin-bottom: 36px;
+}
+.home-addition-heading > div:last-child {
+  max-width: 350px;
+}
+.home-addition-eyebrow {
+  font-size: 12px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #c9d4e5;
+}
+.home-addition-title {
+  font-size: clamp(36px, 4.6vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.05em;
+  white-space: pre-line;
+}
+.home-addition-description {
+  font-size: 15px;
+  line-height: 1.85;
+  color: #c9d4e5;
+  margin-top: 23px;
+}
+.home-addition-sample {
+  display: inline-block;
+  font-size: 11px;
+  line-height: 1.6;
+  color: #ffbd3d;
+  margin-top: 18px;
+}
+.home-addition-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 13px;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 7px;
+  margin-top: 25px;
+}
+.home-featured-story {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 70px;
+  align-items: center;
+}
+.home-featured-details {
+  list-style: none;
+  padding: 0;
+  margin: 25px 0;
+}
+.home-featured-details li {
+  padding: 12px 0;
+  border-bottom: 1px solid rgb(255 255 255/0.2);
+  font-size: 13px;
+}
+.home-featured-details span {
+  display: inline-block;
+  margin-right: 18px;
+  color: #ffbd3d;
+  font-size: 10px;
+}
+.home-featured-board {
+  position: relative;
+  min-height: 590px;
+  margin: 0;
+  background: #122e57;
+  padding: 42px;
+  isolation: isolate;
+  overflow: hidden;
+}
+.home-featured-back-paper {
+  position: absolute;
+  inset: 80px 40px 85px;
+  background: #f3e5c7;
+  transform: rotate(7deg);
+  color: #061c49;
+  padding: 24px;
+  font-size: 11px;
+}
+.home-featured-monogram {
+  position: absolute;
+  left: 25px;
+  bottom: 90px;
+  width: 150px;
+  height: 160px;
+  display: grid;
+  place-items: center;
+  background: #ffbd3d;
+  color: #061c49;
+  transform: rotate(-9deg);
+  font:
+    48px Georgia,
+    serif;
+  z-index: 2;
+  border: 8px solid #f8eedc;
+}
+.home-featured-artwork {
+  position: relative;
+  height: 420px;
+  width: 78%;
+  object-fit: contain;
+  background: #fff3d8;
+  margin: 0 0 0 auto;
+  padding: 8px;
+  transform: rotate(-4deg);
+}
+.home-featured-board figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 40px;
+  font-size: 12px;
+}
+.home-featured-board figcaption > span,
+.home-featured-sample {
+  font-size: 10px;
+  color: #c9d4e5;
+}
+.home-featured-sample {
+  display: block;
+  margin-top: 12px;
+}
+.home-sketchbook-collage {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+.home-sketchbook-collage figure {
+  margin: 0;
+  background: #112b54;
+}
+.home-sketchbook-collage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.home-sketchbook-collage figcaption {
+  padding: 15px;
+  font-size: 11px;
+  line-height: 1.6;
+}
+.home-sketchbook-poster {
+  grid-row: span 2;
+}
+.home-sketchbook-poster img {
+  aspect-ratio: 700/950;
+}
+.home-sketchbook-letterform img {
+  aspect-ratio: 4/3;
+}
+.home-sketchbook-note {
+  background: #ffbd3d;
+  color: #061c49;
+  padding: 30px;
+  min-height: 230px;
+  transform: rotate(2deg);
+}
+.home-sketchbook-note > span,
+.home-sketchbook-note small {
+  font-size: 10px;
+}
+.home-sketchbook-note p {
+  font-size: 32px;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  white-space: pre-line;
+  margin: 28px 0;
+}
+.home-sketchbook-palette > p {
+  font-size: 11px;
+  margin: 16px 0;
+}
+.home-sketchbook-palette > div {
+  display: flex;
+  min-height: 160px;
+}
+.home-sketchbook-palette > div > div {
+  flex: 1;
+  padding: 12px 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 11px;
+}
+.home-sketchbook-palette small {
+  font-size: 9px;
+}
+.home-sketchbook-illustration img {
+  aspect-ratio: 1.1;
+  object-position: center 35%;
+}
+.home-sketchbook-illustration figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.home-sketchbook-illustration small {
+  font-size: 9px;
+  color: #c9d4e5;
+}
+.home-design-notes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+.home-design-note-image {
+  aspect-ratio: 10/7;
+  background: #f8eedc;
+  overflow: hidden;
+}
+.home-design-note-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.home-design-note-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 22px 0 15px;
+  color: #c9d4e5;
+  font-size: 10px;
+}
+.home-design-note h3 {
+  font-size: 25px;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+}
+.home-design-note p {
+  font-size: 13px;
+  color: #c9d4e5;
+  line-height: 1.8;
+  margin-top: 18px;
+}
+.design-note-page-heading {
+  max-width: 920px;
+  padding: 35px 0;
+}
+.design-note-page-heading h1 {
+  font-size: clamp(44px, 6vw, 82px);
+  line-height: 1.04;
+  letter-spacing: -0.05em;
+}
+.design-note-page-heading > p {
+  font-size: 18px;
+  color: #c9d4e5;
+  line-height: 1.8;
+  max-width: 650px;
+  margin-top: 24px;
+}
+.design-note-page-cover {
+  width: 100%;
+  max-height: 600px;
+  object-fit: contain;
+  background: #f8eedc;
+}
+.design-note-page-layout {
+  display: grid;
+  grid-template-columns: 2.1fr 1fr;
+  gap: 100px;
+  padding-top: 60px;
+}
+.design-note-page-body p {
+  font-size: 16px;
+  line-height: 1.9;
+  color: #c9d4e5;
+  margin: 20px 0;
+  max-width: 680px;
+}
+.design-note-page-body .design-note-page-intro {
+  font-size: 20px;
+  color: #fff;
+}
+.design-note-page-body section {
+  margin-top: 45px;
+}
+.design-note-page-body h2 {
+  font-size: 32px;
+  line-height: 1.14;
+  letter-spacing: -0.035em;
+}
+.design-note-page-body .design-note-takeaway {
+  padding: 22px;
+  border-left: 2px solid #ffbd3d;
+  background: #112b54;
+}
+.design-note-page-aside > p {
+  font-size: 12px;
+  color: #c9d4e5;
+  margin-bottom: 25px;
+}
+.design-note-page-aside > a {
+  display: block;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid rgb(255 255 255/0.2);
+}
+.design-note-page-aside img {
+  width: 100%;
+  aspect-ratio: 10/7;
+  object-fit: cover;
+}
+.design-note-page-aside span {
+  display: block;
+  font-size: 10px;
+  margin: 15px 0;
+}
+.design-note-page-aside h2 {
+  font-size: 24px;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+  margin-bottom: 14px;
+}
+@media (max-width: 1250px) {
+  .home-addition-section,
+  .home-featured-story {
+    margin-inline: 42px;
+  }
+}
+@media (max-width: 900px) {
+  .home-featured-story {
+    gap: 35px;
+  }
+  .home-featured-board {
+    padding: 30px;
+    min-height: 500px;
+  }
+  .home-featured-artwork {
+    height: 340px;
+  }
+  .home-sketchbook-collage {
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+  }
+  .home-sketchbook-poster {
+    grid-row: span 2;
+  }
+  .home-sketchbook-illustration {
+    grid-column: 1/-1;
+    max-width: 500px;
+  }
+  .home-design-notes-grid {
+    gap: 20px;
+  }
+  .home-design-note h3 {
+    font-size: 23px;
+  }
+  .design-note-page-layout {
+    gap: 40px;
+  }
+}
+@media (max-width: 640px) {
+  .home-addition-section,
+  .home-featured-story {
+    margin-inline: 22px;
+    padding: 46px 0;
+  }
+  .home-addition-heading,
+  .home-featured-story {
+    display: block;
+  }
+  .home-featured-depth {
+    margin-top: 35px;
+  }
+  .home-addition-title {
+    font-size: 42px;
+  }
+  .home-featured-board {
+    min-height: 490px;
+  }
+  .home-featured-monogram {
+    width: 120px;
+    height: 130px;
+    font-size: 36px;
+  }
+  .home-sketchbook-collage {
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+  .home-sketchbook-note {
+    grid-column: 1/-1;
+    min-height: 180px;
+    transform: none;
+  }
+  .home-sketchbook-note p {
+    font-size: 30px;
+    margin: 20px 0;
+  }
+  .home-sketchbook-palette {
+    grid-column: 1/-1;
+  }
+  .home-sketchbook-illustration {
+    grid-column: 1/-1;
+  }
+  .home-sketchbook-collage figcaption {
+    padding: 10px;
+    font-size: 10px;
+  }
+  .home-design-notes-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .home-design-note h3 {
+    font-size: 28px;
+  }
+  .design-note-page-layout {
+    grid-template-columns: 1fr;
+    padding-top: 30px;
+  }
+  .design-note-page-heading > p {
+    font-size: 15px;
+  }
+  .design-note-page-body p {
+    font-size: 15px;
+  }
+  .design-note-page-body .design-note-page-intro {
+    font-size: 18px;
+  }
+  .design-note-page-aside {
+    margin-top: 35px;
+  }
+}
