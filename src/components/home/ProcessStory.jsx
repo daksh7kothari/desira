@@ -65,7 +65,7 @@ export default function ProcessStory() {
       className="process-story"
       aria-labelledby="process-story-title"
     >
-      <div className="process-story-heading">
+      <div className="process-story-heading" data-reveal>
         <h2 id="process-story-title">
           {story.title.map((line) => <span key={line}>{line}</span>)}
         </h2>
@@ -110,6 +110,7 @@ export default function ProcessStory() {
             <li
               key={chapter.title}
               ref={(node) => { chapters.current[index] = node; }}
+              data-reveal
             >
               <span className="process-story-number" aria-hidden="true">0{index + 1}</span>
               <div className="process-story-chapter-copy">
@@ -124,7 +125,7 @@ export default function ProcessStory() {
           ))}
         </ol>
       </div>
-      <div className="process-story-end">
+      <div className="process-story-end" data-reveal>
         <p>{story.endNote}</p>
         <a className="text-link" href={`/work/${project.slug}/`}>
           {story.linkLabel}<Arrow diagonal />

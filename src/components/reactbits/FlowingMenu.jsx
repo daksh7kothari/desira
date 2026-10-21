@@ -574,6 +574,32 @@ function FlowingMenu({
     else kick();
   };
 
+  const onTouchMove = (event) => {
+    if (
+      event.touches.length !== 1 ||
+      !event.cancelable ||
+      !(event.target instanceof Element) ||
+      !event.target.closest(`.${LINK}`)
+    )
+      return;
+    const touch = event.touches[0];
+    const index = rowAt(touch.clientY);
+    if (index < 0) return;
+    event.preventDefault();
+    stopIntro();
+    cursor.current.y = touch.clientY - listRef.current.getBoundingClientRect().top;
+    if (index !== band.current.index)
+      goTo(index, halfOf(touch.clientY, index));
+    else kick();
+  };
+
+  useIsoLayoutEffect(() => {
+    const list = listRef.current;
+    if (!list) return undefined;
+    list.addEventListener("touchmove", onTouchMove, { passive: false });
+    return () => list.removeEventListener("touchmove", onTouchMove);
+  }, []);
+
   const onPointerLeave = (event) => {
     if (event.pointerType === "touch") return;
     const list = listRef.current;

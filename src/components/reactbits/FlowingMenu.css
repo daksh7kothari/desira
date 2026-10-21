@@ -53,7 +53,7 @@
   text-decoration: none;
   outline: none;
   cursor: pointer;
-  touch-action: pan-y pinch-zoom;
+  touch-action: pan-x pinch-zoom;
   transition: opacity 0.45s ease;
   -webkit-tap-highlight-color: transparent;
 }

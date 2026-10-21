@@ -467,14 +467,14 @@ export default function Carousel({
       if (!drag.moved) {
         const dx = event.clientX - drag.x;
         const dy = event.clientY - drag.y;
-        if (Math.abs(dx) < 6 && Math.abs(dy) < 6) return;
-        if (Math.abs(dy) > Math.abs(dx)) {
+        if (Math.hypot(dx, dy) < 10) return;
+        if (Math.abs(dy) > Math.abs(dx) * 1.15) {
           state.drag = null;
           wake();
           return;
         }
+        if (Math.abs(dx) < Math.abs(dy) * 1.15) return;
         drag.moved = true;
-        drag.x = event.clientX;
         drag.p = state.p;
         drag.from = Math.round(state.target);
         viewport.setPointerCapture?.(event.pointerId);
@@ -627,7 +627,6 @@ export default function Carousel({
     viewport.addEventListener("pointermove", onPointerMove);
     viewport.addEventListener("pointerup", onPointerUp);
     viewport.addEventListener("pointercancel", onPointerCancel);
-    viewport.addEventListener("lostpointercapture", onPointerCancel);
     viewport.addEventListener("click", onClickCapture, true);
     viewport.addEventListener("wheel", onWheel, { passive: false });
     root.addEventListener("keydown", onKeyDown);
@@ -666,7 +665,6 @@ export default function Carousel({
       viewport.removeEventListener("pointermove", onPointerMove);
       viewport.removeEventListener("pointerup", onPointerUp);
       viewport.removeEventListener("pointercancel", onPointerCancel);
-      viewport.removeEventListener("lostpointercapture", onPointerCancel);
       viewport.removeEventListener("click", onClickCapture, true);
       viewport.removeEventListener("wheel", onWheel);
       root.removeEventListener("keydown", onKeyDown);
