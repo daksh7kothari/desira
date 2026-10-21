@@ -110,18 +110,21 @@
 }
 
 .wedding-pages {
+  position: relative;
   background: var(--story-navy);
   color: #fff;
-  padding-inline: max(42px, calc((100vw - 1320px) / 2));
+}
+
+.wedding-pages-stage {
+  padding: 10svh max(42px, calc((100vw - 1320px) / 2));
 }
 
 .wedding-page {
   display: grid;
   grid-template-columns: minmax(220px, 0.56fr) minmax(0, 1.44fr);
   gap: clamp(40px, 7vw, 110px);
-  align-items: start;
-  min-height: 108svh;
-  padding: 10svh 0;
+  align-items: center;
+  min-height: 80svh;
   border-bottom: 1px solid rgb(255 255 255 / 16%);
 }
 
@@ -130,9 +133,7 @@
 }
 
 .wedding-page-copy {
-  position: sticky;
-  top: 120px;
-  padding-top: 16px;
+  align-self: center;
 }
 
 .wedding-page-copy > span {
@@ -159,9 +160,8 @@
 }
 
 .wedding-page-art {
-  min-height: 88svh;
+  min-height: 80svh;
   padding: clamp(18px, 3vw, 44px);
-  perspective: 1200px;
 }
 
 .wedding-page-art img {
@@ -172,6 +172,77 @@
   max-height: 80svh;
   object-fit: contain;
   box-shadow: 0 24px 56px rgb(0 0 0 / 24%);
+}
+
+.wedding-pages-track {
+  display: none;
+}
+
+.wedding-pages[data-enhanced="true"] {
+  display: grid;
+}
+
+.wedding-pages[data-enhanced="true"] .wedding-pages-stage,
+.wedding-pages[data-enhanced="true"] .wedding-pages-track {
+  grid-area: 1 / 1;
+}
+
+.wedding-pages[data-enhanced="true"] .wedding-pages-stage {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  align-self: start;
+  width: 100%;
+  height: 100svh;
+}
+
+.wedding-pages[data-enhanced="true"] .wedding-page {
+  position: absolute;
+  inset: 10svh max(42px, calc((100vw - 1320px) / 2));
+  min-height: 0;
+  border: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 320ms ease,
+    visibility 320ms;
+}
+
+.wedding-pages[data-enhanced="true"] .wedding-page.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.wedding-pages[data-enhanced="true"] .wedding-page-copy,
+.wedding-pages[data-enhanced="true"] .wedding-page-art {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 380ms ease,
+    transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wedding-pages[data-enhanced="true"] .wedding-page.is-active .wedding-page-copy,
+.wedding-pages[data-enhanced="true"] .wedding-page.is-active .wedding-page-art {
+  opacity: 1;
+  transform: none;
+}
+
+.wedding-pages[data-enhanced="true"] .wedding-page-art {
+  height: 80svh;
+  min-height: 0;
+}
+
+.wedding-pages[data-enhanced="true"] .wedding-pages-track {
+  display: grid;
+  height: calc(var(--wedding-page-count) * 100svh);
+  pointer-events: none;
+}
+
+.wedding-pages-track > span {
+  min-height: 100svh;
 }
 
 .wedding-story-close {
@@ -293,28 +364,6 @@
   }
 }
 
-@supports (animation-timeline: view()) {
-  .wedding-page-art img {
-    transform-origin: 50% 0;
-    animation: invitation-page-open linear both;
-    animation-timeline: view();
-    animation-range: entry 5% cover 32%;
-  }
-
-  @keyframes invitation-page-open {
-    from {
-      clip-path: inset(0 0 94% 0);
-      filter: blur(2px);
-      transform: translateY(34px) rotateX(-5deg);
-    }
-    to {
-      clip-path: inset(0);
-      filter: blur(0);
-      transform: translateY(0) rotateX(0);
-    }
-  }
-}
-
 @media (max-width: 960px) {
   .wedding-story-hero {
     grid-template-columns: minmax(230px, 0.7fr) minmax(360px, 1.3fr);
@@ -375,39 +424,56 @@
   }
 
   .wedding-pages {
-    padding-inline: 22px;
+    min-height: 100svh;
+  }
+
+  .wedding-pages-stage {
+    padding: 82px 16px 22px;
   }
 
   .wedding-page {
-    grid-template-columns: 1fr;
-    gap: 28px;
-    min-height: auto;
-    padding: 72px 0;
+    grid-template-columns: minmax(104px, 0.68fr) minmax(0, 1.32fr);
+    gap: 14px;
+    min-height: calc(100svh - 104px);
   }
 
   .wedding-page-copy {
-    position: static;
-    padding: 0;
+    min-width: 0;
+  }
+
+  .wedding-page-copy > span {
+    margin-bottom: 14px;
+    font-size: 9px;
   }
 
   .wedding-page-copy h2 {
-    max-width: 12ch;
-    font-size: 44px;
+    max-width: 8ch;
+    font-size: clamp(22px, 7vw, 30px);
+    line-height: 1.02;
   }
 
   .wedding-page-copy p {
-    margin-top: 20px;
-    font-size: 13px;
+    margin-top: 14px;
+    font-size: 11px;
+    line-height: 1.55;
   }
 
   .wedding-page-art {
-    min-height: 0;
-    padding: 14px;
+    min-height: calc(100svh - 104px);
+    padding: 8px;
   }
 
   .wedding-page-art img {
     width: 100%;
-    max-height: none;
+    max-height: calc(100svh - 128px);
+  }
+
+  .wedding-pages[data-enhanced="true"] .wedding-page {
+    inset: 82px 16px 22px;
+  }
+
+  .wedding-pages[data-enhanced="true"] .wedding-page-art {
+    height: calc(100svh - 104px);
   }
 
   .wedding-story-close {
@@ -458,6 +524,13 @@
     animation: none;
     clip-path: none;
     filter: none;
+    transform: none;
+    transition: none;
+  }
+
+  .wedding-pages[data-enhanced="true"] .wedding-page,
+  .wedding-pages[data-enhanced="true"] .wedding-page-copy,
+  .wedding-pages[data-enhanced="true"] .wedding-page-art {
     transform: none;
     transition: none;
   }

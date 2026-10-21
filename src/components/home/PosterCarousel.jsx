@@ -79,6 +79,7 @@ const posterItems = [
 export default function PosterCarousel() {
   return (
     <section
+      id="poster-carousel"
       className="poster-carousel-section"
       aria-labelledby="poster-carousel-title"
     >

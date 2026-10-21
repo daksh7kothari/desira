@@ -23,7 +23,7 @@
   pointer-events: none;
 }
 
-@media (max-width: 760px), (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: reduce) {
   .scroll-stack__slot {
     position: relative;
     top: auto !important;

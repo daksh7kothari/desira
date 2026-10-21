@@ -1,78 +1,132 @@
 [
   {
-    "slug": "mora-coffee",
-    "title": "A brand worth slowing down for.",
-    "discipline": "Logo & brand identity",
+    "slug": "popice-branding",
+    "title": "Popice: a brand made to melt hearts.",
+    "discipline": "Brand identity & campaign design",
     "category": "Brand & print",
     "service": "Logo & brand identity",
-    "image": "/work/mora-coffee.svg",
-    "width": 1440,
-    "height": 1080,
-    "alt": "Sample Mora Coffee identity board with a green wordmark, monogram and takeaway cup",
-    "sample": true,
-    "description": "Concept project: a fictional neighbourhood coffee brand, explored through a warm wordmark, a personal monogram and coordinated print applications.",
-    "storyTitle": "Familiar, with a little character.",
-    "story": "This sample identity explores how an unhurried coffee brand could feel across a wordmark, cup, menu and small print pieces. The fictional brief and artwork demonstrate the case-study format and can be replaced with a real Desira project.",
-    "caseStudy": {
-      "client": "Mora Coffee — fictional brand",
-      "scope": "Identity, packaging & print",
-      "brief": "Create a welcoming identity for a fictional neighbourhood coffee shop. The sample brief calls for something personal and recognisable, with enough flexibility for cups, menus and a small storefront.",
-      "challenge": "Make a quiet brand distinctive without relying on a loud colour palette or a complicated symbol.",
-      "direction": "A compact lowercase wordmark, a simple initial and a green-and-paper palette create a friendly, repeatable visual language.",
-      "decisions": [
-        "A soft serif wordmark gives the name an unhurried feel.",
-        "The initial becomes a compact mark for cups and stickers.",
-        "A limited palette connects every touchpoint."
-      ],
-      "deliverables": [
-        "Primary wordmark and compact mark",
-        "Colour and typography direction",
-        "Takeaway cup and sticker concepts",
-        "Menu and small-print applications"
-      ],
-      "before": "/work/mora-draft.svg",
-      "after": "/work/mora-coffee.svg",
-      "application": "/work/mora-applications.svg",
-      "applicationAlt": "Sample Mora Coffee menu, card and sticker applications",
-      "palette": ["#234b3c", "#c6d2ae", "#f7f1de"]
+    "image": "/client-work/popice-branding/01.webp",
+    "width": 1800,
+    "height": 1440,
+    "alt": "Popice ice-lolly packaging and product identity in vivid pink",
+    "description": "A playful identity for Popice, built across packaging, patterns, campaign graphics and digital formats.",
+    "storyTitle": "Bright, familiar and ready for summer.",
+    "story": "A rounded wordmark, repeating ice-lolly pattern and unapologetic pink palette give Popice a distinct visual voice. The system stays recognisable from packaging to banners and social posts.",
+    "gallery": {
+      "folder": "popice-branding",
+      "imageCount": 10
     }
   },
   {
-    "slug": "after-hours",
-    "title": "Turn the visual volume up.",
+    "slug": "crochetique-branding",
+    "title": "Crochetique: crafted into a complete identity.",
+    "discipline": "Brand identity & applications",
+    "category": "Brand & print",
+    "service": "Logo & brand identity",
+    "image": "/client-work/crochetique-branding/01.webp",
+    "width": 1800,
+    "height": 1200,
+    "alt": "Crochetique outdoor campaign mockup for a handmade crochet brand",
+    "description": "A complete identity for Crochetique, connecting its woven mark with packaging, editorial, outdoor and digital applications.",
+    "storyTitle": "A handmade idea, built to travel.",
+    "story": "The identity starts with an interlocking woven mark and a calm blue palette. From there, it expands into packaging, print, campaigns and web layouts without losing the warmth of the craft.",
+    "gallery": {
+      "folder": "crochetique-branding",
+      "imageCount": 20
+    }
+  },
+  {
+    "slug": "chennai-apparel-fair",
+    "title": "Chennai Apparel Association: fashion in motion.",
+    "discipline": "Event campaign & social design",
+    "category": "Events",
+    "service": "Event graphics",
+    "image": "/client-work/chennai-apparel-fair/01.webp",
+    "width": 1080,
+    "height": 1350,
+    "alt": "Chennai Apparel Association garment fair campaign poster",
+    "description": "A broad campaign system for Chennai Apparel Association, spanning social media, venue graphics and trade-fair communication.",
+    "storyTitle": "One event, many points of contact.",
+    "story": "A high-contrast yellow and navy system keeps the fair recognisable across fashion-led social posts, stage graphics, welcome boards and large-format venue pieces.",
+    "gallery": {
+      "folder": "chennai-apparel-fair",
+      "imageCount": 24
+    },
+    "videos": [
+      "/client-work/chennai-apparel-fair/video-01.mp4",
+      "/client-work/chennai-apparel-fair/video-02.mp4"
+    ]
+  },
+  {
+    "slug": "toca-boca-carnival",
+    "title": "From screen to celebration.",
+    "discipline": "Event graphics · Toca Boca carnival",
+    "category": "Events",
+    "service": "Event graphics",
+    "image": "/client-work/toca-boca-carnival/01.webp",
+    "width": 540,
+    "height": 960,
+    "alt": "The entrance to Toca Boca kids carnival with colourful event signage and graphics by Desira",
+    "description": "Event graphics for the Toca Boca kids carnival in Chennai, taking Desira’s designs from the screen into a lively real-world celebration.",
+    "storyTitle": "Design that becomes a place.",
+    "story": "The visual system moved across entrances, directional signs, food stalls, pillars and sponsor displays. Each piece helped turn a large venue into one connected carnival world.",
+    "gallery": {
+      "folder": "toca-boca-carnival",
+      "imageCount": 35
+    }
+  },
+  {
+    "slug": "shah-shah-steels",
+    "title": "Shah & Shah Steels: clear information, built to last.",
+    "discipline": "Catalog & business stationery",
+    "category": "Brand & print",
+    "service": "Posters & print design",
+    "image": "/client-work/shah-shah-steels/01.webp",
+    "width": 1273,
+    "height": 1800,
+    "alt": "Shah and Shah Steels corporate catalog cover",
+    "description": "A structured catalog and stationery set that makes a technical product range easier to understand and navigate.",
+    "storyTitle": "Industrial detail, organised with care.",
+    "story": "A restrained blue-and-white system gives product photography, specifications and company information a consistent hierarchy across the catalog, business card, envelope and letterhead.",
+    "gallery": {
+      "folder": "shah-shah-steels",
+      "imageCount": 16
+    }
+  },
+  {
+    "slug": "avira-udaan",
+    "title": "Avira Udaan: a campaign across the whole event.",
+    "discipline": "Exhibition identity & event collateral",
+    "category": "Events",
+    "service": "Event graphics",
+    "image": "/client-work/avira-udaan/01.webp",
+    "width": 1273,
+    "height": 1800,
+    "alt": "Avira Udaan exhibition invitation with illustrated market stalls",
+    "description": "Invitations, guest announcements, sponsor communication and stall graphics for the Avira Udaan exhibition.",
+    "storyTitle": "A busy event, given one visual rhythm.",
+    "story": "The campaign balances practical information with a festive market illustration. Repeated colours and framing connect guest posts, invitations, sponsorship graphics and individual stall posters.",
+    "gallery": {
+      "folder": "avira-udaan",
+      "imageCount": 13
+    }
+  },
+  {
+    "slug": "poster-collection",
+    "title": "Posters made to stop the scroll.",
     "discipline": "Poster & campaign design",
     "category": "Brand & print",
     "service": "Posters & print design",
-    "image": "/work/after-hours.svg",
-    "width": 1440,
+    "image": "/client-work/poster-collection/01.webp",
+    "width": 1080,
     "height": 1080,
-    "alt": "Sample After Hours event poster with oversized cream typography on navy and coral",
-    "sample": true,
-    "description": "Concept project: a fictional arts-and-music event, presented through bold poster typography and a coordinated campaign direction.",
-    "storyTitle": "A clear message, with more energy.",
-    "story": "This fictional campaign explores how a simple type-led idea can move from a poster to different promotional formats. It is sample content for reviewing the website and does not represent a real client or event.",
-    "caseStudy": {
-      "client": "After Hours — fictional event",
-      "scope": "Poster, campaign & social formats",
-      "brief": "Develop a bold visual direction for a fictional evening of music and creative culture. The sample artwork needs to communicate the event name quickly and remain recognisable across print and social formats.",
-      "challenge": "Create impact at a glance while keeping the event name and supporting message easy to read.",
-      "direction": "Oversized typography and one repeating circular motif give the campaign a strong identity that adapts to different proportions.",
-      "decisions": [
-        "The event name carries the strongest visual weight.",
-        "A circular motif adds rhythm without competing with the message.",
-        "Navy, coral and cream keep the formats connected."
-      ],
-      "deliverables": [
-        "Main event poster concept",
-        "Typography and campaign motif",
-        "Landscape promotional layout",
-        "Social-story format"
-      ],
-      "before": "/work/after-hours-draft.svg",
-      "after": "/work/after-hours.svg",
-      "application": "/work/after-hours-applications.svg",
-      "applicationAlt": "Sample After Hours campaign adapted to a landscape poster and a mobile story",
-      "palette": ["#152b45", "#ed7858", "#fff4df"]
+    "alt": "Coffee poster with dimensional typography and a flying coffee splash",
+    "description": "A selected collection of campaign, announcement and promotional posters across different voices and audiences.",
+    "storyTitle": "A different voice for every message.",
+    "story": "From retail and recruitment to public announcements and cultural moments, each poster begins with the message and builds a visual world around it.",
+    "gallery": {
+      "folder": "poster-collection",
+      "imageCount": 10
     }
   },
   {
@@ -146,21 +200,6 @@
         "The palette changes with each event, held together by recurring florals, architecture and fine-line details."
       ]
     }
-  },
-  {
-    "slug": "toca-boca-carnival",
-    "title": "From screen to celebration.",
-    "discipline": "Event graphics · Toca Boca carnival",
-    "category": "Events",
-    "service": "Event graphics",
-    "image": "/work/carnival.webp",
-    "width": 540,
-    "height": 960,
-    "alt": "The entrance to Toca Boca kids carnival with colourful event signage and graphics by Desira",
-    "description": "Event graphics for the Toca Boca kids carnival in Chennai, taking Desira’s designs from the screen into a lively real-world celebration.",
-    "storyTitle": "Design that becomes a place.",
-    "story": "For Toca Boca’s kids carnival in Chennai, the work moved beyond the screen and into the event itself. Colourful graphics helped bring the experience to life, with Desira involved from concept through execution alongside the event team.",
-    "source": "https://www.instagram.com/desira.ft/reel/DUQRsSWDGQ_/"
   },
   {
     "slug": "celebration-invitations",

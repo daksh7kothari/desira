@@ -40,8 +40,13 @@ export default function NavigationOverlay({ onClose }) {
             />
           </a>
           <span id="studio-menu-title">{navigation.title}</span>
-          <button type="button" className="studio-menu-close" onClick={onClose}>
-            Close <span aria-hidden="true">×</span>
+          <button
+            type="button"
+            className="studio-menu-close"
+            aria-label="Close navigation"
+            onClick={onClose}
+          >
+            <span aria-hidden="true">×</span>
           </button>
         </div>
         <div className="studio-menu-body">

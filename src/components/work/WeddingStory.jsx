@@ -1,5 +1,6 @@
 import Arrow from "../ui/Arrow.jsx";
 import { projects } from "../../data/index.js";
+import { useEffect, useRef, useState } from "react";
 
 const pagePath = (story, index) =>
   story.pages?.[index] ||
@@ -16,7 +17,42 @@ export default function WeddingStory({ project, onEnquire }) {
   const related = projects.filter(
     (item) => item.weddingStory && item.slug !== project.slug,
   );
+  const detailPages = pages.slice(1);
+  const pagesSection = useRef(null);
+  const [activePage, setActivePage] = useState(0);
+  const [scrollReady, setScrollReady] = useState(false);
   const nextSection = pageCount > 1 ? "#invitation-pages" : "#story-notes";
+
+  useEffect(() => {
+    const section = pagesSection.current;
+    if (!section || detailPages.length === 0) return undefined;
+
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const next = Math.max(
+        0,
+        Math.min(
+          detailPages.length - 1,
+          Math.round(-section.getBoundingClientRect().top / window.innerHeight),
+        ),
+      );
+      setActivePage((current) => (current === next ? current : next));
+    };
+    const request = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+
+    setScrollReady(true);
+    update();
+    window.addEventListener("scroll", request, { passive: true });
+    window.addEventListener("resize", request);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", request);
+      window.removeEventListener("resize", request);
+    };
+  }, [detailPages.length]);
 
   return (
     <main className="wedding-story">
@@ -58,25 +94,39 @@ export default function WeddingStory({ project, onEnquire }) {
           id="invitation-pages"
           className="wedding-pages"
           aria-label="Invitation pages"
+          data-enhanced={scrollReady}
+          ref={pagesSection}
+          style={{ "--wedding-page-count": detailPages.length }}
         >
-          {pages.slice(1).map((page, index) => (
-            <article className="wedding-page" key={page.image} data-reveal>
-              <div className="wedding-page-copy">
-                <span>
-                  Page {index + 2} of {pageCount}
-                </span>
-                <h2>{page.title}</h2>
-                <p>{page.note}</p>
-              </div>
-              <div className="wedding-page-art">
-                <img
-                  src={page.image}
-                  alt={`${page.title} from ${project.title}`}
-                  loading="lazy"
-                />
-              </div>
-            </article>
-          ))}
+          <div className="wedding-pages-stage">
+            {detailPages.map((page, index) => (
+              <article
+                className={`wedding-page${index === activePage ? " is-active" : ""}`}
+                key={page.image}
+                aria-hidden={scrollReady && index !== activePage}
+              >
+                <div className="wedding-page-copy">
+                  <span>
+                    Page {index + 2} of {pageCount}
+                  </span>
+                  <h2>{page.title}</h2>
+                  <p>{page.note}</p>
+                </div>
+                <div className="wedding-page-art">
+                  <img
+                    src={page.image}
+                    alt={`${page.title} from ${project.title}`}
+                    loading={index === 0 ? "eager" : "lazy"}
+                  />
+                </div>
+              </article>
+            ))}
+          </div>
+          <div className="wedding-pages-track" aria-hidden="true">
+            {detailPages.map((page) => (
+              <span key={page.image} />
+            ))}
+          </div>
         </section>
       )}
 

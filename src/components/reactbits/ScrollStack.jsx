@@ -34,9 +34,7 @@ export default function ScrollStack({
 
     const slots = Array.from(node.querySelectorAll("[data-stack-slot]"));
     const cards = slots.map((slot) => slot.firstElementChild);
-    const staticLayout = window.matchMedia(
-      "(max-width: 760px), (prefers-reduced-motion: reduce)",
-    );
+    const staticLayout = window.matchMedia("(prefers-reduced-motion: reduce)");
     let frame = 0;
 
     const clear = () => {

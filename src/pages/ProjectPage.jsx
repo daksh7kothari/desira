@@ -1,6 +1,7 @@
 import { projects } from "../data/index.js";
 import Arrow from "../components/ui/Arrow.jsx";
 import CaseStudy from "../components/work/CaseStudy.jsx";
+import ProjectGallery from "../components/work/ProjectGallery.jsx";
 import WeddingStory from "../components/work/WeddingStory.jsx";
 import ScrollStory from "../components/experiences/ScrollStory.jsx";
 
@@ -34,6 +35,7 @@ export default function ProjectPage({ project, onEnquire }) {
         />
       </div>
       {project.caseStudy && <CaseStudy project={project} />}
+      <ProjectGallery project={project} />
       {project.slug === "coastal-celebration" && <ScrollStory />}
       <div className="project-story" data-reveal>
         <div>

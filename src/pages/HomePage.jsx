@@ -11,8 +11,10 @@ import "../styles/home-refresh.css";
 export default function HomePage() {
   return (
     <main className="home-page">
-      <Hero />
-      <PosterCarousel />
+      <div className="hero-transition">
+        <Hero />
+        <PosterCarousel />
+      </div>
       <Portfolio featured />
       <Services />
       <ProcessStory />

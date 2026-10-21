@@ -4,11 +4,17 @@ import copy from "../../data/home.json";
 import projects from "../../data/projects.json";
 import Arrow from "../ui/Arrow.jsx";
 
-const project = projects.find((item) => item.slug === "mora-coffee");
+const project = projects.find((item) => item.slug === "popice-branding");
 const artwork = [
-  { image: project.caseStudy.before, alt: "The early Mora Coffee wordmark exploration" },
-  { image: project.caseStudy.after, alt: project.alt },
-  { image: project.caseStudy.application, alt: project.caseStudy.applicationAlt },
+  {
+    image: "/client-work/popice-branding/03.webp",
+    alt: "The repeating ice-lolly pattern created for Popice",
+  },
+  {
+    image: "/client-work/popice-branding/05.webp",
+    alt: "The rounded Popice wordmark",
+  },
+  { image: project.image, alt: project.alt },
 ];
 
 export default function ProcessStory() {
