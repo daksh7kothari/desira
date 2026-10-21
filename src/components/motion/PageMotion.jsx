@@ -5,12 +5,16 @@ export default function PageMotion({ pathname }) {
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     const nodes = [...document.querySelectorAll("[data-reveal]")];
+    const fallbackTimers = new Map();
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(({ target, isIntersecting }) => {
           if (isIntersecting) {
             target.classList.remove("motion-pending");
             observer.unobserve(target);
+            const timer = fallbackTimers.get(target);
+            if (timer) window.clearTimeout(timer);
+            fallbackTimers.delete(target);
           }
         });
       },
@@ -21,6 +25,14 @@ export default function PageMotion({ pathname }) {
         if (node.getBoundingClientRect().top > window.innerHeight) {
           node.classList.add("motion-pending");
           observer.observe(node);
+          fallbackTimers.set(
+            node,
+            window.setTimeout(() => {
+              node.classList.remove("motion-pending");
+              observer.unobserve(node);
+              fallbackTimers.delete(node);
+            }, 2600),
+          );
         }
       });
     const revealAll = () => {
@@ -44,6 +56,8 @@ export default function PageMotion({ pathname }) {
     reduced.addEventListener("change", revealAll);
     return () => {
       observer.disconnect();
+      fallbackTimers.forEach((timer) => window.clearTimeout(timer));
+      fallbackTimers.clear();
       cancelAnimationFrame(frame);
       window.removeEventListener("scroll", request);
       window.removeEventListener("resize", request);

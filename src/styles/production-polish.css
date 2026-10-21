@@ -1,0 +1,114 @@
+/* Production polish: calm, consistent entry motion and interaction feedback. */
+
+@keyframes production-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes production-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+main.detail-page > .back-link,
+main.collection-page > .collection-heading > .back-link,
+main.work-page > .collection-heading > .back-link {
+  animation: production-fade 700ms var(--ease-out, ease-out) both;
+}
+
+main.detail-page > .detail-heading,
+main.detail-page > .desk-heading,
+main.collection-page > .collection-heading,
+main.work-page > .collection-heading {
+  animation: production-rise 850ms 80ms var(--ease-out, ease-out) both;
+}
+
+main.detail-page > .detail-art,
+main.detail-page > .contact-layout,
+main.detail-page > .founder-layout,
+main.detail-page > .experience-grid,
+main.detail-page > .service-editorial,
+main.detail-page > .project-story,
+main.detail-page > .next-project,
+main.detail-page > .desk-stage,
+main.detail-page > .desk-controls,
+main.detail-page > .desk-project-links,
+main.design-note-page > .design-note-page-cover,
+main.design-note-page > .design-note-page-layout {
+  animation: production-rise 900ms 180ms var(--ease-out, ease-out) both;
+}
+
+main.not-found > * {
+  animation: production-rise 760ms 100ms var(--ease-out, ease-out) both;
+}
+
+/* All interactive buttons get a clear, brand-led hover state. */
+.button,
+.work-filters button,
+.desk-controls button,
+.showcase-controls button {
+  transition:
+    color 260ms ease,
+    background-color 260ms ease,
+    border-color 260ms ease,
+    box-shadow 260ms ease,
+    transform 260ms var(--ease-out, ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .button-gold:hover,
+  .button-gold:focus-visible {
+    color: var(--navy, #061c49);
+    background: color-mix(in srgb, var(--gold, #ffbd3d) 76%, white);
+    border-color: var(--navy, #061c49);
+    box-shadow: 0 12px 28px rgb(6 28 73 / 14%);
+  }
+
+  .button-navy:hover,
+  .button-navy:focus-visible {
+    color: var(--navy, #061c49);
+    background: var(--gold, #ffbd3d);
+    border-color: var(--gold, #ffbd3d);
+    box-shadow: 0 12px 28px rgb(6 28 73 / 16%);
+  }
+
+  .work-filters button:hover:not([aria-pressed="true"]),
+  .desk-controls button:hover,
+  .showcase-controls button:hover {
+    color: var(--navy, #061c49);
+    background: rgb(255 189 61 / 22%);
+    border-color: var(--gold, #ffbd3d);
+  }
+}
+
+.button:focus-visible,
+.work-filters button:focus-visible,
+.desk-controls button:focus-visible,
+.showcase-controls button:focus-visible,
+.service-row:focus-within,
+.faq-list summary:focus-visible {
+  outline: 3px solid rgb(255 189 61 / 72%);
+  outline-offset: 4px;
+}
+
+.button:active,
+.work-filters button:active,
+.desk-controls button:active,
+.showcase-controls button:active {
+  transform: translateY(1px) scale(0.985);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  main.detail-page > *,
+  main.collection-page > *,
+  main.work-page > *,
+  main.not-found > * {
+    animation: none !important;
+  }
+}

@@ -7,20 +7,24 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-.openai
+.openai/
+.codex/
+.agents/
+.claude/
+docs/
 *.openai
 *.playwright-mcp
 .playwright-mcp
 artifacts
 dist
 *.md
+!README.md
 skills.md
 THIRD_PARTY_NOTICES*
 node_modules
 dist
 dist-ssr
 *.local
-scripts
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

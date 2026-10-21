@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && node scripts/prerender.mjs",
+    "build:production": "node scripts/build-production.mjs",
+    "seo:check": "node scripts/validate-seo.mjs",
     "lint": "oxlint",
     "preview": "vite preview"
   },

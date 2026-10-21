@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { site, siteUrl, instagram } from "./data/index.js";
 import getPage from "./lib/getPage.js";
 import Header from "./components/layout/Header.jsx";
 import Footer from "./components/layout/Footer.jsx";
@@ -64,20 +63,6 @@ export default function App({ pathname = "/" }) {
           />
         )}
       </div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            name: site.name,
-            url: siteUrl,
-            logo: `${siteUrl}${site.assets.logo.src}`,
-            description: site.description,
-            sameAs: [instagram],
-          }).replaceAll("<", "\\u003c"),
-        }}
-      />
     </>
   );
 }
