@@ -19,7 +19,7 @@
     ]
   },
   "portfolio": {
-    "title": "A few good things.",
+    "title": "Beyond the Brief.",
     "description": "A selection from the studio.",
     "featuredSlugs": [
       "coastal-celebration",
@@ -33,7 +33,7 @@
     "fullDescription": "Identities, invitations, illustrations and experiments. Find something that feels like you."
   },
   "services": {
-    "title": "What we do.",
+    "title": "What we create.",
     "description": "From the first impression to the smallest detail.",
     "dialogTitle": "Find your kind of design.",
     "dialogDescription": "Choose a service to see what we can make together."
@@ -96,7 +96,7 @@
     ]
   },
   "faq": {
-    "title": "A little clarity.",
+    "title": "Know more about Desira.",
     "items": [
       {
         "question": "What can I work with Desira on?",

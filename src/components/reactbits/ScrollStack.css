@@ -1,0 +1,45 @@
+.scroll-stack,
+.scroll-stack__inner {
+  position: relative;
+}
+
+.scroll-stack__slot {
+  position: sticky;
+}
+
+.scroll-stack-card {
+  position: relative;
+  overflow: hidden;
+  transform-origin: 50% 0;
+  will-change: transform;
+}
+
+.scroll-stack-card__shade {
+  position: absolute;
+  z-index: 5;
+  inset: 0;
+  background: #061c49;
+  opacity: var(--scroll-stack-dim, 0);
+  pointer-events: none;
+}
+
+@media (max-width: 760px), (prefers-reduced-motion: reduce) {
+  .scroll-stack__slot {
+    position: relative;
+    top: auto !important;
+    margin-bottom: 16px !important;
+  }
+
+  .scroll-stack__gap {
+    display: none;
+  }
+
+  .scroll-stack-card {
+    transform: none !important;
+    will-change: auto;
+  }
+
+  .scroll-stack-card__shade {
+    display: none;
+  }
+}

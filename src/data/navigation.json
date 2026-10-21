@@ -1,35 +1,36 @@
 {
-  "title": "A little creative exploring.",
+  "title": "One page. Everything Desira.",
+  "note": "Start anywhere. The whole studio lives on one page.",
   "items": [
     {
-      "text": "The work",
+      "text": "Work",
       "marquee": "Ideas with character",
-      "link": "/work/",
+      "link": "/#work",
       "image": "/work/mora-coffee.svg"
     },
     {
-      "text": "What we do",
-      "marquee": "Let’s make it yours",
+      "text": "Services",
+      "marquee": "Find your kind of design",
       "link": "/#services",
       "image": "/work/after-hours.svg"
     },
     {
-      "text": "The studio",
-      "marquee": "Meet Sejal & Desira",
-      "link": "/studio/",
+      "text": "Process",
+      "marquee": "From feeling to finished piece",
+      "link": "/#process-story",
+      "image": "/work/print-design.webp"
+    },
+    {
+      "text": "Studio",
+      "marquee": "Meet Sejal and Desira",
+      "link": "/#studio",
       "image": "/desira-studio-logo.png"
     },
     {
-      "text": "Explore",
-      "marquee": "Design you can get into",
-      "link": "/experiences/",
-      "image": "/work/coastal-wedding.webp"
-    },
-    {
-      "text": "Let’s talk",
+      "text": "Start a project",
       "marquee": "Your next good idea",
-      "link": "/contact/",
-      "image": "/work/print-design.webp"
+      "link": "/#contact",
+      "image": "/work/coastal-wedding.webp"
     }
   ]
 }

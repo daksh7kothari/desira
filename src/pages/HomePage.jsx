@@ -3,15 +3,18 @@ import Portfolio from "../components/home/Portfolio.jsx";
 import Services from "../components/home/Services.jsx";
 import Studio from "../components/home/Studio.jsx";
 import ProcessStory from "../components/home/ProcessStory.jsx";
+import Questions from "../components/home/Questions.jsx";
+import "../styles/home-refresh.css";
 
 export default function HomePage() {
   return (
     <main className="home-page">
       <Hero />
-      <ProcessStory />
       <Portfolio featured />
       <Services />
+      <ProcessStory />
       <Studio />
+      <Questions />
     </main>
   );
 }

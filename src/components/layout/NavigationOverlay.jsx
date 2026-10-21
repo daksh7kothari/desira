@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import navigation from "../../data/navigation.json";
 import FlowingMenu from "../reactbits/FlowingMenu.jsx";
-import { experienceLinks, site, instagram } from "../../data/index.js";
+import { site, instagram } from "../../data/index.js";
 
 export default function NavigationOverlay({ onClose }) {
   const dialog = useRef(null);
@@ -32,7 +32,12 @@ export default function NavigationOverlay({ onClose }) {
       <div className="studio-menu-shell">
         <div className="studio-menu-top">
           <a href="/" onClick={onClose} aria-label="Desira home">
-            <img {...site.assets.navigationLogo} />
+            <img
+              src={site.assets.navigationLogo.src}
+              alt={site.assets.navigationLogo.alt}
+              width={site.assets.navigationLogo.width}
+              height={site.assets.navigationLogo.height}
+            />
           </a>
           <span id="studio-menu-title">{navigation.title}</span>
           <button type="button" className="studio-menu-close" onClick={onClose}>
@@ -58,16 +63,7 @@ export default function NavigationOverlay({ onClose }) {
           />
         </div>
         <div className="studio-menu-bottom">
-          <div>
-            <p>Explore the details</p>
-            <div className="studio-menu-services">
-              {experienceLinks.map((item) => (
-                <a key={item.href} href={item.href} onClick={onClose}>
-                  {item.title}
-                </a>
-              ))}
-            </div>
-          </div>
+          <p>{navigation.note}</p>
           <a
             className="studio-menu-social"
             href={instagram}
