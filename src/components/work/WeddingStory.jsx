@@ -1,0 +1,128 @@
+import Arrow from "../ui/Arrow.jsx";
+import { projects } from "../../data/index.js";
+
+const pagePath = (story, index) =>
+  story.pages?.[index] ||
+  `/wedding-invites/${story.folder}/page-${String(index + 1).padStart(2, "0")}.webp`;
+
+export default function WeddingStory({ project, onEnquire }) {
+  const story = project.weddingStory;
+  const pageCount = story.pages?.length || story.pageCount;
+  const pages = Array.from({ length: pageCount }, (_, index) => ({
+    image: pagePath(story, index),
+    title: story.pageTitles[index] || `Invitation page ${index + 1}`,
+    note: story.notes[index % story.notes.length],
+  }));
+  const related = projects.filter(
+    (item) => item.weddingStory && item.slug !== project.slug,
+  );
+  const nextSection = pageCount > 1 ? "#invitation-pages" : "#story-notes";
+
+  return (
+    <main className="wedding-story">
+      <div className="wedding-story-shell">
+        <a className="back-link" href="/work/?filter=Weddings">
+          ← All wedding projects
+        </a>
+        <header className="wedding-story-hero">
+          <div className="wedding-story-intro">
+            <p className="wedding-story-discipline">{project.discipline}</p>
+            <h1>{project.title}</h1>
+            <p>{project.description}</p>
+            <a className="text-link" href={nextSection}>
+              {pageCount > 1 ? "Open the full invitation" : "Explore the design"}
+              <Arrow diagonal />
+            </a>
+          </div>
+          <figure className="wedding-story-cover">
+            <div className="wedding-story-art">
+              <img
+                src={pages[0].image}
+                alt={project.alt}
+                width={project.width}
+                height={project.height}
+                fetchPriority="high"
+              />
+            </div>
+            <figcaption>
+              <span>Page 1 of {pageCount}</span>
+              <strong>{pages[0].title}</strong>
+              <p>{pages[0].note}</p>
+            </figcaption>
+          </figure>
+        </header>
+      </div>
+
+      {pageCount > 1 && (
+        <section
+          id="invitation-pages"
+          className="wedding-pages"
+          aria-label="Invitation pages"
+        >
+          {pages.slice(1).map((page, index) => (
+            <article className="wedding-page" key={page.image} data-reveal>
+              <div className="wedding-page-copy">
+                <span>
+                  Page {index + 2} of {pageCount}
+                </span>
+                <h2>{page.title}</h2>
+                <p>{page.note}</p>
+              </div>
+              <div className="wedding-page-art">
+                <img
+                  src={page.image}
+                  alt={`${page.title} from ${project.title}`}
+                  loading="lazy"
+                />
+              </div>
+            </article>
+          ))}
+        </section>
+      )}
+
+      <section id="story-notes" className="wedding-story-close">
+        <div>
+          <h2>{project.storyTitle}</h2>
+          <p>{project.story}</p>
+        </div>
+        <button
+          className="button button-navy"
+          onClick={() => onEnquire(project.service)}
+        >
+          Plan your invitation <Arrow diagonal />
+        </button>
+      </section>
+
+      <section className="wedding-related" aria-labelledby="more-weddings">
+        <div className="wedding-related-heading">
+          <h2 id="more-weddings">More wedding stories.</h2>
+          <p>Every invitation opens into its complete page-by-page story.</p>
+        </div>
+        <div className="wedding-related-grid">
+          {related.map((item) => (
+            <a
+              className="wedding-related-card"
+              href={`/work/${item.slug}/`}
+              key={item.slug}
+            >
+              <div>
+                <img
+                  src={item.image}
+                  alt={item.alt}
+                  width={item.width}
+                  height={item.height}
+                  loading="lazy"
+                />
+              </div>
+              <span>
+                <strong>{item.title}</strong>
+                <Arrow diagonal />
+              </span>
+              <small>{item.discipline}</small>
+            </a>
+          ))}
+        </div>
+      </section>
+    </main>
+  );
+}

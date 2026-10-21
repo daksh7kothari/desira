@@ -4,65 +4,6 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  html:not([data-intro="play"]) .header-wrap {
-    animation: navbar-shell-in 900ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
-  }
-
-  html:not([data-intro="play"]) .navigation > * {
-    animation: navbar-item-in 780ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
-  }
-
-  html:not([data-intro="play"]) .navigation > :nth-child(1) {
-    animation-delay: 90ms;
-  }
-
-  html:not([data-intro="play"]) .navigation > :nth-child(2) {
-    animation-delay: 150ms;
-  }
-
-  html:not([data-intro="play"]) .navigation > :nth-child(3) {
-    animation-delay: 210ms;
-  }
-
-  html:not([data-intro="play"]) .navigation > :nth-child(4) {
-    animation-delay: 270ms;
-  }
-
-  html:not([data-intro="play"]) .navigation > :nth-child(5) {
-    animation-delay: 330ms;
-  }
-
-  html:not([data-intro="play"]) .navigation > :nth-child(6) {
-    animation-delay: 390ms;
-  }
-
-  html:not([data-intro="play"]) .home-page .hero-intro,
-  html:not([data-intro="play"]) .home-page .hero-copy-bottom,
-  html:not([data-intro="play"]) .home-page .hero-carousel-wrap {
-    animation: home-hero-fade 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-
-  html:not([data-intro="play"]) .home-page .hero-intro {
-    animation-delay: 60ms;
-  }
-
-  html:not([data-intro="play"]) .home-page .hero-copy-bottom {
-    animation-delay: 240ms;
-  }
-
-  html:not([data-intro="play"]) .home-page .hero-carousel-wrap {
-    animation-delay: 170ms;
-  }
-
-  html:not([data-intro="play"]) .home-page .hero-line > span {
-    animation: headline-in 1000ms cubic-bezier(0.16, 1, 0.3, 1) both;
-    animation-delay: 130ms;
-  }
-
-  html:not([data-intro="play"]) .home-page .hero-line:nth-child(2) > span {
-    animation-delay: 230ms;
-  }
-
   .home-page .work-section .section-heading[data-reveal],
   .home-page .work-chroma .chroma-card[data-reveal] {
     transition:
@@ -112,39 +53,6 @@
 
   .home-page .studio-copy[data-reveal] {
     transition-delay: 80ms;
-  }
-}
-
-@keyframes navbar-shell-in {
-  from {
-    opacity: 0;
-    transform: translateY(-18px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes navbar-item-in {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes home-hero-fade {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
   }
 }
 

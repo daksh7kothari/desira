@@ -11,6 +11,7 @@ import "./styles/minimal.css";
 import "./styles/interactions.css";
 import "./styles/home-motion.css";
 import "./styles/scroll-story.css";
+import "./styles/wedding-story.css";
 import "./styles/production-polish.css";
 
 const root = document.getElementById("root");

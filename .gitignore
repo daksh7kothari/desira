@@ -25,6 +25,11 @@ node_modules
 dist
 dist-ssr
 *.local
+/Wedding invites/
+/public/Chatgpt/
+.impeccable
+.impeccable/review/
+.impeccable/surfaces/
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

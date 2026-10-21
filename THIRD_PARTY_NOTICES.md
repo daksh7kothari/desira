@@ -2,7 +2,7 @@
 
 ## React Bits
 
-ChromaGrid, FlowingMenu, Carousel and ScrollStack in `src/components/reactbits/` are adapted from https://github.com/DavidHDev/react-bits at commit e12c22192ac7b4b452c5e2feb9b586d74765d696. Brand styling, inline SVG icons, local links, sample labels and accessibility adjustments are local modifications.
+ChromaGrid, FlowingMenu, Carousel and ScrollStack in `src/components/reactbits/` are adapted from https://github.com/DavidHDev/react-bits at commit e12c22192ac7b4b452c5e2feb9b586d74765d696. FlexCarousel is adapted from https://reactbits.dev/components/flex-carousel. Brand styling, inline SVG icons, local links, sample labels and accessibility adjustments are local modifications.
 
 MIT + Commons Clause License Condition v1.0
 

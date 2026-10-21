@@ -19,7 +19,7 @@
     ]
   },
   "portfolio": {
-    "title": "Beyond the Brief.",
+    "title": "Stories form studio.",
     "description": "A selection from the studio.",
     "featuredSlugs": [
       "coastal-celebration",
@@ -27,7 +27,7 @@
       "after-hours",
       "a-story-in-illustration"
     ],
-    "filters": ["All work", "Brand & print", "Invitations", "Events"],
+    "filters": ["All work", "Brand & print", "Weddings", "Events"],
     "allWorkLabel": "View all projects",
     "fullTitle": "Ideas with character.",
     "fullDescription": "Identities, invitations, illustrations and experiments. Find something that feels like you."

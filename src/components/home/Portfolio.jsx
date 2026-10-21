@@ -8,7 +8,13 @@ import Arrow from "../ui/Arrow.jsx";
 export default function Portfolio({ featured = false }) {
   const scene = useRef(null);
   useScrollScene(scene);
-  const [filter, setFilter] = useState(copy.portfolio.filters[0]);
+  const [filter, setFilter] = useState(() => {
+    if (featured || typeof window === "undefined") return copy.portfolio.filters[0];
+    const requested = new URLSearchParams(window.location.search).get("filter");
+    return copy.portfolio.filters.includes(requested)
+      ? requested
+      : copy.portfolio.filters[0];
+  });
   const selection = featured
     ? copy.portfolio.featuredSlugs
         .map((slug) => projects.find((project) => project.slug === slug))

@@ -1,4 +1,65 @@
 /* Homepage refresh: one clear journey and one authored scroll moment. */
+.instagram-feed-section {
+  display: flex;
+  min-height: 100svh;
+  /* max-height: 100svh; */
+  flex-direction: column;
+  padding: clamp(40px, 6vw, 88px) max(24px, calc((100vw - 1240px) / 2));
+  overflow: hidden;
+  background: #fff;
+  color: var(--brand-navy);
+}
+
+.instagram-feed__header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 28px;
+  max-width: 1240px;
+  margin: 0 auto clamp(24px, 3vw, 40px);
+}
+
+.instagram-feed__eyebrow {
+  margin-bottom: 16px;
+  color: rgb(6 28 73 / 0.66);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.instagram-feed__header h2 {
+  max-width: 680px;
+  color: var(--brand-navy);
+  font-size: clamp(48px, 7vw, 96px);
+}
+
+.instagram-feed__handle {
+  flex: 0 0 auto;
+  color: var(--brand-navy);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.instagram-feed__widget {
+  display: block;
+  flex: 0 0 63svh;
+  width: 100%;
+  height: 63vh;
+  min-height: 0;
+  overflow: hidden;
+  border: 0;
+}
+
+@media (max-width: 700px) {
+  .instagram-feed__header {
+    align-items: start;
+    flex-direction: column;
+  }
+}
+
 .header-wrap {
   position: sticky;
   top: 0;
@@ -8,25 +69,119 @@
   pointer-events: none;
 }
 
-.header-wrap .navigation {
-  width: 100%;
-  max-width: 1240px;
-  min-height: 76px;
-  justify-content: space-between;
-  padding: 0 15px 0 10px;
-  box-shadow: 0 18px 48px -34px rgb(6 28 73 / 0.55);
-  pointer-events: auto;
+.home-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 30;
+  padding-top: 18px;
+  background: transparent;
+  pointer-events: none;
+  transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.header-wrap .navigation > .brand {
-  width: 108px;
+.home-header.is-hidden {
+  transform: translateY(-120%);
+}
+
+.home-header .navigation {
+  opacity: 0;
+  pointer-events: auto;
+  animation: hero-logo-fade-in 4000ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  color: #fff;
+}
+
+.home-header .navigation > * {
+  opacity: 1;
+}
+
+.home-header .navigation::after {
+  display: none;
+}
+
+.hero-logo-stage {
+  position: relative;
+  display: grid;
+  min-height: 100svh;
+  place-items: center;
+  overflow: hidden;
+  background: var(--brand-navy);
+  color: var(--brand-gold);
+}
+
+.hero-logo-frame {
+  display: grid;
+  width: 100%;
+  place-items: center;
+}
+
+.hero-logo {
+  display: block;
+  width: 45%;
+  height: auto;
+  object-position: center;
+  animation: hero-logo-fade-in 4000ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes hero-logo-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 760px) {
+  .home-header {
+    padding: 10px 14px 0;
+  }
+
+  .hero-logo {
+    width: 42%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-header .navigation {
+    opacity: 1;
+    animation: none;
+  }
+
+  .home-header .navigation > * {
+    opacity: 1;
+  }
+
+  .hero-logo {
+    animation: none;
+  }
+}
+
+.header-wrap .navigation {
+  width: fit-content;
+  min-height: 0;
+  justify-content: center;
+  padding: 6px;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.72),
+    0 12px 32px -18px rgb(0 9 28 / 0.7);
+  background: rgb(255 255 255 / 0.3);
+  border: 1px solid rgb(255 255 255 / 0.55);
+  border-radius: 15px;
+  backdrop-filter: blur(18px) saturate(135%);
+  -webkit-backdrop-filter: blur(18px) saturate(135%);
+  pointer-events: auto;
 }
 
 .header-wrap .navigation > .menu-toggle {
   display: flex;
-  margin-left: auto;
-  min-width: 92px;
-  justify-content: flex-end;
+  min-width: 44px;
+  min-height: 44px;
+  margin: 0;
+  justify-content: center;
+  padding: 0;
+  border-radius: 10px;
+  color: inherit;
+  background: rgb(255 255 255 / 0.18);
 }
 
 .studio-menu-dialog .studio-menu-body {
@@ -746,13 +901,11 @@
   }
 
   .header-wrap .navigation {
-    min-height: 68px;
+    padding: 5px;
   }
 
-  .header-wrap .navigation > .brand,
-  .header-wrap .navigation > .brand img {
-    width: 82px;
-    height: auto;
+  .header-wrap .navigation {
+    min-height: 0;
   }
 
   .studio-menu-dialog .studio-menu-bottom > p {

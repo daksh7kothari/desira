@@ -79,7 +79,7 @@
     "slug": "coastal-celebration",
     "title": "A little coastal, a lot personal.",
     "discipline": "Wedding identity & stationery",
-    "category": "Invitations",
+    "category": "Weddings",
     "service": "Wedding invitations",
     "image": "/work/coastal-wedding.webp",
     "width": 1281,
@@ -87,7 +87,12 @@
     "alt": "Ananya and Chirag’s coastal wedding stationery, featuring a custom AC monogram, palms and seashells",
     "description": "A coastal-inspired wedding identity and stationery suite for Ananya and Chirag, with a custom monogram and details drawn from the shore.",
     "storyTitle": "Their story. A seaside state of mind.",
-    "story": "Soft coastal colours, seashells, palms, and a personal monogram bring the couple’s beach wedding vision into one visual world. The project connects invitations and welcome-kit details through a shared design language."
+    "story": "Soft coastal colours, seashells, palms, and a personal monogram bring the couple’s beach wedding vision into one visual world. The project connects invitations and welcome-kit details through a shared design language.",
+    "weddingStory": {
+      "pages": ["/work/coastal-wedding.webp"],
+      "pageTitles": ["A coastal first impression"],
+      "notes": ["The monogram, palms and shells set one visual language that can carry across the full celebration."]
+    }
   },
   {
     "slug": "print-stories",
@@ -106,18 +111,41 @@
   },
   {
     "slug": "a-story-in-illustration",
-    "title": "A love story, illustrated.",
-    "discipline": "Custom illustration & save-the-date",
-    "category": "Invitations",
+    "title": "Prerna & Rishabh: a celebration illustrated.",
+    "discipline": "Illustrated wedding invitation",
+    "category": "Weddings",
     "service": "Wedding invitations",
-    "image": "/work/illustrated-save-the-date.webp",
-    "width": 1280,
-    "height": 1600,
-    "alt": "A personalised illustrated save-the-date for Yash and Sakshi with a playful portrait and tropical details",
-    "description": "A personalised illustrated save-the-date for Yash and Sakshi, turning their wedding announcement into a character-filled keepsake.",
-    "storyTitle": "An announcement with character.",
-    "story": "A custom couple illustration makes this save-the-date feel personal from the first glance. A playful portrait, a clear announcement, and expressive details make space for the couple’s own personality.",
-    "source": "https://www.instagram.com/desira.ft/p/DRSMny6k6QS/"
+    "image": "/wedding-invites/prerna-rishabh/page-01.webp",
+    "width": 1600,
+    "height": 2845,
+    "alt": "Illustrated wedding invitation cover for Prerna and Rishabh",
+    "description": "A twelve-page invitation world for Prerna and Rishabh, with illustrated venues, ceremony scenes and a changing palette for every celebration.",
+    "storyTitle": "Twelve moments. One visual story.",
+    "story": "Each event receives its own illustrated setting while floral details, architectural references and a shared typographic rhythm keep the suite connected.",
+    "weddingStory": {
+      "folder": "prerna-rishabh",
+      "pageCount": 12,
+      "pageTitles": [
+        "The illustrated cover",
+        "The wedding ceremony",
+        "Grithpaan",
+        "Pattu & Paste",
+        "Rajwadi Raat",
+        "Phoolon Ki Holi",
+        "Mastani Shaam",
+        "Baraat Swagat",
+        "Garland Gala",
+        "The big day",
+        "Family blessings",
+        "With best compliments"
+      ],
+      "notes": [
+        "The opening turns the venue into the first piece of the couple's illustrated world.",
+        "Every ceremony gets a distinct scene, so guests can recognise the mood before reading the details.",
+        "Dates, times and venues stay clear while illustration carries the personality around them.",
+        "The palette changes with each event, held together by recurring florals, architecture and fine-line details."
+      ]
+    }
   },
   {
     "slug": "toca-boca-carnival",
@@ -138,7 +166,7 @@
     "slug": "celebration-invitations",
     "title": "Tradition, with a personal touch.",
     "discipline": "Custom invitation design",
-    "category": "Invitations",
+    "category": "Weddings",
     "service": "Wedding invitations",
     "image": "/work/wedding-invitation.webp",
     "width": 1200,
@@ -147,6 +175,11 @@
     "description": "A custom invitation that brings traditional motifs, floral detail, and a personal visual language together for a meaningful celebration.",
     "storyTitle": "Rooted in tradition. Made for today.",
     "story": "Cultural detail and a modern composition meet in this invitation project. The result brings the feeling of the occasion into the design through illustration, colour, and careful attention to the brief.",
-    "source": "https://www.instagram.com/desira.ft/p/DRCjh4vE_VE/"
+    "source": "https://www.instagram.com/desira.ft/p/DRCjh4vE_VE/",
+    "weddingStory": {
+      "pages": ["/work/wedding-invitation.webp"],
+      "pageTitles": ["Tradition, made personal"],
+      "notes": ["Floral illustration and traditional motifs frame the information without letting ornament overpower it."]
+    }
   }
 ]

@@ -1,9 +1,13 @@
 import { projects } from "../data/index.js";
 import Arrow from "../components/ui/Arrow.jsx";
 import CaseStudy from "../components/work/CaseStudy.jsx";
+import WeddingStory from "../components/work/WeddingStory.jsx";
 import ScrollStory from "../components/experiences/ScrollStory.jsx";
 
 export default function ProjectPage({ project, onEnquire }) {
+  if (project.weddingStory)
+    return <WeddingStory project={project} onEnquire={onEnquire} />;
+
   const next = projects[(projects.indexOf(project) + 1) % projects.length];
   return (
     <main className="detail-page">

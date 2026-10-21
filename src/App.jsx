@@ -4,7 +4,6 @@ import Header from "./components/layout/Header.jsx";
 import Footer from "./components/layout/Footer.jsx";
 import EnquiryDialog from "./components/forms/EnquiryDialog.jsx";
 import PageMotion from "./components/motion/PageMotion.jsx";
-import OpeningIntro from "./components/motion/OpeningIntro.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import WorkPage from "./pages/WorkPage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
@@ -45,7 +44,6 @@ export default function App({ pathname = "/" }) {
 
   return (
     <>
-      <OpeningIntro isHome={page.kind === "home"} />
       <div id="site-content">
         <PageMotion pathname={pathname} />
         <a href="#main-content" className="skip-link">

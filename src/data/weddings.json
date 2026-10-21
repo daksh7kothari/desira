@@ -1,0 +1,262 @@
+[
+  {
+    "slug": "shreyans-varisha-wedding",
+    "title": "Shreyans & Varisha: tradition, framed cinematically.",
+    "discipline": "Illustrated wedding invitation",
+    "category": "Weddings",
+    "service": "Wedding invitations",
+    "image": "/wedding-invites/shreyans-varisha/page-01.webp",
+    "width": 1600,
+    "height": 2134,
+    "alt": "Wedding invitation cover for Shreyans and Varisha",
+    "description": "A thirteen-page suite combining ceremonial imagery, ornate frames and event-led compositions.",
+    "storyTitle": "A new scene for every ceremony.",
+    "story": "Warm gold, floral borders and cinematic celebration scenes move through the schedule while the invitation stays recognisably one story.",
+    "weddingStory": {
+      "folder": "shreyans-varisha",
+      "pageCount": 13,
+      "pageTitles": ["An auspicious opening", "The wedding monogram", "The family invitation", "Shreyans & Varisha", "Ghee Pithi", "Reception", "Tamil Sapad", "Entertainment night", "Nikasi", "Baraat Prasthan", "Phere", "The two families", "Warm regards"],
+      "notes": ["Ornate frames give formal information the presence of a keepsake.", "Each ceremony receives its own scene while warm gold keeps the suite connected.", "Portrait-led pages turn the schedule into a sequence of recognisable moments."]
+    }
+  },
+  {
+    "slug": "sejal-aashish-wedding",
+    "title": "Sejal & Aashish: one celebration, many moods.",
+    "discipline": "Wedding invitation suite",
+    "category": "Weddings",
+    "service": "Wedding invitations",
+    "image": "/wedding-invites/sejal-aashish/page-01.webp",
+    "width": 1600,
+    "height": 2845,
+    "alt": "Wedding invitation cover for Sejal and Aashish",
+    "description": "A ten-page invitation that shifts from quiet ceremony to evening celebration without losing its garden setting.",
+    "storyTitle": "Connected by place and palette.",
+    "story": "Architectural frames, tropical details and a recurring monogram connect ten distinct event announcements.",
+    "weddingStory": {
+      "folder": "sejal-aashish",
+      "pageCount": 10,
+      "pageTitles": ["The garden cover", "The formal invitation", "Ghee Pithi", "DJ night", "Mehendi & Tamil Sapad", "Haldi", "Batwisi & Mayra", "Baraat, Sneh Milan & reception", "Phere & Vidaai", "Family details"],
+      "notes": ["The venue-inspired arch creates a recognisable frame from the first page.", "Colour and illustration shift with each function while the monogram anchors the suite.", "Large event names and compact details keep a busy celebration easy to scan."]
+    }
+  },
+  {
+    "slug": "dikshitha-varun-wedding",
+    "title": "Dikshitha & Varun: colour in every chapter.",
+    "discipline": "Illustrated wedding invitation",
+    "category": "Weddings",
+    "service": "Wedding invitations",
+    "image": "/wedding-invites/dikshitha-varun/page-01.webp",
+    "width": 1600,
+    "height": 2845,
+    "alt": "Illustrated wedding invitation cover for Dikshitha and Varun",
+    "description": "A thirteen-page celebration moving through florals, peacocks, ceremony portraits and Tamil cultural details.",
+    "storyTitle": "Every event gets its own character.",
+    "story": "A recurring VD monogram and expressive couple illustrations connect a broad range of ceremonies and colour stories.",
+    "weddingStory": {
+      "folder": "dikshitha-varun",
+      "pageCount": 13,
+      "pageTitles": ["The illustrated cover", "The wedding ceremony", "Ceremony details", "The invitation", "Batishi & Grithpaan", "Dhoom Baraabar Dhoom", "Mehendi", "Varuga Varuga", "Phoolon Ki Bahar", "Baraat Swagat", "Reception", "Phere", "Vidaai"],
+      "notes": ["The custom couple illustration makes the invitation personal from the cover.", "Peacocks, florals and the VD monogram repeat as visual signatures.", "Different illustration styles match each ceremony's energy without losing the overall story."]
+    }
+  },
+  {
+    "slug": "aashish-chetna-wedding",
+    "title": "Aashish & Chetna: soft florals, clear celebration.",
+    "discipline": "Floral wedding invitation",
+    "category": "Weddings",
+    "service": "Wedding invitations",
+    "image": "/wedding-invites/aashish-chetna/page-01.webp",
+    "width": 1600,
+    "height": 2071,
+    "alt": "Floral wedding invitation cover for Aashish and Chetna",
+    "description": "An eight-page invitation built from soft botanicals, warm neutrals and a calm information hierarchy.",
+    "storyTitle": "A quiet frame for a full schedule.",
+    "story": "A consistent floral border makes a long sequence of ceremonies feel simple, connected and easy to follow.",
+    "weddingStory": {
+      "folder": "aashish-chetna",
+      "pageCount": 8,
+      "pageTitles": ["The floral cover", "Grithpaan", "Reception", "Haldi & Mehandi Rasam", "Music concert", "Tongue Twister Sappadu", "Nikasi & Baraat", "Phera"],
+      "notes": ["A restrained botanical frame keeps the cover warm without crowding the names.", "Consistent spacing turns eight event pages into one calm suite.", "Event names lead; date, time and venue follow in a quick reading order."]
+    }
+  },
+  {
+    "slug": "nithin-jyothi-wedding",
+    "title": "Nithin & Jyothi: a palace garden in print.",
+    "discipline": "Wedding invitation suite",
+    "category": "Weddings",
+    "service": "Wedding invitations",
+    "image": "/wedding-invites/nithin-jyothi/page-01.webp",
+    "width": 1600,
+    "height": 2071,
+    "alt": "Wedding invitation for Nithin and Jyothi",
+    "description": "A seven-page invitation combining formal family copy with palace architecture, gardens and peacock details.",
+    "storyTitle": "Formal information, held by illustration.",
+    "story": "Architectural scenes and botanical borders give long-form family details a clear, celebratory setting.",
+    "weddingStory": {
+      "folder": "nithin-jyothi",
+      "pageCount": 7,
+      "pageTitles": ["The formal card", "The NJ monogram", "Reception", "Wedding", "Mayara Paksh", "Nikasi & Baraat Prasthan", "Family details"],
+      "notes": ["The suite balances formal family copy with an illustrated palace setting.", "Peacocks and garden details repeat without interrupting the information.", "The monogram offers a quieter pause between the denser ceremonial pages."]
+    }
+  },
+  {
+    "slug": "kuldeep-tisha-wedding",
+    "title": "Kuldeep & Tisha: a traditional invitation, composed with care.",
+    "discipline": "Traditional wedding invitation",
+    "category": "Weddings",
+    "service": "Wedding invitations",
+    "image": "/wedding-invites/kuldeep-tisha/page-01.webp",
+    "width": 1600,
+    "height": 1132,
+    "alt": "Traditional wedding invitation for Kuldeep and Tisha",
+    "description": "A three-page landscape invitation designed around formal ceremony text and a balanced printed composition.",
+    "storyTitle": "Tradition leads the layout.",
+    "story": "The landscape format gives ceremonial copy generous space while borders and alignment keep every detail ordered.",
+    "weddingStory": {
+      "folder": "kuldeep-tisha",
+      "pageCount": 3,
+      "pageTitles": ["The wedding announcement", "Ceremony details", "Family blessings"],
+      "notes": ["The landscape format respects the density and rhythm of the traditional text.", "Fine borders and centred alignment create a formal printed presence.", "Generous spacing keeps a detailed invitation composed rather than crowded."]
+    }
+  },
+  {
+    "slug": "manisha-aashish-wedding",
+    "title": "Manisha & Aashish: the celebration at a glance.",
+    "discipline": "Wedding schedule invitation",
+    "category": "Weddings",
+    "service": "Wedding invitations",
+    "image": "/wedding-invites/manisha-aashish/page-01.webp",
+    "width": 1600,
+    "height": 2000,
+    "alt": "Wedding schedule invitation for Manisha and Aashish",
+    "description": "A single-page illustrated timeline that gathers every function into one shareable invitation.",
+    "storyTitle": "Seven events, one quick read.",
+    "story": "A central timeline and small ceremony portraits turn a long schedule into a clear visual route.",
+    "weddingStory": {
+      "folder": "manisha-aashish",
+      "pageCount": 1,
+      "pageTitles": ["The full celebration"],
+      "notes": ["A central path links every ceremony, letting guests understand the complete schedule in one glance."]
+    }
+  },
+  {
+    "slug": "mayank-raveena-save-the-date",
+    "title": "Mayank & Raveena: a garden save-the-date.",
+    "discipline": "Animated save-the-date",
+    "category": "Weddings",
+    "service": "Wedding invitations",
+    "image": "/wedding-invites/mayank-raveena/page-01.webp",
+    "width": 1600,
+    "height": 2844,
+    "alt": "Floral save-the-date for Mayank and Raveena",
+    "description": "A floral announcement with illustrated architecture, elephants and a compact event reveal.",
+    "storyTitle": "A moving announcement, distilled to two moments.",
+    "story": "The animated invite opens with the couple and resolves into the essential date and venue details.",
+    "weddingStory": {
+      "folder": "mayank-raveena",
+      "pageCount": 2,
+      "pageTitles": ["The floral announcement", "Date & venue"],
+      "notes": ["The couple's names sit inside a light geometric frame while the illustrated garden builds the setting.", "The second moment clears space for the date and venue without losing the floral world."]
+    }
+  },
+  {
+    "slug": "mohit-pooja-save-the-date",
+    "title": "Mohit & Pooja: warm colour, simple announcement.",
+    "discipline": "Animated save-the-date",
+    "category": "Weddings",
+    "service": "Wedding invitations",
+    "image": "/wedding-invites/mohit-pooja/page-01.webp",
+    "width": 1600,
+    "height": 2844,
+    "alt": "Save-the-date for Mohit and Pooja",
+    "description": "A compact save-the-date using a deep red palette, floral canopy and lantern details.",
+    "storyTitle": "One colour story, two clear messages.",
+    "story": "The moving announcement introduces the couple, then gives reception and baraat details in a matching frame.",
+    "weddingStory": {
+      "folder": "mohit-pooja",
+      "pageCount": 2,
+      "pageTitles": ["Save the date", "Reception & Baraat"],
+      "notes": ["Deep red creates a strong field for the illustrated couple and hanging lanterns.", "The event details reuse the same arch shapes, so the practical information feels part of the announcement."]
+    }
+  },
+  {
+    "slug": "tanishq-komal-save-the-date",
+    "title": "Tanishq & Komal: a save-the-date in three formats.",
+    "discipline": "Save-the-date design",
+    "category": "Weddings",
+    "service": "Wedding invitations",
+    "image": "/wedding-invites/tanishq-komal/page-01.webp",
+    "width": 1240,
+    "height": 1748,
+    "alt": "Save-the-date invitation for Tanishq and Komal",
+    "description": "Three coordinated announcements adapted for portrait, social and shareable invitation formats.",
+    "storyTitle": "One announcement, ready for every format.",
+    "story": "The couple's names, date and visual theme stay consistent while the composition adapts to each use.",
+    "weddingStory": {
+      "folder": "tanishq-komal",
+      "pageCount": 3,
+      "pageTitles": ["Portrait announcement", "Social post", "Shareable invitation"],
+      "notes": ["The core hierarchy survives each crop: names first, date second, celebration details last.", "Adapting the composition instead of shrinking it keeps every format readable.", "Repeated colour and illustration make the three outputs feel like one set."]
+    }
+  },
+  {
+    "slug": "vidhi-grithpaan-invitation",
+    "title": "Vidhi: an intimate Grithpaan invitation.",
+    "discipline": "Ceremony invitation",
+    "category": "Weddings",
+    "service": "Wedding invitations",
+    "image": "/wedding-invites/vidhi-grithpaan/page-01.webp",
+    "width": 1600,
+    "height": 2240,
+    "alt": "Grithpaan invitation for Vidhi",
+    "description": "A single ceremony invitation with soft florals, tropical leaves and a light architectural setting.",
+    "storyTitle": "A gentle frame for one meaningful moment.",
+    "story": "The ceremony name and essential details lead, surrounded by illustration that keeps the page warm and personal.",
+    "weddingStory": {
+      "folder": "vidhi-grithpaan",
+      "pageCount": 1,
+      "pageTitles": ["The Grithpaan invitation"],
+      "notes": ["Soft florals and an airy venue illustration create intimacy while the ceremony details remain immediate."]
+    }
+  },
+  {
+    "slug": "prerna-suraj-mayra-invitation",
+    "title": "Prerna & Suraj: a bright Mayra invitation.",
+    "discipline": "Mayra invitation",
+    "category": "Weddings",
+    "service": "Wedding invitations",
+    "image": "/wedding-invites/prerna-suraj-mayra/page-01.webp",
+    "width": 1414,
+    "height": 2000,
+    "alt": "Mayra invitation for Prerna and Suraj",
+    "description": "A colourful Mayra invitation built around traditional illustration and direct event information.",
+    "storyTitle": "Tradition with immediate energy.",
+    "story": "Bold colour and a clear central composition make the ceremony feel festive before the first line is read.",
+    "weddingStory": {
+      "folder": "prerna-suraj-mayra",
+      "pageCount": 1,
+      "pageTitles": ["The Mayra invitation"],
+      "notes": ["Traditional figures and saturated colour create the celebratory tone while a centred hierarchy keeps the details clear."]
+    }
+  },
+  {
+    "slug": "saahil-sejal-mayra-invitation",
+    "title": "Saahil & Sejal: Mayra, illustrated.",
+    "discipline": "Mayra invitation",
+    "category": "Weddings",
+    "service": "Wedding invitations",
+    "image": "/wedding-invites/saahil-sejal-mayra/page-01.webp",
+    "width": 1414,
+    "height": 2000,
+    "alt": "Mayra invitation for Saahil and Sejal",
+    "description": "A ceremony invitation using character illustration, strong colour and a compact reading order.",
+    "storyTitle": "A small invitation with plenty of character.",
+    "story": "Illustration carries the mood while the event details remain grouped for quick sharing and reading.",
+    "weddingStory": {
+      "folder": "saahil-sejal-mayra",
+      "pageCount": 1,
+      "pageTitles": ["The Mayra invitation"],
+      "notes": ["Expressive character illustration gives the ceremony a distinct voice without competing with its practical details."]
+    }
+  }
+]
