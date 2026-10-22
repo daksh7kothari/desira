@@ -31,6 +31,10 @@ export default function Footer({ isHome = false }) {
           © {new Date().getFullYear()} {site.name}
         </p>
         <nav className="footer-links" aria-label="Footer navigation">
+          {/* <a href="/studio/">The studio</a> */}
+          {/* <a href="/experiences/">Design experiences</a> */}
+          {/* <a href="/sketchbook/">Sketchbook</a> */}
+          {/* <a href="/notes/">Design notes</a> */}
           {copy.footer.links.map((link) => (
             <a key={link.href} href={link.href}>
               {link.label}

@@ -32,6 +32,12 @@ const navigation = {
       link: "/contact/",
       image: "/wedding-invites/dikshitha-varun/page-01.webp",
     },
+    {
+      text: "Instagram",
+      marquee: "Follow the studio · @desira.ft",
+      link: "https://www.instagram.com/desira.ft/",
+      image: "/client-work/poster-collection/01.webp",
+    },
   ],
 };
 

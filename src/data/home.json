@@ -122,11 +122,7 @@
     "buttonLabel": "Start a conversation",
     "copyright": "Made with a little extra thought.",
     "links": [
-      { "label": "The studio", "href": "/studio/" },
-      { "label": "Design experiences", "href": "/experiences/" },
-      { "label": "Sketchbook", "href": "/sketchbook/" },
-      { "label": "Design notes", "href": "/notes/" },
-      { "label": "Contact", "href": "/contact/" }
+            { "label": "Contact", "href": "/contact/" }
     ]
   }
 }

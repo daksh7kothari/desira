@@ -132,6 +132,7 @@ uniform float uAlpha;
 uniform float uReady;
 uniform float uShift;
 uniform float uDpr;
+uniform float uFocus;
 uniform vec3 uPlaceholder;
 in vec2 vUv;
 in vec2 vLocal;
@@ -148,12 +149,16 @@ void main() {
   vec2 local = vLocal / uSize + 0.5;
   float cardAspect = uSize.x / uSize.y;
   float imageAspect = uImage.x / max(uImage.y, 1.0);
-  vec2 scale = imageAspect > cardAspect ? vec2(cardAspect / imageAspect, 1.0) : vec2(1.0, imageAspect / cardAspect);
-  scale /= 1.08;
+  vec2 coverScale = imageAspect > cardAspect ? vec2(cardAspect / imageAspect, 1.0) : vec2(1.0, imageAspect / cardAspect);
+  vec2 containScale = imageAspect > cardAspect ? vec2(1.0, imageAspect / cardAspect) : vec2(cardAspect / imageAspect, 1.0);
+  vec2 targetScale = mix(coverScale, containScale, uFocus);
+  float zoom = mix(1.02, 1.0, uFocus);
+  vec2 scale = targetScale / zoom;
   vec2 uv = vec2(local.x, 1.0 - local.y);
   uv = (uv - 0.5) * scale + 0.5;
-  uv.x += uShift * (1.0 - scale.x) * 0.5;
-  vec3 image = texture(tMap, uv).rgb;
+  uv.x += (1.0 - uFocus) * uShift * (1.0 - scale.x) * 0.5;
+  bool inside = uv.x >= 0.0 && uv.x <= 1.0 && uv.y >= 0.0 && uv.y <= 1.0;
+  vec3 image = inside ? texture(tMap, clamp(uv, 0.0, 1.0)).rgb : uPlaceholder;
   vec3 color = mix(uPlaceholder, image, uReady);
   float alpha = mask * uAlpha;
   fragColor = vec4(color * alpha, alpha);
@@ -385,6 +390,7 @@ const FlexCarousel = ({
         uReady: { value: 0 },
         uShift: { value: 0 },
         uDpr: { value: 1 },
+        uFocus: { value: 0 },
         uPlaceholder: { value: [0.5, 0.5, 0.5] }
       }
     });
@@ -842,7 +848,7 @@ const FlexCarousel = ({
       const focusAmount = clamp01(focus.t);
       const focusEase = easeInOut(focusAmount);
       const focusW = focus.index >= 0 && focus.index < n ? m.widths[focus.index] : m.cardH;
-      const focusScale = Math.max(1, Math.min(1.3, (height * 0.84) / m.cardH, (width * 0.92) / focusW));
+      const focusScale = Math.max(1, Math.min(1.5, (height * 0.90) / m.cardH, (width * 0.92) / focusW));
       const nextLift = 1 + (focusScale - 1) * focusEase;
       if (Math.abs(nextLift - lift) > 0.0005) {
         lift = nextLift;
@@ -932,6 +938,7 @@ const FlexCarousel = ({
           cardProgram.uniforms.uAlpha.value = draw.alpha;
           cardProgram.uniforms.uReady.value = slot.ready;
           cardProgram.uniforms.uShift.value = reducedMotion ? 0 : Math.max(-1, Math.min(1, draw.rel / (width * 0.75)));
+          cardProgram.uniforms.uFocus.value = draw.i === focus.index && Math.abs(draw.rel) < 20 ? focusEase : 0;
           cardProgram.uniforms.uPlaceholder.value = slot.color;
           renderer.render({ scene: cardMesh, target, clear: first });
           first = false;

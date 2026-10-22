@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import navigation from "../../data/navigation.js";
 import FlowingMenu from "../reactbits/FlowingMenu.jsx";
-import { site, instagram } from "../../data/index.js";
+import { site } from "../../data/index.js";
 
 export default function NavigationOverlay({ onClose }) {
   const dialog = useRef(null);
@@ -46,6 +46,10 @@ export default function NavigationOverlay({ onClose }) {
           window.history.pushState(null, "", `/#${hash}`);
           return;
         }
+      }
+      if (href.startsWith("http://") || href.startsWith("https://")) {
+        window.open(href, "_blank", "noopener,noreferrer");
+        return;
       }
       window.location.assign(href);
     }
@@ -124,15 +128,6 @@ export default function NavigationOverlay({ onClose }) {
         </div>
         <div className="studio-menu-bottom">
           <p>{navigation.note}</p>
-          <a
-            className="studio-menu-social"
-            href={instagram}
-            target="_blank"
-            rel="noreferrer"
-            onClick={(event) => requestClose(event)}
-          >
-            Instagram ↗
-          </a>
         </div>
       </div>
     </dialog>
