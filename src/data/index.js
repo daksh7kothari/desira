@@ -9,11 +9,15 @@ const allProjects = [...projects, ...weddingProjects].map((project) => {
   const work = works.find((item) => item.slug === project.slug);
   if (!work) return project;
   const path = (file) => (work.folder ? `${work.folder}/${file}` : file);
+  const files = work.files || [];
+  const assets = files.map(path);
+  const videos = files.filter((file) => file.endsWith(".mp4")).map(path);
   return {
     ...project,
     order: work.order,
     image: path(work.cover),
-    assets: work.files.map(path),
+    assets,
+    videos: videos.length > 0 ? videos : project.videos || [],
   };
 });
 

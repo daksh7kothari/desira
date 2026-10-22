@@ -1,11 +1,14 @@
 import Arrow from "../ui/Arrow.jsx";
 import ExpandableImage from "./ExpandableImage.jsx";
-import ProjectGallery from "./ProjectGallery.jsx";
 import { projects } from "../../data/index.js";
 import { useEffect, useRef, useState } from "react";
 
 export default function WeddingStory({ project }) {
   const story = project.weddingStory;
+  const heroVideo =
+    project.videos?.[0] ||
+    project.assets?.find((asset) => asset.endsWith(".mp4"));
+
   const pageImages = [project.image, ...(project.assets || [])].filter(
     (asset) => !asset.endsWith(".mp4"),
   );
@@ -18,15 +21,16 @@ export default function WeddingStory({ project }) {
   const related = projects.filter(
     (item) => item.weddingStory && item.slug !== project.slug,
   );
-  const detailPages = pages.slice(1);
+  const scrollPages = heroVideo ? pages : pages.slice(1);
   const pagesSection = useRef(null);
   const [activePage, setActivePage] = useState(0);
   const [scrollReady, setScrollReady] = useState(false);
-  const nextSection = pageCount > 1 ? "#invitation-pages" : "#story-notes";
+  const nextSection =
+    scrollPages.length > 0 ? "#invitation-pages" : "#story-notes";
 
   useEffect(() => {
     const section = pagesSection.current;
-    if (!section || detailPages.length === 0) return undefined;
+    if (!section || scrollPages.length === 0) return undefined;
 
     let frame = 0;
     const update = () => {
@@ -34,7 +38,7 @@ export default function WeddingStory({ project }) {
       const next = Math.max(
         0,
         Math.min(
-          detailPages.length - 1,
+          scrollPages.length - 1,
           Math.round(-section.getBoundingClientRect().top / window.innerHeight),
         ),
       );
@@ -53,7 +57,7 @@ export default function WeddingStory({ project }) {
       window.removeEventListener("scroll", request);
       window.removeEventListener("resize", request);
     };
-  }, [detailPages.length]);
+  }, [scrollPages.length]);
 
   return (
     <main className="wedding-story">
@@ -67,64 +71,84 @@ export default function WeddingStory({ project }) {
             <h1>{project.title}</h1>
             <p>{project.description}</p>
             <a className="text-link" href={nextSection}>
-              {pageCount > 1 ? "Open the full invitation" : "Explore the design"}
+              {scrollPages.length > 0
+                ? "Open the full invitation"
+                : "Explore the design"}
               <Arrow diagonal />
             </a>
           </div>
           <figure className="wedding-story-cover">
             <div className="wedding-story-art">
-              <ExpandableImage
-                src={pages[0].image}
-                alt={project.alt}
-                width={project.width}
-                height={project.height}
-                fetchPriority="high"
-              />
+              {heroVideo ? (
+                <video
+                  src={heroVideo}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  controls
+                  aria-label={`${project.title} — invitation video`}
+                  poster={pages[0]?.image}
+                />
+              ) : (
+                <ExpandableImage
+                  src={pages[0].image}
+                  alt={project.alt}
+                  width={project.width}
+                  height={project.height}
+                  fetchPriority="high"
+                />
+              )}
             </div>
             <figcaption>
-              <span>Page 1 of {pageCount}</span>
-              <strong>{pages[0].title}</strong>
-              <p>{pages[0].note}</p>
+              <span>
+                {heroVideo ? "Video invitation" : `Page 1 of ${pageCount}`}
+              </span>
+              <strong>{pages[0]?.title}</strong>
+              <p>{pages[0]?.note}</p>
             </figcaption>
           </figure>
         </header>
       </div>
 
-      {pageCount > 1 && (
+      {scrollPages.length > 0 && (
         <section
           id="invitation-pages"
           className="wedding-pages"
           aria-label="Invitation pages"
           data-enhanced={scrollReady}
           ref={pagesSection}
-          style={{ "--wedding-page-count": detailPages.length }}
+          style={{ "--wedding-page-count": scrollPages.length }}
         >
           <div className="wedding-pages-stage">
-            {detailPages.map((page, index) => (
-              <article
-                className={`wedding-page${index === activePage ? " is-active" : ""}`}
-                key={page.image}
-                aria-hidden={scrollReady && index !== activePage}
-              >
-                <div className="wedding-page-copy">
-                  <span>
-                    Page {index + 2} of {pageCount}
-                  </span>
-                  <h2>{page.title}</h2>
-                  <p>{page.note}</p>
-                </div>
-                <div className="wedding-page-art">
-                  <ExpandableImage
-                    src={page.image}
-                    alt={`${page.title} from ${project.title}`}
-                    loading={index === 0 ? "eager" : "lazy"}
-                  />
-                </div>
-              </article>
-            ))}
+            {scrollPages.map((page, index) => {
+              const displayPageNum = heroVideo ? index + 1 : index + 2;
+              return (
+                <article
+                  className={`wedding-page${index === activePage ? " is-active" : ""}`}
+                  key={page.image}
+                  aria-hidden={scrollReady && index !== activePage}
+                >
+                  <div className="wedding-page-copy">
+                    <span>
+                      Page {displayPageNum} of {pageCount}
+                    </span>
+                    <h2>{page.title}</h2>
+                    <p>{page.note}</p>
+                  </div>
+                  <div className="wedding-page-art">
+                    <ExpandableImage
+                      src={page.image}
+                      alt={`${page.title} from ${project.title}`}
+                      loading={index === 0 ? "eager" : "lazy"}
+                    />
+                  </div>
+                </article>
+              );
+            })}
           </div>
           <div className="wedding-pages-track" aria-hidden="true">
-            {detailPages.map((page) => (
+            {scrollPages.map((page) => (
               <span key={page.image} />
             ))}
           </div>
@@ -140,8 +164,6 @@ export default function WeddingStory({ project }) {
           Plan your invitation <Arrow diagonal />
         </a>
       </section>
-
-      {project.videos?.length > 0 && <ProjectGallery project={project} />}
 
       <section className="wedding-related" aria-labelledby="more-weddings">
         <div className="wedding-related-heading">

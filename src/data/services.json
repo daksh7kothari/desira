@@ -33,7 +33,11 @@
       "Final artwork prepared to the agreed specifications"
     ],
     "image": "/client-work/poster-collection/01.webp",
-    "alt": "Coffee poster with a cup, coffee splash, beans and bold typography"
+    "alt": "Coffee poster with a cup, coffee splash, beans and bold typography",
+    "projectSlugs": [
+      "prerna-suraj-mayra-invitation",
+      "chennai-apparel-fair"
+    ]
   },
   {
     "slug": "wedding-invitations",
@@ -51,7 +55,11 @@
       "Coordinated stationery and event details"
     ],
     "image": "/work/wedding-invitation.webp",
-    "alt": "A custom invitation by Desira combining floral illustration, traditional motifs and a soft pink palette"
+    "alt": "A custom invitation by Desira combining floral illustration, traditional motifs and a soft pink palette",
+    "projectSlugs": [
+      "a-story-in-illustration",
+      "dikshitha-varun-wedding"
+    ]
   },
   {
     "slug": "event-graphics",
@@ -69,6 +77,10 @@
       "Artwork coordinated with agreed production requirements"
     ],
     "image": "/work/carnival.webp",
-    "alt": "The entrance to Toca Boca kids carnival with colourful event signage and graphics by Desira"
+    "alt": "The entrance to Toca Boca kids carnival with colourful event signage and graphics by Desira",
+    "projectSlugs": [
+      "toca-boca-carnival",
+      "avira-udaan"
+    ]
   }
 ]

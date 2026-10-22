@@ -76,7 +76,8 @@
   animation: invitation-arrive 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-.wedding-story-art img {
+.wedding-story-art img,
+.wedding-story-art video {
   display: block;
   width: auto;
   max-width: 100%;
@@ -84,6 +85,10 @@
   max-height: min(66svh, 700px);
   object-fit: contain;
   box-shadow: 0 22px 52px rgb(6 28 73 / 16%);
+}
+
+.wedding-story-art video {
+  border-radius: 4px;
 }
 
 .wedding-story-cover figcaption {
@@ -412,7 +417,8 @@
     padding: 0;
   }
 
-  .wedding-story-art img {
+  .wedding-story-art img,
+  .wedding-story-art video {
     width: 100%;
     max-height: none;
   }

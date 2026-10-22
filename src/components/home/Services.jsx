@@ -51,6 +51,7 @@ export default function Services() {
       aria-labelledby="services-title"
       ref={section}
     >
+      <span id="what-we-create" className="sr-only" aria-hidden="true" />
       <div className="services-stack-heading">
         <h2 id="services-title">{copy.services.title}</h2>
         <p>{copy.services.description}</p>

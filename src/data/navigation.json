@@ -11,23 +11,11 @@
     {
       "text": "Services",
       "marquee": "Find your kind of design",
-      "link": "/services/logo-brand-identity/",
+      "link": "/#services",
       "image": "/work/after-hours.svg"
     },
     {
-      "text": "Studio",
-      "marquee": "Meet Sejal and Desira",
-      "link": "/studio/",
-      "image": "/desira-studio-logo.png"
-    },
-    {
-      "text": "Experiences",
-      "marquee": "See design in motion",
-      "link": "/experiences/",
-      "image": "/work/print-design.webp"
-    },
-    {
-      "text": "Start a project",
+      "text": "Contact now",
       "marquee": "Your next good idea",
       "link": "/contact/",
       "image": "/work/coastal-wedding.webp"

@@ -570,7 +570,7 @@
   position: relative;
   z-index: 2;
   overflow: clip;
-  padding: 112px max(24px, calc((100vw - 1180px) / 2)) 148px;
+  padding: 112px max(24px, calc((100vw - 1180px) / 2)) 360px;
   background: #061c49;
   color: #fff;
 }
@@ -624,8 +624,10 @@
 }
 
 .service-stack-card--4 {
-  background: #102951;
+  background: #0d2244;
   color: #fff;
+  border: 1px solid rgb(255 255 255 / 0.18);
+  box-shadow: 0 34px 80px -20px rgb(0 0 0 / 0.85);
 }
 
 .service-stack-card article,
@@ -1107,7 +1109,10 @@
     margin-bottom: 18px;
   }
 
-  .home-page .services-stack-section,
+  .home-page .services-stack-section {
+    padding: 72px 22px 240px;
+  }
+
   .home-page .process-story--compact,
   .home-page section.studio-section,
   .home-page .faq-section {

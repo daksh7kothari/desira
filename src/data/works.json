@@ -65,7 +65,7 @@
     "order": 10,
     "folder": "/wedding-invites/prerna-rishabh",
     "cover": "page-01.webp",
-    "files": ["page-02.webp", "page-03.webp", "page-04.webp", "page-05.webp", "page-06.webp", "page-07.webp", "page-08.webp", "page-09.webp", "page-10.webp", "page-11.webp", "page-12.webp"]
+    "files": ["video-01.mp4", "page-02.webp", "page-03.webp", "page-04.webp", "page-05.webp", "page-06.webp", "page-07.webp", "page-08.webp", "page-09.webp", "page-10.webp", "page-11.webp", "page-12.webp"]
   },
   {
     "slug": "celebration-invitations",
@@ -78,21 +78,21 @@
     "order": 9,
     "folder": "/wedding-invites/shreyans-varisha",
     "cover": "page-01.webp",
-    "files": ["page-02.webp", "page-03.webp", "page-04.webp", "page-05.webp", "page-06.webp", "page-07.webp", "page-08.webp", "page-09.webp", "page-10.webp", "page-11.webp", "page-12.webp", "page-13.webp"]
+    "files": ["video-01.mp4", "page-02.webp", "page-03.webp", "page-04.webp", "page-05.webp", "page-06.webp", "page-07.webp", "page-08.webp", "page-09.webp", "page-10.webp", "page-11.webp", "page-12.webp", "page-13.webp"]
   },
   {
     "slug": "sejal-aashish-wedding",
     "order": 13,
     "folder": "/wedding-invites/sejal-aashish",
     "cover": "page-01.webp",
-    "files": ["page-02.webp", "page-03.webp", "page-04.webp", "page-05.webp", "page-06.webp", "page-07.webp", "page-08.webp", "page-09.webp", "page-10.webp"]
+    "files": ["video-01.mp4", "page-02.webp", "page-03.webp", "page-04.webp", "page-05.webp", "page-06.webp", "page-07.webp", "page-08.webp", "page-09.webp", "page-10.webp"]
   },
   {
     "slug": "dikshitha-varun-wedding",
     "order": 2,
     "folder": "/wedding-invites/dikshitha-varun",
     "cover": "page-01.webp",
-    "files": ["page-02.webp", "page-03.webp", "page-04.webp", "page-05.webp", "page-06.webp", "page-07.webp", "page-08.webp", "page-09.webp", "page-10.webp", "page-11.webp", "page-12.webp", "page-13.webp"]
+    "files": ["video-01.mp4", "page-02.webp", "page-03.webp", "page-04.webp", "page-05.webp", "page-06.webp", "page-07.webp", "page-08.webp", "page-09.webp", "page-10.webp", "page-11.webp", "page-12.webp", "page-13.webp"]
   },
   {
     "slug": "aashish-chetna-wedding",
@@ -106,35 +106,35 @@
     "order": 16,
     "folder": "/wedding-invites/nithin-jyothi",
     "cover": "page-01.webp",
-    "files": ["page-02.webp", "page-03.webp", "page-04.webp", "page-05.webp", "page-06.webp", "page-07.webp"]
+    "files": ["video-01.mp4", "page-02.webp", "page-03.webp", "page-04.webp", "page-05.webp", "page-06.webp", "page-07.webp"]
   },
   {
     "slug": "kuldeep-tisha-wedding",
     "order": 17,
     "folder": "/wedding-invites/kuldeep-tisha",
     "cover": "page-01.webp",
-    "files": ["page-02.webp", "page-03.webp"]
+    "files": ["video-01.mp4", "page-02.webp", "page-03.webp"]
   },
   {
     "slug": "manisha-aashish-wedding",
     "order": 18,
     "folder": "/wedding-invites/manisha-aashish",
     "cover": "page-01.webp",
-    "files": []
+    "files": ["video-01.mp4"]
   },
   {
     "slug": "mayank-raveena-save-the-date",
     "order": 19,
     "folder": "/wedding-invites/mayank-raveena",
     "cover": "page-01.webp",
-    "files": ["page-02.webp"]
+    "files": ["video-01.mp4", "page-02.webp"]
   },
   {
     "slug": "mohit-pooja-save-the-date",
     "order": 20,
     "folder": "/wedding-invites/mohit-pooja",
     "cover": "page-01.webp",
-    "files": ["page-02.webp"]
+    "files": ["video-01.mp4", "page-02.webp"]
   },
   {
     "slug": "tanishq-komal-save-the-date",

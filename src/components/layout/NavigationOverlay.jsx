@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import navigation from "../../data/navigation.json";
+import navigation from "../../data/navigation.js";
 import FlowingMenu from "../reactbits/FlowingMenu.jsx";
 import { site, instagram } from "../../data/index.js";
 
@@ -16,14 +16,32 @@ export default function NavigationOverlay({ onClose }) {
     return () => {
       node.close();
       document.body.style.overflow = overflow;
-      if (previousFocus?.isConnected) previousFocus.focus();
+      if (!destination.current && previousFocus?.isConnected) {
+        previousFocus.focus();
+      }
     };
   }, []);
 
   const finishClose = () => {
     const href = destination.current;
     onClose();
-    if (href) window.location.assign(href);
+    if (href) {
+      if (
+        (href.startsWith("/#") || href.startsWith("#")) &&
+        (window.location.pathname === "/" || window.location.pathname === "")
+      ) {
+        const hash = href.startsWith("/#") ? href.slice(2) : href.slice(1);
+        const el = document.getElementById(hash);
+        if (el) {
+          setTimeout(() => {
+            el.scrollIntoView({ behavior: "smooth" });
+          }, 60);
+          window.history.pushState(null, "", `/#${hash}`);
+          return;
+        }
+      }
+      window.location.assign(href);
+    }
   };
 
   const requestClose = (event, href) => {

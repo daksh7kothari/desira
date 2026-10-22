@@ -1,15 +1,19 @@
 import { projects } from "../data/index.js";
 import Arrow from "../components/ui/Arrow.jsx";
-import InvitationExperience from "../components/experiences/InvitationExperience.jsx";
+// import InvitationExperience from "../components/experiences/InvitationExperience.jsx";
 
 export default function ServicePage({ service }) {
-  const related = projects
-    .filter(
-      (project) =>
-        project.service === service.title ||
-        project.category === service.category,
-    )
-    .slice(0, 2);
+  const related = service.projectSlugs
+    ? service.projectSlugs
+        .map((slug) => projects.find((project) => project.slug === slug))
+        .filter(Boolean)
+    : projects
+        .filter(
+          (project) =>
+            project.service === service.title ||
+            project.category === service.category,
+        )
+        .slice(0, 2);
   return (
     <main className="detail-page service-detail">
       <a className="back-link" href="/#services">
@@ -23,7 +27,8 @@ export default function ServicePage({ service }) {
           Tell us about your project <Arrow diagonal />
         </a>
       </div>
-      {service.slug === "wedding-invitations" && <InvitationExperience />}
+      {/* Temporarily commented out: A first look at forever */}
+      {/* {service.slug === "wedding-invitations" && <InvitationExperience />} */}
       <div className="service-editorial" data-reveal>
         <h2>{service.heading}</h2>
         <div>
