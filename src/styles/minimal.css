@@ -473,11 +473,16 @@
   }
   .footer-bottom {
     display: block;
+    text-align: center;
   }
   .footer-links {
-    margin-top: 20px;
-    justify-content: flex-start;
+    margin: 0;
+    justify-content: center;
     gap: 16px;
+  }
+  .footer-links a[href="/contact/"],
+  .footer-links a[target="_blank"] {
+    display: none;
   }
   .services-dialog-content {
     padding: 24px 18px;
