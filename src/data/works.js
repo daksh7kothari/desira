@@ -66,6 +66,7 @@ const works = [
       "16.webp",
       "17.webp",
       "18.webp",
+      "19.webp",
     ],
   },
   {

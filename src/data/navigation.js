@@ -3,16 +3,22 @@ const navigation = {
   note: "Start anywhere. The whole studio lives on one page.",
   items: [
     {
+      text: "Home",
+      marquee: "Start from the beginning",
+      link: "/",
+      image: "/client-work/toca-boca-carnival/01.webp",
+    },
+    {
       text: "Work",
       marquee: "Ideas with character",
       link: "/work/",
-      image: "/work/mora-coffee.svg",
+      image: "/client-work/shah-shah-steels/01.webp",
     },
     {
       text: "Services",
       marquee: "Find your kind of design",
       link: "/#services",
-      image: "/work/after-hours.svg",
+      image: "/client-work/crochetique-branding/01.webp",
     },
     // {
     //   text: "Studio",
@@ -20,17 +26,11 @@ const navigation = {
     //   link: "/studio/",
     //   image: "/desira-studio-logo.png",
     // },
-    // {
-    //   text: "Experiences",
-    //   marquee: "See design in motion",
-    //   link: "/experiences/",
-    //   image: "/work/print-design.webp",
-    // },
     {
       text: "Contact now",
       marquee: "Your next good idea",
       link: "/contact/",
-      image: "/work/coastal-wedding.webp",
+      image: "/wedding-invites/dikshitha-varun/page-01.webp",
     },
   ],
 };

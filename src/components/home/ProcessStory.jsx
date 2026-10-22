@@ -69,10 +69,10 @@ export default function ProcessStory() {
       </div>
       <div className="process-story-end">
         <p>{story.endNote}</p>
-        <a className="text-link" href={`/work/${project.slug}/`}>
+        {/* <a className="text-link" href={`/work/${project.slug}/`}>
           {story.linkLabel}
           <Arrow diagonal />
-        </a>
+        </a> */}
       </div>
     </section>
   );

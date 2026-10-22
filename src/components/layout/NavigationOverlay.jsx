@@ -27,6 +27,13 @@ export default function NavigationOverlay({ onClose }) {
     onClose();
     if (href) {
       if (
+        (href === "/" || href === "") &&
+        (window.location.pathname === "/" || window.location.pathname === "")
+      ) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
+      if (
         (href.startsWith("/#") || href.startsWith("#")) &&
         (window.location.pathname === "/" || window.location.pathname === "")
       ) {
