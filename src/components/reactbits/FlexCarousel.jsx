@@ -1260,6 +1260,14 @@ const FlexCarousel = ({
       aria-label="Image carousel"
       tabIndex={0}
     >
+      {focusOpen && current && (
+        <img
+          className="flex-carousel__focused-image"
+          src={current.src}
+          alt={current.alt || current.title || ''}
+          draggable={false}
+        />
+      )}
       {webglUnavailable && (
         <div className="flex-carousel__fallback" role="list" aria-label="Images">
           {list.map((item, index) => (
