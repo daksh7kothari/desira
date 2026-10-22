@@ -775,7 +775,7 @@ const FlexCarousel = ({
       }
 
       if (autoMoving) {
-        goal += 38 * dt;
+        goal += 250 * dt;
         animating = true;
       }
 
