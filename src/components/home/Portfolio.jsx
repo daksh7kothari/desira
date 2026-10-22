@@ -19,7 +19,7 @@ export default function Portfolio({ featured = false }) {
     ? copy.portfolio.featuredSlugs
         .map((slug) => projects.find((project) => project.slug === slug))
         .filter(Boolean)
-    : projects;
+    : [...projects].sort((a, b) => a.order - b.order);
   const visible =
     featured || filter === copy.portfolio.filters[0]
       ? selection

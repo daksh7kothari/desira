@@ -130,40 +130,7 @@
       "imageCount": 10
     }
   },
-  {
-    "slug": "coastal-celebration",
-    "title": "A little coastal, a lot personal.",
-    "discipline": "Wedding identity & stationery",
-    "category": "Weddings",
-    "service": "Wedding invitations",
-    "image": "/work/coastal-wedding.webp",
-    "width": 1281,
-    "height": 1600,
-    "alt": "Ananya and Chirag’s coastal wedding stationery, featuring a custom AC monogram, palms and seashells",
-    "description": "A coastal-inspired wedding identity and stationery suite for Ananya and Chirag, with a custom monogram and details drawn from the shore.",
-    "storyTitle": "Their story. A seaside state of mind.",
-    "story": "Soft coastal colours, seashells, palms, and a personal monogram bring the couple’s beach wedding vision into one visual world. The project connects invitations and welcome-kit details through a shared design language.",
-    "weddingStory": {
-      "pages": ["/work/coastal-wedding.webp"],
-      "pageTitles": ["A coastal first impression"],
-      "notes": ["The monogram, palms and shells set one visual language that can carry across the full celebration."]
-    }
-  },
-  {
-    "slug": "print-stories",
-    "title": "Stories you can hold.",
-    "discipline": "Brochure & print design",
-    "category": "Brand & print",
-    "service": "Posters & print design",
-    "image": "/work/print-design.webp",
-    "width": 1440,
-    "height": 1080,
-    "alt": "Desira’s brochure design combining editorial typography, photography and structured page layouts",
-    "description": "Brochure design by Desira, pairing photography, clear typography and considered layouts to make information easy to explore.",
-    "storyTitle": "A considered layout, cover to cover.",
-    "story": "Print gives a story its own rhythm. This brochure brings photographs, written content, and visual hierarchy together in a format that invites readers to explore the details.",
-    "source": "https://desiraft.wixsite.com/desira"
-  },
+  
   {
     "slug": "a-story-in-illustration",
     "title": "Prerna & Rishabh: a celebration illustrated.",
@@ -221,5 +188,19 @@
       "pageTitles": ["Tradition, made personal"],
       "notes": ["Floral illustration and traditional motifs frame the information without letting ornament overpower it."]
     }
+  },
+  {
+    "slug": "pgc-branding-logo",
+    "title": "Proserv Tax: a logo built for progress.",
+    "discipline": "Logo design & brand identity",
+    "category": "Brand & print",
+    "service": "Logo & brand identity",
+    "image": "/client-work/pgc-logo-brand/01.webp",
+    "width": 1563,
+    "height": 1563,
+    "alt": "Proserv Tax Consultants LLP logo with growth bars and an upward arrow",
+    "description": "A logo exploration for Proserv Tax Consultants LLP, combining financial growth, direction and a confident professional palette.",
+    "storyTitle": "Progress, made visible.",
+    "story": "Rising bars and an upward arrow create a clear symbol of growth, explored across colour directions and supporting marks."
   }
 ]

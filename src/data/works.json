@@ -1,0 +1,175 @@
+[
+  {
+    "slug": "shah-shah-steels",
+    "order": 1,
+    "folder": "/client-work/shah-shah-steels",
+    "cover": "01.webp",
+    "files": ["02.webp", "03.webp", "04.webp", "05.webp", "06.webp", "07.webp", "08.webp", "09.webp", "10.webp", "11.webp", "12.webp", "13.webp", "14.webp", "15.webp", "16.webp"]
+  },
+  {
+    "slug": "popice-branding",
+    "order": 6,
+    "folder": "/client-work/popice-branding",
+    "cover": "01.webp",
+    "files": ["02.webp", "03.webp", "04.webp", "05.webp", "06.webp", "07.webp", "08.webp", "09.webp", "10.webp"]
+  },
+  {
+    "slug": "crochetique-branding",
+    "order": 3,
+    "folder": "/client-work/crochetique-branding",
+    "cover": "01.webp",
+    "files": ["01.webp", "02.webp", "03.webp", "04.webp", "05.webp", "06.webp", "07.webp", "08.webp", "10.webp", "11.webp", "12.webp", "13.webp", "14.webp", "15.webp", "16.webp", "17.webp", "18.webp"]
+  },
+  {
+    "slug": "chennai-apparel-fair",
+    "order": 5,
+    "folder": "/client-work/chennai-apparel-fair",
+    "cover": "01.webp",
+    "files": ["02.webp", "03.webp", "04.webp", "05.webp", "06.webp", "07.webp", "08.webp", "09.webp", "10.webp", "11.webp", "12.webp", "13.webp", "14.webp", "15.webp", "16.webp", "17.webp", "18.webp", "19.webp", "20.webp", "21.webp", "22.webp", "23.webp", "24.webp", "video-01.mp4", "video-02.mp4"]
+  },
+  {
+    "slug": "toca-boca-carnival",
+    "order": 4,
+    "folder": "/client-work/toca-boca-carnival",
+    "cover": "01.webp",
+    "files": ["03.webp", "04.webp", "05.webp", "6.webp", "7.webp", "8.webp", "9.webp", "24.webp", "25.webp", "26.webp", "27.webp", "28.webp", "29.webp", "30.webp", "31.webp", "32.webp", "33.webp", "34.webp", "35.webp", "36.webp", "37.webp", "38.webp", "39.webp", "40.webp", "41.webp", "42.webp"]
+  },
+  {
+    "slug": "avira-udaan",
+    "order": 8,
+    "folder": "/client-work/avira-udaan",
+    "cover": "01.webp",
+    "files": ["02.webp", "03.webp", "04.webp", "05.webp", "06.webp", "07.webp", "08.webp", "09.webp", "10.webp", "11.webp", "12.webp", "13.webp"]
+  },
+  {
+    "slug": "poster-collection",
+    "order": 20,
+    "folder": "/client-work/poster-collection",
+    "cover": "01.webp",
+    "files": ["02.webp", "03.webp", "04.webp", "05.webp", "06.webp", "07.webp", "08.webp", "09.webp", "10.webp"]
+  },
+  {
+    "slug": "coastal-celebration",
+    "order": 8,
+    "cover": "/work/coastal-wedding.webp",
+    "files": []
+  },
+  {
+    "slug": "print-stories",
+    "order": 9,
+    "cover": "",
+    "files": []
+  },
+  {
+    "slug": "a-story-in-illustration",
+    "order": 10,
+    "folder": "/wedding-invites/prerna-rishabh",
+    "cover": "page-01.webp",
+    "files": ["page-02.webp", "page-03.webp", "page-04.webp", "page-05.webp", "page-06.webp", "page-07.webp", "page-08.webp", "page-09.webp", "page-10.webp", "page-11.webp", "page-12.webp"]
+  },
+  {
+    "slug": "celebration-invitations",
+    "order": 11,
+    "cover": "/work/wedding-invitation.webp",
+    "files": []
+  },
+  {
+    "slug": "shreyans-varisha-wedding",
+    "order": 9,
+    "folder": "/wedding-invites/shreyans-varisha",
+    "cover": "page-01.webp",
+    "files": ["page-02.webp", "page-03.webp", "page-04.webp", "page-05.webp", "page-06.webp", "page-07.webp", "page-08.webp", "page-09.webp", "page-10.webp", "page-11.webp", "page-12.webp", "page-13.webp"]
+  },
+  {
+    "slug": "sejal-aashish-wedding",
+    "order": 13,
+    "folder": "/wedding-invites/sejal-aashish",
+    "cover": "page-01.webp",
+    "files": ["page-02.webp", "page-03.webp", "page-04.webp", "page-05.webp", "page-06.webp", "page-07.webp", "page-08.webp", "page-09.webp", "page-10.webp"]
+  },
+  {
+    "slug": "dikshitha-varun-wedding",
+    "order": 2,
+    "folder": "/wedding-invites/dikshitha-varun",
+    "cover": "page-01.webp",
+    "files": ["page-02.webp", "page-03.webp", "page-04.webp", "page-05.webp", "page-06.webp", "page-07.webp", "page-08.webp", "page-09.webp", "page-10.webp", "page-11.webp", "page-12.webp", "page-13.webp"]
+  },
+  {
+    "slug": "aashish-chetna-wedding",
+    "order": 15,
+    "folder": "/wedding-invites/aashish-chetna",
+    "cover": "page-01.webp",
+    "files": ["page-02.webp", "page-03.webp", "page-04.webp", "page-05.webp", "page-06.webp", "page-07.webp", "page-08.webp"]
+  },
+  {
+    "slug": "nithin-jyothi-wedding",
+    "order": 16,
+    "folder": "/wedding-invites/nithin-jyothi",
+    "cover": "page-01.webp",
+    "files": ["page-02.webp", "page-03.webp", "page-04.webp", "page-05.webp", "page-06.webp", "page-07.webp"]
+  },
+  {
+    "slug": "kuldeep-tisha-wedding",
+    "order": 17,
+    "folder": "/wedding-invites/kuldeep-tisha",
+    "cover": "page-01.webp",
+    "files": ["page-02.webp", "page-03.webp"]
+  },
+  {
+    "slug": "manisha-aashish-wedding",
+    "order": 18,
+    "folder": "/wedding-invites/manisha-aashish",
+    "cover": "page-01.webp",
+    "files": []
+  },
+  {
+    "slug": "mayank-raveena-save-the-date",
+    "order": 19,
+    "folder": "/wedding-invites/mayank-raveena",
+    "cover": "page-01.webp",
+    "files": ["page-02.webp"]
+  },
+  {
+    "slug": "mohit-pooja-save-the-date",
+    "order": 20,
+    "folder": "/wedding-invites/mohit-pooja",
+    "cover": "page-01.webp",
+    "files": ["page-02.webp"]
+  },
+  {
+    "slug": "tanishq-komal-save-the-date",
+    "order": 21,
+    "folder": "/wedding-invites/tanishq-komal",
+    "cover": "page-01.webp",
+    "files": ["page-02.webp", "page-03.webp"]
+  },
+  {
+    "slug": "vidhi-grithpaan-invitation",
+    "order": 22,
+    "folder": "/wedding-invites/vidhi-grithpaan",
+    "cover": "page-01.webp",
+    "files": []
+  },
+  {
+    "slug": "prerna-suraj-mayra-invitation",
+    "order": 23,
+    "folder": "/wedding-invites/prerna-suraj-mayra",
+    "cover": "page-01.webp",
+    "files": []
+  },
+  {
+    "slug": "saahil-sejal-mayra-invitation",
+    "order": 24,
+    "folder": "/wedding-invites/saahil-sejal-mayra",
+    "cover": "page-01.webp",
+    "files": []
+  },
+  {
+    "slug": "pgc-branding-logo",
+    "order": 7,
+    "folder": "/client-work/pgc-logo-brand",
+    "cover": "01.webp",
+    "files": ["2.webp", "3.webp", "4.webp", "5.webp", "6.webp", "7.webp", "8.webp", "9.webp", "10.webp"]
+  }
+
+]

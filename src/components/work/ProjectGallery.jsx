@@ -1,16 +1,8 @@
 import ExpandableImage from "./ExpandableImage.jsx";
 
-const imagePath = (gallery, number) =>
-  `/client-work/${gallery.folder}/${String(number).padStart(2, "0")}.webp`;
-
 export default function ProjectGallery({ project }) {
-  const images = project.gallery
-    ? Array.from(
-        { length: project.gallery.imageCount - 1 },
-        (_, index) => index + 2,
-      )
-    : [];
-  const videos = project.videos || [];
+  const images = project.assets?.filter((asset) => !asset.endsWith(".mp4")) || [];
+  const videos = project.assets?.filter((asset) => asset.endsWith(".mp4")) || [];
 
   if (!images.length && !videos.length) return null;
 
@@ -21,11 +13,11 @@ export default function ProjectGallery({ project }) {
         <h2 id="project-gallery-title">The work, in full.</h2>
       </div>
       <div className="project-gallery-grid">
-        {images.map((number) => (
-          <figure className="project-gallery-item" key={number} data-reveal>
+        {images.map((image, index) => (
+          <figure className="project-gallery-item" key={image} data-reveal>
             <ExpandableImage
-              src={imagePath(project.gallery, number)}
-              alt={`${project.title} — project view ${number} of ${project.gallery.imageCount}`}
+              src={image}
+              alt={`${project.title} — project view ${index + 2} of ${images.length + 1}`}
               loading="lazy"
             />
           </figure>

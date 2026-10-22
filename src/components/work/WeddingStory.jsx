@@ -4,15 +4,14 @@ import ProjectGallery from "./ProjectGallery.jsx";
 import { projects } from "../../data/index.js";
 import { useEffect, useRef, useState } from "react";
 
-const pagePath = (story, index) =>
-  story.pages?.[index] ||
-  `/wedding-invites/${story.folder}/page-${String(index + 1).padStart(2, "0")}.webp`;
-
 export default function WeddingStory({ project }) {
   const story = project.weddingStory;
-  const pageCount = story.pages?.length || story.pageCount;
+  const pageImages = [project.image, ...(project.assets || [])].filter(
+    (asset) => !asset.endsWith(".mp4"),
+  );
+  const pageCount = pageImages.length;
   const pages = Array.from({ length: pageCount }, (_, index) => ({
-    image: pagePath(story, index),
+    image: pageImages[index],
     title: story.pageTitles[index] || `Invitation page ${index + 1}`,
     note: story.notes[index % story.notes.length],
   }));
