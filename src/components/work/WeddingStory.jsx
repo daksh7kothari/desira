@@ -9,9 +9,10 @@ export default function WeddingStory({ project }) {
     project.videos?.[0] ||
     project.assets?.find((asset) => asset.endsWith(".mp4"));
 
-  const pageImages = [project.image, ...(project.assets || [])].filter(
+  const insideImages = (project.assets || []).filter(
     (asset) => !asset.endsWith(".mp4"),
   );
+  const pageImages = [project.image, ...insideImages];
   const pageCount = pageImages.length;
   const pages = Array.from({ length: pageCount }, (_, index) => ({
     image: pageImages[index],
@@ -21,7 +22,8 @@ export default function WeddingStory({ project }) {
   const related = projects.filter(
     (item) => item.weddingStory && item.slug !== project.slug,
   );
-  const scrollPages = heroVideo ? pages : pages.slice(1);
+  const scrollPages =
+    insideImages.length > 0 ? (heroVideo ? pages : pages.slice(1)) : [];
   const pagesSection = useRef(null);
   const [activePage, setActivePage] = useState(0);
   const [scrollReady, setScrollReady] = useState(false);

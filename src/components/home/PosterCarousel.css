@@ -18,6 +18,11 @@
   margin-bottom: 12px;
 }
 
+.poster-carousel-intro:empty,
+.poster-carousel-intro:has(h2:empty) {
+  display: none;
+}
+
 .poster-carousel-intro h2 {
   max-width: 9ch;
   color: var(--brand-gold);
@@ -65,8 +70,9 @@
 
 @media (max-width: 700px) {
   .poster-carousel-section {
+    min-height: auto;
     padding-inline: 18px;
-    padding-block: 40px 36px;
+    padding-block: 20px 20px;
   }
 
   .poster-carousel-intro {

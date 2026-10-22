@@ -1,5 +1,5 @@
 import content from "../../data/home-additions.json";
-import Arrow from "../ui/Arrow.jsx";
+// import Arrow from "../ui/Arrow.jsx";
 import DepthScene from "../motion/DepthScene.jsx";
 import "../../styles/home-additions.css";
 
@@ -25,10 +25,10 @@ export default function FeaturedStory() {
             </li>
           ))}
         </ul>
-        <a className="home-addition-link" href={story.href}>
+        {/* <a className="home-addition-link" href={story.href}>
           {story.linkLabel}
           <Arrow />
-        </a>
+        </a> */}
       </div>
       <DepthScene className="home-featured-depth">
         <figure className="home-featured-board">

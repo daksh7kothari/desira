@@ -81,14 +81,8 @@ export default function PosterCarousel() {
     <section
       id="poster-carousel"
       className="poster-carousel-section"
-      aria-labelledby="poster-carousel-title"
+      aria-label="Posters and campaign pieces"
     >
-      <div className="poster-carousel-intro">
-        <h2 id="poster-carousel-title"></h2>
-        <p>
-          {/* Campaigns, print pieces and invitations. */}
-        </p>
-      </div>
       <div className="poster-carousel-stage">
         <FlexCarousel
           items={posterItems}

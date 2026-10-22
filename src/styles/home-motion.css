@@ -70,16 +70,16 @@
 
 /* The project image supplies the hover feedback; the card reveal stays separate. */
 @media (hover: hover) and (pointer: fine) {
-  .home-page .work-chroma .chroma-media img {
+  :is(.home-page, .work-page) .work-chroma .chroma-media img {
     transition: transform 380ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .home-page .work-chroma .chroma-card:hover .chroma-media img {
+  :is(.home-page, .work-page) .work-chroma .chroma-card:hover .chroma-media img {
     transform: scale(1.035);
   }
 }
 
-.home-page .work-chroma .chroma-media::after {
+:is(.home-page, .work-page) .work-chroma .chroma-media::after {
   content: "";
   position: absolute;
   z-index: 3;
@@ -90,11 +90,11 @@
   transition: opacity 260ms ease;
 }
 
-.home-page .work-chroma .chroma-info {
+:is(.home-page, .work-page) .work-chroma .chroma-info {
   padding-right: 26px;
 }
 
-.home-page .work-chroma .chroma-info::after {
+:is(.home-page, .work-page) .work-chroma .chroma-info::after {
   content: "↗";
   position: absolute;
   top: 13px;
@@ -109,12 +109,12 @@
     transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.home-page .work-chroma .chroma-card:is(:hover, :focus-visible) .chroma-media::after,
-.home-page .work-chroma .chroma-card:is(:hover, :focus-visible) .chroma-info::after {
+:is(.home-page, .work-page) .work-chroma .chroma-card:is(:hover, :focus-visible) .chroma-media::after,
+:is(.home-page, .work-page) .work-chroma .chroma-card:is(:hover, :focus-visible) .chroma-info::after {
   opacity: 1;
 }
 
-.home-page .work-chroma .chroma-card:is(:hover, :focus-visible) .chroma-info::after {
+:is(.home-page, .work-page) .work-chroma .chroma-card:is(:hover, :focus-visible) .chroma-info::after {
   transform: none;
 }
 
@@ -130,9 +130,9 @@
     transition: none;
   }
 
-  .home-page .work-chroma .chroma-media img,
-  .home-page .work-chroma .chroma-media::after,
-  .home-page .work-chroma .chroma-info::after {
+  :is(.home-page, .work-page) .work-chroma .chroma-media img,
+  :is(.home-page, .work-page) .work-chroma .chroma-media::after,
+  :is(.home-page, .work-page) .work-chroma .chroma-info::after {
     transition: none;
   }
 }

@@ -48,7 +48,6 @@ main.not-found > * {
 
 /* All interactive buttons get a clear, brand-led hover state. */
 .button,
-.work-filters button,
 .desk-controls button,
 .showcase-controls button {
   transition:
@@ -76,7 +75,6 @@ main.not-found > * {
     box-shadow: 0 12px 28px rgb(6 28 73 / 16%);
   }
 
-  .work-filters button:hover:not([aria-pressed="true"]),
   .desk-controls button:hover,
   .showcase-controls button:hover {
     color: var(--navy, #061c49);
@@ -86,7 +84,6 @@ main.not-found > * {
 }
 
 .button:focus-visible,
-.work-filters button:focus-visible,
 .desk-controls button:focus-visible,
 .showcase-controls button:focus-visible,
 .service-row:focus-within,
@@ -96,10 +93,234 @@ main.not-found > * {
 }
 
 .button:active,
-.work-filters button:active,
 .desk-controls button:active,
 .showcase-controls button:active {
   transform: translateY(1px) scale(0.985);
+}
+
+/* ==========================================================================
+   /work Page: Refined Hover Animations for Buttons, Filters & Cards
+   ========================================================================== */
+
+/* Work Page Back Button Pill */
+.work-page .back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px 8px 14px;
+  font-size: 13px;
+  font-weight: 550;
+  letter-spacing: 0.01em;
+  color: #061c49;
+  text-decoration: none;
+  border-radius: 999px;
+  background: rgb(6 28 73 / 4%);
+  border: 1px solid rgb(6 28 73 / 14%);
+  box-shadow: 0 1px 3px rgb(6 28 73 / 3%);
+  transition:
+    color 260ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 260ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 260ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 260ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .work-page .back-link:hover {
+    color: #ffffff;
+    background: #061c49;
+    border-color: #061c49;
+    transform: translateX(-4px);
+    box-shadow: 0 8px 20px -4px rgb(6 28 73 / 24%);
+  }
+
+  .work-page .button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px -4px rgb(6 28 73 / 18%);
+  }
+
+  .work-page .button:hover svg {
+    transform: translate(3px, -3px);
+  }
+}
+
+.work-page .back-link:active {
+  transform: translateX(-2px) scale(0.97);
+  box-shadow: 0 2px 6px rgb(6 28 73 / 12%);
+  transition-duration: 100ms;
+}
+
+/* Work Filter Buttons */
+.work-filters button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 550;
+  letter-spacing: 0.02em;
+  padding: 10px 20px;
+  min-height: 42px;
+  border: 1px solid rgb(6 28 73 / 18%);
+  background: rgb(255 255 255 / 85%);
+  color: #061c49;
+  box-shadow: 0 2px 5px rgb(6 28 73 / 4%);
+  transition:
+    color 280ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 280ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 280ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 280ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
+}
+
+.work-filters button[aria-pressed="true"] {
+  background: #061c49;
+  color: #ffffff;
+  border-color: #061c49;
+  box-shadow: 0 6px 18px -4px rgb(6 28 73 / 24%);
+}
+
+.work-filters button:focus-visible {
+  outline: 3px solid rgb(255 189 61 / 72%);
+  outline-offset: 4px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .work-filters button:hover:not([aria-pressed="true"]) {
+    color: #061c49;
+    background: #ffffff;
+    border-color: #061c49;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px -4px rgb(6 28 73 / 14%), 0 0 0 1px #061c49;
+  }
+
+  .work-filters button[aria-pressed="true"]:hover {
+    background: color-mix(in srgb, #061c49 92%, #ffbd3d);
+    border-color: #ffbd3d;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px -4px rgb(6 28 73 / 34%), 0 0 0 1px #ffbd3d;
+  }
+}
+
+.work-filters button:active {
+  transform: translateY(0) scale(0.97);
+  box-shadow: 0 2px 6px rgb(6 28 73 / 10%);
+  transition-duration: 90ms;
+}
+
+/* Work Cards (Chroma Cards) */
+.work-page .work-chroma .chroma-card {
+  position: relative;
+  transition:
+    transform 400ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.work-page .work-chroma .chroma-media {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  transition:
+    box-shadow 400ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.work-page .work-chroma .chroma-media img {
+  transition:
+    transform 520ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 420ms ease;
+  will-change: transform;
+}
+
+.work-page .work-chroma .chroma-media::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  border: 2px solid #ffbd3d;
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.work-page .work-chroma .chroma-info {
+  position: relative;
+  padding-right: 36px;
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.work-page .work-chroma .chroma-info::after {
+  content: "↗";
+  position: absolute;
+  top: 14px;
+  right: 4px;
+  color: #b77900;
+  font-size: 24px;
+  line-height: 1;
+  font-weight: 500;
+  opacity: 0;
+  transform: translate(-6px, 6px);
+  transition:
+    opacity 280ms ease,
+    transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
+    color 240ms ease;
+}
+
+.work-page .work-chroma .chroma-title {
+  transition: color 260ms ease;
+}
+
+.work-page .work-chroma .sample-badge {
+  transition:
+    transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 320ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .work-page .work-chroma .chroma-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .work-page .work-chroma .chroma-card:hover .chroma-media {
+    box-shadow:
+      0 18px 40px -12px rgb(6 28 73 / 16%),
+      0 6px 14px -4px rgb(6 28 73 / 08%);
+  }
+
+  .work-page .work-chroma .chroma-card:hover .chroma-media::after,
+  .work-page .work-chroma .chroma-card:focus-visible .chroma-media::after {
+    opacity: 1;
+  }
+
+  .work-page .work-chroma .chroma-card:hover .chroma-media img {
+    transform: scale(1.045);
+    filter: saturate(1.07) brightness(1.02);
+  }
+
+  .work-page .work-chroma .chroma-card:is(:hover, :focus-visible) .chroma-info::after {
+    opacity: 1;
+    transform: translate(0, 0);
+    color: #9d6400;
+  }
+
+  .work-page .work-chroma .chroma-card:hover .chroma-title {
+    color: #061c49;
+  }
+
+  .work-page .work-chroma .chroma-card:hover .sample-badge {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgb(6 28 73 / 14%);
+  }
+}
+
+.work-page .work-chroma a.chroma-card:active {
+  transform: translateY(-2px) scale(0.99);
+  transition-duration: 100ms;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -108,5 +329,17 @@ main.not-found > * {
   main.work-page > *,
   main.not-found > * {
     animation: none !important;
+  }
+
+  .work-page .work-chroma .chroma-card,
+  .work-page .work-chroma .chroma-media,
+  .work-page .work-chroma .chroma-media img,
+  .work-page .work-chroma .chroma-media::after,
+  .work-page .work-chroma .chroma-info::after,
+  .work-filters button,
+  .work-page .back-link,
+  .work-page .button {
+    transition: none !important;
+    transform: none !important;
   }
 }

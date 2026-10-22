@@ -199,6 +199,7 @@
   }
 
   .poster-carousel-section {
+    min-height: 55svh;
     scroll-margin-top: 68px;
   }
 }
