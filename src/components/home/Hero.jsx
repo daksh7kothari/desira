@@ -19,10 +19,10 @@ export default function Hero() {
           height="500"
         />
         <div className="hero-actions" aria-label="Explore Desira">
-          <a className="hero-action hero-action--gold" href="#poster-carousel">
+          {/* <a className="hero-action hero-action--gold" href="#poster-carousel">
             View Work
             <Arrow />
-          </a>
+          </a> */}
           <a className="hero-action" href="/contact/">
             Start a Project
             <Arrow diagonal />

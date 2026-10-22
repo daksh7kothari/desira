@@ -2,21 +2,6 @@
 .preserve-lines {
   white-space: pre-line;
 }
-.dialog-content .contact-form {
-  gap: 15px;
-}
-.dialog-content .contact-form label {
-  margin-bottom: 0;
-}
-.dialog-content .contact-form input,
-.dialog-content .contact-form select,
-.dialog-content .contact-form textarea {
-  margin-top: 0;
-}
-.dialog-content .contact-status {
-  min-height: 0;
-  margin: 0;
-}
 .contact-page .faq-section {
   margin: 0;
 }

@@ -2,6 +2,35 @@ import { instagram, site } from "../data/index.js";
 import copy from "../data/contact.json";
 import ProjectBriefForm from "../components/forms/ProjectBriefForm.jsx";
 import Questions from "../components/home/Questions.jsx";
+import Arrow from "../components/ui/Arrow.jsx";
+
+const phone = site.contact.phone.replace(/[^\d+]/g, "");
+const whatsapp = site.contact.whatsapp.replace(/\D/g, "");
+
+const channels = [
+  {
+    label: "Call",
+    detail: site.contact.phone,
+    href: `tel:${phone}`,
+  },
+  {
+    label: "WhatsApp",
+    detail: "Quick questions and project chats",
+    href: `https://wa.me/${whatsapp}`,
+    external: true,
+  },
+  {
+    label: "Instagram",
+    detail: site.contact.instagram.handle,
+    href: instagram,
+    external: true,
+  },
+  {
+    label: "Message",
+    detail: "Send a detailed project brief",
+    href: "#message",
+  },
+];
 
 export default function ContactPage() {
   return (
@@ -14,38 +43,31 @@ export default function ContactPage() {
         <p>{copy.description}</p>
       </div>
       <div className="contact-layout">
-        <aside>
-          <h2 className="preserve-lines">{copy.asideTitle}</h2>
-          <p>{copy.asideBody}</p>
-          <a
-            className="text-link"
-            href={instagram}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {site.contact.instagram.handle} ↗
-          </a>
-          {site.contact.email && (
-            <p>
-              <a className="text-link" href={`mailto:${site.contact.email}`}>
-                {site.contact.email}
-              </a>
-            </p>
-          )}
-          {site.contact.whatsapp && (
-            <p>
-              <a
-                className="text-link"
-                href={`https://wa.me/${site.contact.whatsapp.replace(/\D/g, "")}`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                WhatsApp ↗
-              </a>
-            </p>
-          )}
-        </aside>
-        <ProjectBriefForm />
+        <nav className="contact-channels" aria-label="Ways to contact Desira">
+          {channels.map((channel, index) => (
+            <a
+              className="contact-channel"
+              href={channel.href}
+              key={channel.label}
+              target={channel.external ? "_blank" : undefined}
+              rel={channel.external ? "noreferrer" : undefined}
+            >
+              <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+              <strong>{channel.label}</strong>
+              <small>{channel.detail}</small>
+              <Arrow diagonal={channel.external} />
+            </a>
+          ))}
+        </nav>
+        <section
+          className="contact-message"
+          id="message"
+          aria-labelledby="message-title"
+        >
+          <h2 id="message-title">{copy.messageTitle}</h2>
+          <p>{copy.messageDescription}</p>
+          <ProjectBriefForm />
+        </section>
       </div>
       <Questions />
     </main>

@@ -5,31 +5,31 @@
     {
       "text": "Work",
       "marquee": "Ideas with character",
-      "link": "/#work",
+      "link": "/work/",
       "image": "/work/mora-coffee.svg"
     },
     {
       "text": "Services",
       "marquee": "Find your kind of design",
-      "link": "/#services",
+      "link": "/services/logo-brand-identity/",
       "image": "/work/after-hours.svg"
-    },
-    {
-      "text": "Process",
-      "marquee": "From feeling to finished piece",
-      "link": "/#process-story",
-      "image": "/work/print-design.webp"
     },
     {
       "text": "Studio",
       "marquee": "Meet Sejal and Desira",
-      "link": "/#studio",
+      "link": "/studio/",
       "image": "/desira-studio-logo.png"
+    },
+    {
+      "text": "Experiences",
+      "marquee": "See design in motion",
+      "link": "/experiences/",
+      "image": "/work/print-design.webp"
     },
     {
       "text": "Start a project",
       "marquee": "Your next good idea",
-      "link": "/#contact",
+      "link": "/contact/",
       "image": "/work/coastal-wedding.webp"
     }
   ]

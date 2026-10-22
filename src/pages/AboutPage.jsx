@@ -2,7 +2,7 @@ import { services } from "../data/index.js";
 import copy from "../data/studio.json";
 import Process from "../components/home/Process.jsx";
 
-export default function AboutPage({ onEnquire }) {
+export default function AboutPage() {
   return (
     <main className="detail-page about-page">
       <a className="back-link" href="/">
@@ -34,9 +34,9 @@ export default function AboutPage({ onEnquire }) {
             <p key={paragraph}>{paragraph}</p>
           ))}
           <p className="founder-signature">{copy.signature}</p>
-          <button className="button button-navy" onClick={() => onEnquire()}>
+          <a className="button button-navy" href="/contact/">
             {copy.buttonLabel}
-          </button>
+          </a>
         </div>
       </section>
       <Process />

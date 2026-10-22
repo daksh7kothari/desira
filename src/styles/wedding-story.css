@@ -406,8 +406,10 @@
   }
 
   .wedding-story-art {
+    width: calc(100% + 44px);
+    margin-left: -22px;
     min-height: 0;
-    padding: 18px;
+    padding: 0;
   }
 
   .wedding-story-art img {
@@ -432,8 +434,8 @@
   }
 
   .wedding-page {
-    grid-template-columns: minmax(104px, 0.68fr) minmax(0, 1.32fr);
-    gap: 14px;
+    grid-template-columns: 1fr;
+    gap: 24px;
     min-height: calc(100svh - 104px);
   }
 
@@ -447,25 +449,28 @@
   }
 
   .wedding-page-copy h2 {
-    max-width: 8ch;
+    max-width: 12ch;
     font-size: clamp(22px, 7vw, 30px);
     line-height: 1.02;
   }
 
   .wedding-page-copy p {
+    max-width: 42ch;
     margin-top: 14px;
     font-size: 11px;
     line-height: 1.55;
   }
 
   .wedding-page-art {
-    min-height: calc(100svh - 104px);
-    padding: 8px;
+    width: calc(100% + 32px);
+    min-height: 0;
+    margin-left: -16px;
+    padding: 0;
   }
 
   .wedding-page-art img {
     width: 100%;
-    max-height: calc(100svh - 128px);
+    max-height: none;
   }
 
   .wedding-pages[data-enhanced="true"] .wedding-page {
@@ -473,7 +478,7 @@
   }
 
   .wedding-pages[data-enhanced="true"] .wedding-page-art {
-    height: calc(100svh - 104px);
+    height: auto;
   }
 
   .wedding-story-close {

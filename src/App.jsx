@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import getPage from "./lib/getPage.js";
 import Header from "./components/layout/Header.jsx";
 import Footer from "./components/layout/Footer.jsx";
-import EnquiryDialog from "./components/forms/EnquiryDialog.jsx";
 import PageMotion from "./components/motion/PageMotion.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import WorkPage from "./pages/WorkPage.jsx";
@@ -17,23 +16,18 @@ import CollectionPage from "./pages/CollectionPage.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
 
 export default function App({ pathname = "/" }) {
-  const [enquiry, setEnquiry] = useState(null);
   const page = getPage(pathname);
   useEffect(() => {
     document.title = page.title;
     const description = document.querySelector("meta[name=description]");
     if (description) description.content = page.description;
   }, [page.title, page.description]);
-  const onEnquire = (service = "") => setEnquiry({ service });
   let content;
-  if (page.project)
-    content = <ProjectPage project={page.project} onEnquire={onEnquire} />;
-  else if (page.service)
-    content = <ServicePage service={page.service} onEnquire={onEnquire} />;
+  if (page.project) content = <ProjectPage project={page.project} />;
+  else if (page.service) content = <ServicePage service={page.service} />;
   else if (page.note) content = <DesignNotePage note={page.note} />;
   else if (page.kind === "work") content = <WorkPage />;
-  else if (page.kind === "studio")
-    content = <AboutPage onEnquire={onEnquire} />;
+  else if (page.kind === "studio") content = <AboutPage />;
   else if (page.kind === "contact") content = <ContactPage />;
   else if (page.kind === "experiences") content = <ExperienceGalleryPage />;
   else if (page.kind === "desk") content = <DesignDeskPage />;
@@ -49,17 +43,11 @@ export default function App({ pathname = "/" }) {
         <a href="#main-content" className="skip-link">
           Skip to content
         </a>
-        <Header onEnquire={onEnquire} isHome={page.kind === "home"} />
+        <Header isHome={page.kind === "home"} />
         <div id="main-content" tabIndex={-1}>
           {content}
         </div>
-        <Footer onEnquire={onEnquire} isHome={page.kind === "home"} />
-        {enquiry && (
-          <EnquiryDialog
-            service={enquiry.service}
-            onClose={() => setEnquiry(null)}
-          />
-        )}
+        <Footer isHome={page.kind === "home"} />
       </div>
     </>
   );

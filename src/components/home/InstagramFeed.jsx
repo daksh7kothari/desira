@@ -4,7 +4,7 @@ export default function InstagramFeed() {
       className="instagram-feed-section"
       aria-labelledby="instagram-feed-title"
     >
-      <div className="instagram-feed__header">
+      <div className="instagram-feed__header" data-reveal>
         <div>
           <p className="instagram-feed__eyebrow">From the creation crew</p>
           <h2 id="instagram-feed-title">Beyond the Brief.</h2>
@@ -26,6 +26,7 @@ export default function InstagramFeed() {
         width="100%"
         height="60%"
         scrolling="no"
+        data-reveal
       />
     </section>
   );

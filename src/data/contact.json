@@ -1,19 +1,20 @@
 {
-  "title": "Tell us\nyour thing.",
-  "description": "A new brand? A big day? Something you haven’t quite put into words? Start here.",
-  "asideTitle": "Small studio.\nPersonal conversations.",
-  "asideBody": "Prepare a brief here, then send it to Sejal on Instagram.",
-  "dialogTitle": "What are you\ndreaming up?",
-  "dialogDescription": "A few details to start the conversation.",
+  "title": "Choose how\nyou’d like to talk.",
+  "description": "Call, WhatsApp, Instagram, or send a project brief. Every route goes directly to Sejal.",
+  "messageTitle": "Send the details.",
+  "messageDescription": "Tell us what you are making, when you need it, and what success should feel like.",
   "fields": {
     "name": "Your name",
+    "email": "Your email",
+    "phone": "Phone number (optional)",
     "service": "I’m looking for",
     "timeline": "Ideal timeline",
-    "message": "A little about your idea",
-    "prepared": "Your prepared brief"
+    "message": "A little about your idea"
   },
   "placeholders": {
     "name": "What should we call you?",
+    "email": "you@example.com",
+    "phone": "+91 98765 43210",
     "message": "The project, the audience, the feeling you’re after…"
   },
   "timelineOptions": [
@@ -23,10 +24,10 @@
     "I’m exploring for now"
   ],
   "otherService": "Something else",
-  "submitLabel": "Prepare & copy my brief",
-  "copiedLabel": "Brief copied",
-  "privacy": "Your details stay in this browser. Nothing is sent automatically.",
-  "copiedStatus": "Copied! Open Instagram and paste your brief into a message.",
-  "copyError": "Select and copy your prepared brief below, then paste it into an Instagram message.",
-  "instagramLabel": "Open Instagram to send it"
+  "submitLabel": "Send my project brief",
+  "sendingLabel": "Sending…",
+  "privacy": "Your brief is saved to Desira’s private enquiry sheet and emailed to Sejal.",
+  "sentStatus": "Thank you — your brief reached Sejal.",
+  "errorStatus": "The brief could not be sent. Please try WhatsApp or Instagram instead.",
+  "setupError": "Message delivery is not connected yet. Please use WhatsApp or Instagram."
 }

@@ -10,22 +10,32 @@ export default function PageMotion({ pathname }) {
         entries.forEach(({ target, isIntersecting }) => {
           if (isIntersecting) {
             target.classList.remove("motion-pending");
-            observer.unobserve(target);
+            target.classList.remove("motion-exited");
+          } else if (target.getBoundingClientRect().bottom < 0) {
+            target.classList.remove("motion-pending");
+            target.classList.add("motion-exited");
+          } else {
+            target.classList.remove("motion-exited");
+            target.classList.add("motion-pending");
           }
         });
       },
       { threshold: 0.06 },
     );
-    if (!reduced.matches)
+    if (!reduced.matches) {
       nodes.forEach((node) => {
         if (node.getBoundingClientRect().top > window.innerHeight) {
           node.classList.add("motion-pending");
-          observer.observe(node);
         }
+        observer.observe(node);
       });
+    }
     const revealAll = () => {
       if (reduced.matches)
-        nodes.forEach((node) => node.classList.remove("motion-pending"));
+        nodes.forEach((node) => {
+          node.classList.remove("motion-pending");
+          node.classList.remove("motion-exited");
+        });
     };
     let frame = 0;
     const update = () => {
@@ -48,7 +58,10 @@ export default function PageMotion({ pathname }) {
       window.removeEventListener("scroll", request);
       window.removeEventListener("resize", request);
       reduced.removeEventListener("change", revealAll);
-      nodes.forEach((node) => node.classList.remove("motion-pending"));
+      nodes.forEach((node) => {
+        node.classList.remove("motion-pending");
+        node.classList.remove("motion-exited");
+      });
     };
   }, [pathname]);
   return (

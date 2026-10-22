@@ -1,3 +1,5 @@
+import ExpandableImage from "./ExpandableImage.jsx";
+
 const imagePath = (gallery, number) =>
   `/client-work/${gallery.folder}/${String(number).padStart(2, "0")}.webp`;
 
@@ -21,7 +23,7 @@ export default function ProjectGallery({ project }) {
       <div className="project-gallery-grid">
         {images.map((number) => (
           <figure className="project-gallery-item" key={number} data-reveal>
-            <img
+            <ExpandableImage
               src={imagePath(project.gallery, number)}
               alt={`${project.title} — project view ${number} of ${project.gallery.imageCount}`}
               loading="lazy"
@@ -36,7 +38,7 @@ export default function ProjectGallery({ project }) {
           >
             <video
               src={video}
-              aria-label={`${project.title} — campaign video ${index + 1}`}
+              aria-label={`${project.title} — video ${index + 1}`}
               controls
               muted
               playsInline

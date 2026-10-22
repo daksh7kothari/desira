@@ -4,12 +4,12 @@ import Arrow from "../ui/Arrow.jsx";
 import { useRef } from "react";
 import useScrollScene from "../../hooks/useScrollScene.js";
 
-export default function Footer({ onEnquire, isHome = false }) {
+export default function Footer({ isHome = false }) {
   const scene = useRef(null);
   useScrollScene(scene);
   return (
     <footer id="contact" className={`footer${isHome ? " footer-story" : ""}`} ref={scene}>
-      <div className="footer-top">
+      <div className="footer-top" data-reveal>
         {isHome && (
           <div className="footer-story-paper" aria-hidden="true">
             <img src="/favicon.svg" alt="" width="42" height="42" />
@@ -21,12 +21,12 @@ export default function Footer({ onEnquire, isHome = false }) {
           <h2>{copy.footer.title}</h2>
           <p>{copy.footer.description}</p>
         </div>
-        <button className="button button-gold" onClick={() => onEnquire()}>
+        <a className="button button-gold" href="/contact/">
           {copy.footer.buttonLabel}
           <Arrow diagonal />
-        </button>
+        </a>
       </div>
-      <div className="footer-bottom">
+      <div className="footer-bottom" data-reveal>
         <p>
           © {new Date().getFullYear()} {site.name}
         </p>

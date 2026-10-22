@@ -19,7 +19,7 @@ export default function HomePage() {
       <Services />
       <ProcessStory />
       <InstagramFeed />
-      <Studio />
+      {/* <Studio /> */}
       <Questions />
     </main>
   );

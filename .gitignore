@@ -48,3 +48,8 @@ tools/
 .openai/*.tar.gz
 .openai/*.tar
 .playwright-mcp/
+
+apps-script
+.tmp
+.openai
+.impeccable

@@ -1,4 +1,6 @@
 import Arrow from "../ui/Arrow.jsx";
+import ExpandableImage from "./ExpandableImage.jsx";
+import ProjectGallery from "./ProjectGallery.jsx";
 import { projects } from "../../data/index.js";
 import { useEffect, useRef, useState } from "react";
 
@@ -6,7 +8,7 @@ const pagePath = (story, index) =>
   story.pages?.[index] ||
   `/wedding-invites/${story.folder}/page-${String(index + 1).padStart(2, "0")}.webp`;
 
-export default function WeddingStory({ project, onEnquire }) {
+export default function WeddingStory({ project }) {
   const story = project.weddingStory;
   const pageCount = story.pages?.length || story.pageCount;
   const pages = Array.from({ length: pageCount }, (_, index) => ({
@@ -72,7 +74,7 @@ export default function WeddingStory({ project, onEnquire }) {
           </div>
           <figure className="wedding-story-cover">
             <div className="wedding-story-art">
-              <img
+              <ExpandableImage
                 src={pages[0].image}
                 alt={project.alt}
                 width={project.width}
@@ -113,7 +115,7 @@ export default function WeddingStory({ project, onEnquire }) {
                   <p>{page.note}</p>
                 </div>
                 <div className="wedding-page-art">
-                  <img
+                  <ExpandableImage
                     src={page.image}
                     alt={`${page.title} from ${project.title}`}
                     loading={index === 0 ? "eager" : "lazy"}
@@ -135,13 +137,12 @@ export default function WeddingStory({ project, onEnquire }) {
           <h2>{project.storyTitle}</h2>
           <p>{project.story}</p>
         </div>
-        <button
-          className="button button-navy"
-          onClick={() => onEnquire(project.service)}
-        >
+        <a className="button button-navy" href="/contact/">
           Plan your invitation <Arrow diagonal />
-        </button>
+        </a>
       </section>
+
+      {project.videos?.length > 0 && <ProjectGallery project={project} />}
 
       <section className="wedding-related" aria-labelledby="more-weddings">
         <div className="wedding-related-heading">

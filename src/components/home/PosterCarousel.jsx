@@ -84,9 +84,9 @@ export default function PosterCarousel() {
       aria-labelledby="poster-carousel-title"
     >
       <div className="poster-carousel-intro">
-        <h2 id="poster-carousel-title">Posters in motion.</h2>
+        <h2 id="poster-carousel-title"></h2>
         <p>
-          Campaigns, print pieces and invitations.
+          {/* Campaigns, print pieces and invitations. */}
         </p>
       </div>
       <div className="poster-carousel-stage">

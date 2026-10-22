@@ -19,13 +19,13 @@
     ]
   },
   "portfolio": {
-    "title": "Stories form studio.",
+    "title": "Stories from studio.",
     "description": "A selection from the studio.",
     "featuredSlugs": [
-      "popice-branding",
+      "a-story-in-illustration",
       "crochetique-branding",
       "toca-boca-carnival",
-      "a-story-in-illustration"
+      "popice-branding"
     ],
     "filters": ["All work", "Brand & print", "Weddings", "Events"],
     "allWorkLabel": "View all projects",

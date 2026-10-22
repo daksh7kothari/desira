@@ -1,5 +1,23 @@
 [
   {
+    "slug": "shah-shah-steels",
+    "title": "Shah & Shah Steels: clear information, built to last.",
+    "discipline": "Catalog & business stationery",
+    "category": "Brand & print",
+    "service": "Posters & print design",
+    "image": "/client-work/shah-shah-steels/01.webp",
+    "width": 1273,
+    "height": 1800,
+    "alt": "Shah and Shah Steels corporate catalog cover",
+    "description": "A structured catalog and stationery set that makes a technical product range easier to understand and navigate.",
+    "storyTitle": "Industrial detail, organised with care.",
+    "story": "A restrained blue-and-white system gives product photography, specifications and company information a consistent hierarchy across the catalog, business card, envelope and letterhead.",
+    "gallery": {
+      "folder": "shah-shah-steels",
+      "imageCount": 16
+    }
+  },
+  {
     "slug": "popice-branding",
     "title": "Popice: a brand made to melt hearts.",
     "discipline": "Brand identity & campaign design",
@@ -23,7 +41,7 @@
     "discipline": "Brand identity & applications",
     "category": "Brand & print",
     "service": "Logo & brand identity",
-    "image": "/client-work/crochetique-branding/01.webp",
+    "image": "/client-work/crochetique-branding/09.webp",
     "width": 1800,
     "height": 1200,
     "alt": "Crochetique outdoor campaign mockup for a handmade crochet brand",
@@ -75,24 +93,7 @@
       "imageCount": 35
     }
   },
-  {
-    "slug": "shah-shah-steels",
-    "title": "Shah & Shah Steels: clear information, built to last.",
-    "discipline": "Catalog & business stationery",
-    "category": "Brand & print",
-    "service": "Posters & print design",
-    "image": "/client-work/shah-shah-steels/01.webp",
-    "width": 1273,
-    "height": 1800,
-    "alt": "Shah and Shah Steels corporate catalog cover",
-    "description": "A structured catalog and stationery set that makes a technical product range easier to understand and navigate.",
-    "storyTitle": "Industrial detail, organised with care.",
-    "story": "A restrained blue-and-white system gives product photography, specifications and company information a consistent hierarchy across the catalog, business card, envelope and letterhead.",
-    "gallery": {
-      "folder": "shah-shah-steels",
-      "imageCount": 16
-    }
-  },
+  
   {
     "slug": "avira-udaan",
     "title": "Avira Udaan: a campaign across the whole event.",

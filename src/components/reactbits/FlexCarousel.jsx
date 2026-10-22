@@ -1268,7 +1268,7 @@ const FlexCarousel = ({
           ))}
         </div>
       )}
-      {!webglUnavailable && captions && current && revealed && (
+      {/* {!webglUnavailable && captions && current && revealed && (
         <div className="flex-carousel__caption" aria-hidden="true">
           <span key={active} className="flex-carousel__title">
             {current.title || current.alt}
@@ -1285,7 +1285,7 @@ const FlexCarousel = ({
         <div className="flex-carousel__live" aria-live={autoplay ? 'off' : 'polite'} aria-atomic="true">
           {`${label}, ${active + 1} of ${list.length}`}
         </div>
-      )}
+      )} */}
     </div>
   );
 };

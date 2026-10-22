@@ -1,68 +1,57 @@
-import { useEffect, useRef, useState } from "react";
-import { site, services, instagram } from "../../data/index.js";
+import { useRef, useState } from "react";
+import { services } from "../../data/index.js";
 import copy from "../../data/contact.json";
 import Arrow from "../ui/Arrow.jsx";
 
 export default function ProjectBriefForm({ initialService = "" }) {
-  const [prepared, setPrepared] = useState("");
-  const [status, setStatus] = useState("");
-  const [copied, setCopied] = useState(false);
-  const [copying, setCopying] = useState(false);
-  const revision = useRef(0);
+  const [status, setStatus] = useState({
+    state: "idle",
+    message: copy.privacy,
+  });
+  const submitting = useRef(false);
+  const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT;
 
-  useEffect(
-    () => () => {
-      revision.current += 1;
-    },
-    [],
-  );
-
-  async function prepare(event) {
+  async function submit(event) {
     event.preventDefault();
+    if (submitting.current) return;
+
     const form = event.currentTarget;
-    for (const name of ["name", "message"]) {
-      const field = form.elements.namedItem(name);
-      if (!field.value.trim()) {
-        field.setCustomValidity(
-          name === "name"
-            ? "Please enter your name."
-            : "Please tell us a little about your project.",
-        );
-        field.reportValidity();
-        return;
-      }
+    if (!endpoint) {
+      setStatus({ state: "error", message: copy.setupError });
+      return;
     }
+
     const data = new FormData(form);
-    const brief = `Hello ${site.name}! I’m ${String(data.get("name")).trim()}.\nProject: ${data.get("service")}\nIdeal timeline: ${data.get("timeline")}\n\n${String(data.get("message")).trim()}`;
-    const currentRevision = ++revision.current;
-    setPrepared(brief);
-    setCopied(false);
-    setCopying(true);
-    setStatus("");
+    if (data.get("website")) return;
+
+    submitting.current = true;
+    setStatus({ state: "sending", message: copy.sendingLabel });
+
     try {
-      await navigator.clipboard.writeText(brief);
-      if (currentRevision !== revision.current) return;
-      setCopied(true);
-      setStatus(copy.copiedStatus);
+      await fetch(endpoint, {
+        method: "POST",
+        mode: "no-cors",
+        body: new URLSearchParams(data),
+      });
+      form.reset();
+      setStatus({ state: "success", message: copy.sentStatus });
     } catch {
-      if (currentRevision !== revision.current) return;
-      setCopied(false);
-      setStatus(copy.copyError);
+      setStatus({ state: "error", message: copy.errorStatus });
     } finally {
-      if (currentRevision === revision.current) setCopying(false);
+      submitting.current = false;
     }
   }
+
   return (
     <form
       className="contact-form"
-      onSubmit={prepare}
+      action={endpoint}
+      method="post"
+      onSubmit={submit}
       onChange={(event) => {
         event.target.setCustomValidity?.("");
-        revision.current += 1;
-        setPrepared("");
-        setStatus("");
-        setCopied(false);
-        setCopying(false);
+        if (status.state !== "sending")
+          setStatus({ state: "idle", message: copy.privacy });
       }}
     >
       <label>
@@ -73,6 +62,27 @@ export default function ProjectBriefForm({ initialService = "" }) {
           required
           maxLength={100}
           placeholder={copy.placeholders.name}
+        />
+      </label>
+      <label>
+        {copy.fields.email}
+        <input
+          type="email"
+          name="email"
+          autoComplete="email"
+          required
+          maxLength={254}
+          placeholder={copy.placeholders.email}
+        />
+      </label>
+      <label>
+        {copy.fields.phone}
+        <input
+          type="tel"
+          name="phone"
+          autoComplete="tel"
+          maxLength={30}
+          placeholder={copy.placeholders.phone}
         />
       </label>
       <label>
@@ -87,7 +97,7 @@ export default function ProjectBriefForm({ initialService = "" }) {
           <option>{copy.otherService}</option>
         </select>
       </label>
-      <label>
+      <label className="contact-form-wide">
         {copy.fields.timeline}
         <select name="timeline">
           {copy.timelineOptions.map((option) => (
@@ -95,50 +105,36 @@ export default function ProjectBriefForm({ initialService = "" }) {
           ))}
         </select>
       </label>
-      <label>
+      <label className="contact-form-wide contact-form-message">
         {copy.fields.message}
         <textarea
           name="message"
           required
           maxLength={4000}
-          rows={4}
+          rows={5}
           placeholder={copy.placeholders.message}
         />
       </label>
+      <input
+        className="contact-honeypot"
+        type="text"
+        name="website"
+        tabIndex="-1"
+        autoComplete="off"
+        aria-hidden="true"
+      />
       <button
         className="button button-navy"
         type="submit"
-        disabled={copying}
-        aria-busy={copying}
+        disabled={status.state === "sending"}
+        aria-busy={status.state === "sending"}
       >
-        {copying ? "Copying brief…" : copied ? copy.copiedLabel : copy.submitLabel}
+        {status.state === "sending" ? copy.sendingLabel : copy.submitLabel}
         <Arrow />
       </button>
-      <p className="contact-status" role="status">
-        {status || copy.privacy}
+      <p className="contact-status" data-state={status.state} role="status">
+        {status.message}
       </p>
-      {prepared && (
-        <div className="prepared-brief">
-          <label>
-            {copy.fields.prepared}
-            <textarea
-              readOnly
-              rows={7}
-              value={prepared}
-              onFocus={(event) => event.target.select()}
-            />
-          </label>
-          <a
-            className="text-link"
-            href={instagram}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {copy.instagramLabel}
-            <Arrow diagonal />
-          </a>
-        </div>
-      )}
     </form>
   );
 }
