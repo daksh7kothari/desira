@@ -1,5 +1,20 @@
 /* Production polish: calm, consistent entry motion and interaction feedback. */
 
+img[data-refine-loading] {
+  background-color: #d5d0c6;
+  background-image: linear-gradient(110deg, transparent 30%, rgb(255 255 255 / 0.45) 50%, transparent 70%);
+  background-size: 220% 100%;
+  animation: image-refine-wait 1.2s steps(8, end) infinite;
+}
+
+@keyframes image-refine-wait {
+  to { background-position: -220% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  img[data-refine-loading] { animation: none; }
+}
+
 @keyframes production-rise {
   from {
     opacity: 0;

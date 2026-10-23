@@ -1,9 +1,9 @@
 {
   "name": "Desira",
   "owner": "Sejal",
-  "tagline": "Destination for your Desired Designs",
-  "description": "Graphic design studio owned by Sejal. Custom logos, posters, wedding invitations and event graphics.",
-  "siteUrl": "http://localhost:5173",
+  "tagline": "Desira is an independent design studio.",
+  "description": "Independent graphic design studio in Chennai creating brand identities, logos, posters, wedding invitations and event design.",
+  "siteUrl": "https://desiraft.com",
   "contact": {
     "instagram": {
       "url": "https://www.instagram.com/desira.ft/",
@@ -23,25 +23,25 @@
   },
   "assets": {
     "navigationLogo": {
-      "src": "/desira-nav.avif",
+      "src": "/Desira-scg.svg",
       "alt": "Desira",
-      "width": 173,
-      "height": 124
+      "width": 271,
+      "height": 122
     },
     "studioLogo": {
       "src": "/desira-studio-logo.png",
-      "alt": "Desira — Destination for your Desired Designs",
+      "alt": "Desira studio logo",
       "width": 500,
       "height": 500
     },
     "logo": {
-      "src": "/desira-logo.png",
-      "alt": "Desira",
-      "width": 500,
-      "height": 500
+      "src": "/favicon.png",
+      "alt": "Desira mark",
+      "width": 144,
+      "height": 144
     },
     "favicon": {
-      "src": "/favicon.svg",
+      "src": "/favicon.png",
       "alt": "Desira mark"
     }
   },

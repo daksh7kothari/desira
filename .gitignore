@@ -7,30 +7,26 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-.openai/
+/.openai/
 .codex/
 .agents/
 .claude/
-docs/
+/.impeccable/
+/docs/
 *.openai
 *.playwright-mcp
 .playwright-mcp
 artifacts
 dist
 *.md
-!README.md
+!/README.md
 skills.md
-THIRD_PARTY_NOTICES*
 node_modules
-dist
 dist-ssr
 *.local
 /Wedding invites/
 /public/Chatgpt/
 /client-source/
-.impeccable
-.impeccable/review/
-.impeccable/surfaces/
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -45,11 +41,6 @@ dist-ssr
 # External research tools and local preview artifacts
 tools/
 .codebase-memory/
-.openai/*.tar.gz
-.openai/*.tar
-.playwright-mcp/
-
 apps-script
 .tmp
-.openai
-.impeccable
+/delete/

@@ -166,12 +166,12 @@
 .flowing-menu__image {
   display: block;
   flex-shrink: 0;
+  width: auto;
   height: calc(56cqh * var(--flowing-menu-band, 1));
   aspect-ratio: 2.2 / 1;
   margin: 0 calc(3.5cqh * var(--flowing-menu-band, 1));
   border-radius: 999px;
-  background-position: center;
-  background-size: cover;
+  object-fit: cover;
 }
 
 .flowing-menu[data-shape="rounded"] .flowing-menu__image {

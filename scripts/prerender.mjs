@@ -11,7 +11,7 @@ const escape = (value = "") => String(value).replaceAll("&", "&amp;").replaceAll
 const jsonLd = (value) => JSON.stringify(value).replaceAll("<", "\\u003c");
 const imagePath = (page) => {
   const candidate = page.image || page.project?.image || page.service?.image || page.note?.image;
-  return /\.(png|jpe?g|webp|avif)$/i.test(candidate || "") ? candidate : site.assets.logo.src;
+  return /\.(png|jpe?g|webp|avif)$/i.test(candidate || "") ? candidate : "/desira-social.png";
 };
 const structuredData = (page, path) => {
   if (!isPublicSite) return "";
@@ -52,7 +52,7 @@ try {
       `<meta property="og:description" content="${escape(page.description)}" />`,
       isPublicSite ? `<meta property="og:url" content="${escape(pageUrl)}" />` : "",
       isPublicSite ? `<meta property="og:image" content="${escape(imageUrl)}" />` : "",
-      isPublicSite ? `<meta property="og:image:alt" content="${escape(page.project?.alt || page.service?.alt || "Graphic design from the Desira studio")}" />` : "",
+      isPublicSite ? `<meta property="og:image:alt" content="${escape(page.project?.alt || page.service?.alt || (imagePath(page) === "/desira-social.png" ? "Desira logo on a navy background" : "Graphic design from the Desira studio"))}" />` : "",
       `<meta name="twitter:card" content="summary_large_image" />`,
       `<meta name="twitter:title" content="${escape(page.title)}" />`,
       `<meta name="twitter:description" content="${escape(page.description)}" />`,

@@ -22,6 +22,40 @@ export default function App({ pathname = "/" }) {
     const description = document.querySelector("meta[name=description]");
     if (description) description.content = page.description;
   }, [page.title, page.description]);
+  useEffect(() => {
+    const root = document.getElementById("site-content");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const watch = (image) => {
+      if (!(image instanceof HTMLImageElement) || image.complete || image.dataset.refineLoading !== undefined || /(?:\.svg|logo\.)/i.test(image.src)) return;
+      image.dataset.refineLoading = "";
+      const done = () => {
+        delete image.dataset.refineLoading;
+        image.removeEventListener("load", done);
+        image.removeEventListener("error", done);
+        if (image.naturalWidth && !reducedMotion) {
+          image.animate([{ filter: "blur(14px)" }, { filter: "blur(0)" }], {
+            duration: 480,
+            easing: "steps(5, end)",
+          });
+        }
+      };
+      image.addEventListener("load", done);
+      image.addEventListener("error", done);
+    };
+    const scan = (node) => {
+      watch(node);
+      node.querySelectorAll?.("img").forEach(watch);
+    };
+    scan(root);
+    const observer = new MutationObserver((records) => {
+      records.forEach((record) => {
+        if (record.type === "attributes") scan(record.target);
+        else record.addedNodes.forEach(scan);
+      });
+    });
+    observer.observe(root, { childList: true, subtree: true, attributes: true, attributeFilter: ["src", "srcset"] });
+    return () => observer.disconnect();
+  }, []);
   let content;
   if (page.project) content = <ProjectPage project={page.project} />;
   else if (page.service) content = <ServicePage service={page.service} />;

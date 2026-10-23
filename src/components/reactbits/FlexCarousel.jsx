@@ -158,8 +158,11 @@ void main() {
   uv = (uv - 0.5) * scale + 0.5;
   uv.x += (1.0 - uFocus) * uShift * (1.0 - scale.x) * 0.5;
   bool inside = uv.x >= 0.0 && uv.x <= 1.0 && uv.y >= 0.0 && uv.y <= 1.0;
-  vec3 image = inside ? texture(tMap, clamp(uv, 0.0, 1.0)).rgb : uPlaceholder;
-  vec3 color = mix(uPlaceholder, image, uReady);
+  float stage = floor(uReady * 5.0) / 5.0;
+  float cells = mix(24.0, 128.0, stage);
+  vec2 refineUv = stage < 1.0 ? (floor(uv * cells) + 0.5) / cells : uv;
+  vec3 image = inside ? texture(tMap, clamp(refineUv, 0.0, 1.0)).rgb : uPlaceholder;
+  vec3 color = mix(uPlaceholder, image, stage);
   float alpha = mask * uAlpha;
   fragColor = vec4(color * alpha, alpha);
 }

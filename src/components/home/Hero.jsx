@@ -14,10 +14,11 @@ export default function Hero() {
         <img
           className="hero-logo"
           src="/Desira-scg.svg"
-          alt="Desira — Destination for your Desired Designs"
+          alt="Desira"
           width="500"
-          height="500"
+          height="225"
         />
+        <p className="hero-logo-tagline">Desira is an independent design studio.</p>
         <div className="hero-actions" aria-label="Explore Desira">
           {/* <a className="hero-action hero-action--gold" href="#poster-carousel">
             View Work

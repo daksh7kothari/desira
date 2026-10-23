@@ -7,7 +7,7 @@
     "skipLabel": "Skip intro"
   },
   "hero": {
-    "eyebrow": "Independent graphic design by Sejal",
+    "eyebrow": "Desira is an independent design studio.",
     "title": ["Good ideas.", "Bold design."],
     "description": "Thoughtful identities, posters and invitations. Made to feel like you.",
     "linkLabel": "View selected work",
@@ -34,7 +34,7 @@
   },
   "services": {
     "title": "What we create.",
-    "description": "From the first impression to the smallest detail.",
+    "description": "Brand identities, posters and invitations from our Chennai design studio.",
     "dialogTitle": "Find your kind of design.",
     "dialogDescription": "Choose a service to see what we can make together."
   },
@@ -99,7 +99,7 @@
     "title": "Know more about Desira.",
     "items": [
       {
-        "question": "What can we work on together?",
+      "question": "What can we work on together?",
         "answer": "Custom logos and identities, posters, invitations, illustrations and event graphics. Tell us your idea and we’ll help define the scope."
       },
       {
@@ -122,6 +122,7 @@
     "buttonLabel": "Start a conversation",
     "copyright": "Made with a little extra thought.",
     "links": [
+            { "label": "Work", "href": "/work/" },
             { "label": "Contact", "href": "/contact/" }
     ]
   }

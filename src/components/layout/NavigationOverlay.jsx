@@ -56,6 +56,8 @@ export default function NavigationOverlay({ onClose }) {
   };
 
   const requestClose = (event, href) => {
+    if (href?.startsWith("/") && href.split("#")[0] !== window.location.pathname)
+      return;
     if (href) event.preventDefault();
     if (closing) return;
     destination.current = href;

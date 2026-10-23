@@ -18,7 +18,7 @@ export default function getPage(pathname) {
     };
   if (service)
     return {
-      title: `${service.title} | Desira`,
+      title: `${service.title} in Chennai | Desira`,
       description: service.description,
       image: service.image,
       service,

@@ -765,9 +765,11 @@ function FlowingMenu({
                         {item.marquee ?? item.text}
                       </span>
                       {item.image && (
-                        <span
+                        <img
                           className={IMAGE}
-                          style={{ backgroundImage: `url(${item.image})` }}
+                          src={item.image}
+                          alt=""
+                          loading="lazy"
                         />
                       )}
                     </div>
@@ -810,9 +812,11 @@ function FlowingMenu({
                             {item.marquee ?? item.text}
                           </span>
                           {item.image && (
-                            <span
+                            <img
                               className={IMAGE}
-                              style={{ backgroundImage: `url(${item.image})` }}
+                              src={item.image}
+                              alt=""
+                              loading="lazy"
                             />
                           )}
                         </div>

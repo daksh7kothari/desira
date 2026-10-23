@@ -1,27 +1,27 @@
 {
   "/": {
     "kind": "home",
-    "title": "Desira | Graphic Design Studio",
-    "description": "Independent graphic design by Sejal. Explore personal brand identities, posters, wedding invitations and event graphics.",
-    "image": "/work/coastal-wedding.webp"
+    "title": "Desira | Independent Graphic Design Studio in Chennai",
+    "description": "Desira is an independent graphic design studio in Chennai creating brand identities, logos, posters, wedding invitations and event design.",
+    "image": "/desira-social.png"
   },
   "/work": {
     "kind": "work",
-    "title": "Selected Work - Desira",
-    "description": "Discover original identities, invitations, illustrations and print design from Desira.",
-    "image": "/work/coastal-wedding.webp"
+    "title": "Graphic Design Portfolio | Desira, Chennai",
+    "description": "Explore Desira's selected brand identity, poster, invitation and event design projects from an independent Chennai studio.",
+    "image": "/desira-social.png"
   },
   "/studio": {
     "kind": "studio",
-    "title": "Meet Sejal & the Studio - Desira",
-    "description": "Meet Sejal, the founder of Desira, an independent graphic design studio.",
-    "image": "/desira-logo.png"
+    "title": "About Desira | Independent Design Studio in Chennai",
+    "description": "Get to know Desira, an independent design studio creating identities, print and invitation work in Chennai.",
+    "image": "/desira-social.png"
   },
   "/contact": {
     "kind": "contact",
-    "title": "Start a Design Project - Desira",
-    "description": "Prepare your design brief and start a conversation with Desira.",
-    "image": "/desira-logo.png"
+    "title": "Contact Desira | Graphic Design Studio in Chennai",
+    "description": "Share your brief with Desira for brand identity, logo, poster, invitation or event design in Chennai.",
+    "image": "/desira-social.png"
   },
   "/experiences": {
     "kind": "experiences",

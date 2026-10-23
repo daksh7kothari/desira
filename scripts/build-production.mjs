@@ -2,7 +2,7 @@ import { spawnSync } from "node:child_process";
 import { isPublicSite, publicSiteUrl } from "./seo-config.mjs";
 
 if (!isPublicSite) {
-  console.error("Production build requires SITE_URL=https://your-domain.example (the final domain is not set yet).");
+  console.error("Production build requires SITE_URL=https://desiraft.com in the environment or .env.local.");
   process.exit(1);
 }
 

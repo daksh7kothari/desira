@@ -1,4 +1,4 @@
-import { readFile, readdir } from "node:fs/promises";
+import { readFile, readdir, stat } from "node:fs/promises";
 import { join } from "node:path";
 import { isPublicSite, publicSiteUrl } from "./seo-config.mjs";
 
@@ -31,9 +31,19 @@ for (const file of htmlFiles) {
 }
 const sitemap = await readFile("dist/sitemap.xml", "utf8");
 const robots = await readFile("dist/robots.txt", "utf8");
+const home = await readFile("dist/index.html", "utf8");
+for (const asset of ["favicon.png", "desira-social.png"]) {
+  if (!(await stat(join(root, asset)).catch(() => null))?.size) errors.push(`missing ${asset}`);
+}
 if (isPublicSite) {
   if (!sitemap.includes(publicSiteUrl)) errors.push("sitemap has no public origin");
   if (!robots.includes(`Sitemap: ${publicSiteUrl}/sitemap.xml`)) errors.push("robots.txt has no sitemap directive");
+  if (!home.includes(`rel="canonical" href="${publicSiteUrl}/"`)) errors.push("homepage canonical is not the public origin");
+  if (!home.includes(`property="og:image" content="${publicSiteUrl}/desira-social.png"`)) errors.push("homepage share image is not the Desira card");
+  if (!home.includes('rel="icon" type="image/png" href="/favicon.png"')) errors.push("homepage PNG favicon is missing");
+  for (const path of ["/work/", "/contact/"]) {
+    if (!sitemap.includes(`${publicSiteUrl}${path}`)) errors.push(`sitemap is missing ${path}`);
+  }
 } else if (!robots.includes("Disallow: /")) errors.push("preview robots.txt must disallow crawling");
 if (errors.length) {
   console.error(errors.map((error) => `SEO check: ${error}`).join("\n"));
